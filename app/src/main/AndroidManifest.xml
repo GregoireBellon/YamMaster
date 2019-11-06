@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MenuJouer"></activity>
 
-        <activity android:name=".EcranAccueil"/>
+        <activity android:name=".EcranAccueil">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
