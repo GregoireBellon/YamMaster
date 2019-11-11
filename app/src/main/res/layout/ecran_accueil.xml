@@ -4,26 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#273c75"
     tools:context=".EcranAccueil">
 
     <TextView
         android:id="@+id/nomJeu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
+        android:layout_width="202dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="155dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="155dp"
         android:text="Yam Master !"
+        android:textColor="#f5f6fa"
+        android:textSize="30sp"
         app:fontFamily="serif"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="129dp"
-        android:layout_height="106dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="296dp"
+        android:id="@+id/boutonJouer"
+        android:layout_width="176dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="142dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:scaleType="centerInside"
         android:src="@drawable/bouton_play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/nomJeu" />
+
+    <ImageButton
+        android:id="@+id/boutonOptions"
+        android:layout_width="138dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="38dp"
+        android:scaleType="centerInside"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boutonJouer"
+        app:srcCompat="@drawable/bouton_options" />
+
+    <ImageButton
+        android:id="@+id/boutonEdit"
+        android:layout_width="138dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="44dp"
+        android:scaleType="centerInside"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boutonJouer"
+        app:srcCompat="@drawable/bouton_edit" />
+
+    <ImageButton
+        android:id="@+id/boutonTuto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="331dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="19dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_help" />
 </androidx.constraintlayout.widget.ConstraintLayout>
