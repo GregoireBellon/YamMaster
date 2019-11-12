@@ -4,12 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    tools:context=".Ecran_Accueil">
-=======
-    android:background="#273c75"
-    tools:context=".EcranAccueil">
->>>>>>> f6dae2599d1096a77012b6a22875bfceee544b30
+    tools:context="com.example.yatzy.EcranAccueil"
+    android:background="#273c75">
 
     <TextView
         android:id="@+id/nomJeu"
@@ -27,27 +23,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-<<<<<<< HEAD
-        android:id="@+id/imageButton"
-        android:layout_width="163dp"
-        android:layout_height="128dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="296dp"
-        android:src="@drawable/bouton_play"
-
-=======
         android:id="@+id/boutonJouer"
         android:layout_width="176dp"
         android:layout_height="150dp"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="244dp"
         android:layout_marginEnd="142dp"
         android:background="?android:attr/selectableItemBackground"
         android:scaleType="centerInside"
         android:src="@drawable/bouton_play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
->>>>>>> f6dae2599d1096a77012b6a22875bfceee544b30
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomJeu" />
 

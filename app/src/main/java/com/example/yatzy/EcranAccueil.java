@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 
-public class Ecran_Accueil extends AppCompatActivity {
+public class EcranAccueil extends AppCompatActivity {
 
     ImageButton boutonJouer;
 

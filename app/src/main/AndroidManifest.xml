@@ -8,16 +8,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-<<<<<<< HEAD
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.yatzy.Ecran_Accueil">
-=======
-        android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".MenuJouer" android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity android:name=".EcranAccueil" android:theme="@style/AppTheme.NoActionBar">
 
->>>>>>> f6dae2599d1096a77012b6a22875bfceee544b30
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
