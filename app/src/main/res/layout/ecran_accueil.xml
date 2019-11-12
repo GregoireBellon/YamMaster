@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EcranAccueil">
+    tools:context=".Ecran_Accueil">
 
     <TextView
         android:id="@+id/nomJeu"
@@ -19,11 +19,12 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="129dp"
-        android:layout_height="106dp"
+        android:layout_width="163dp"
+        android:layout_height="128dp"
         android:layout_marginStart="128dp"
         android:layout_marginTop="296dp"
         android:src="@drawable/bouton_play"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
