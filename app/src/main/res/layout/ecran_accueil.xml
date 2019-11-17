@@ -27,7 +27,7 @@
         android:layout_width="176dp"
         android:layout_height="150dp"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="204dp"
         android:layout_marginEnd="142dp"
         android:background="?android:attr/selectableItemBackground"
         android:scaleType="centerInside"
@@ -63,13 +63,15 @@
 
     <ImageButton
         android:id="@+id/boutonTuto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="73dp"
         android:layout_marginStart="331dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="19dp"
+        android:scaleType="centerInside"
+        android:background="?android:attr/selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_help" />
+        app:srcCompat="@drawable/bouton_tuto" />
 </androidx.constraintlayout.widget.ConstraintLayout>
