@@ -18,7 +18,7 @@ tools:context=".EcranEdition">
         android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/retourBtn"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:backgroundTint="#00FFFFFF"
