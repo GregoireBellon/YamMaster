@@ -8,8 +8,8 @@
     tools:context="com.example.yatzy.MenuJouer">
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="140dp"
+        android:id="@+id/versus_button"
+        android:layout_width="120dp"
         android:layout_height="90dp"
         android:layout_marginStart="45dp"
         android:layout_marginTop="264dp"
@@ -22,8 +22,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="140dp"
+        android:id="@+id/is_button"
+        android:layout_width="120dp"
         android:layout_height="90dp"
         android:layout_marginTop="264dp"
         android:layout_marginEnd="45dp"
