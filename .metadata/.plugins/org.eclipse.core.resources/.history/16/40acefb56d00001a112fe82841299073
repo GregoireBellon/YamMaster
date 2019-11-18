@@ -1,0 +1,117 @@
+import java.util.List;
+
+public class Joueur {
+	private int score;
+	private De[] des;
+	private int[] actu;
+	private int nbLancer;
+	private Jeton[] jetons;
+	private Combinaison combinaisonEnCours;
+	private Combinaison combinaisonDefi;
+
+	public Joueur() {
+		des = new De[6];
+		for (int i = 0; i < 5; i++) {
+			des[i] = new De();
+		}
+		jetons = new Jeton[12];
+		for (int i = 0; i < 12; i++) {
+			jetons[i] = new Jeton();
+		}
+		actu = new int[6];
+	}
+
+	public void jouerUnTour() {
+
+		Scanner_perso sc = new Scanner_perso();
+		// 5 premiers lancé de dés
+		System.out.println("Premier lancer :");
+		for (int i = 0; i < 5; i++) {
+			actu[i] = des[i].rouler();
+			System.out.print(actu[i] + " / ");
+		}
+		// verification de la combinaison
+		verificationCombinaison(actu);
+
+		// Annoncer défi
+		System.out.println("Voulez vous tenter un défi ? oui/non");
+		// scanner oui ou non
+		if (sc.Reponse().equals("oui")) {
+			// scanner si oui : quel défi
+			System.out.println("Sélectionner le numéro du défi que vous voulez réaliser :");
+			System.out.println("1 : carré");
+			System.out.println("2 : suite");
+			System.out.println("3 : full");
+			System.out.println("4 : <= 8");
+			System.out.println("1 : Yam");
+
+			switch (sc.Reponse()) {
+			case "1":
+				System.out.println("vous avez choisi le carré");
+				combinaisonDefi = Combinaison.CARRE;
+				break;
+
+			case "2":
+				System.out.println("vous avez choisi la suite");
+				combinaisonDefi = Combinaison.SUITE;
+				break;
+
+			case "3":
+				System.out.println("vous avez choisi le full");
+				combinaisonDefi = Combinaison.FULL;
+				break;
+			case "4":
+				System.out.println("vous avez choisi inférieur ou égal à 8");
+				combinaisonDefi = Combinaison.INF8;
+				break;
+			case "5":
+				System.out.println("vous avez choisi le Yam");
+				combinaisonDefi = Combinaison.YAM;
+				break;
+			default:
+				System.out.println("Vous n'avez pas sélectionné un défi valable, défi annulé");
+				break;
+
+			}
+		}
+
+		// garder des dés
+		System.out.println("Voulez vous gardez des dés ? Indiquez la position du dé ou des dés à relancer "
+				+ "1 par 1 si vous le voulez, n'importe quoi si non");
+
+	}
+
+	private void verificationCombinaison(int[] actu) {
+
+	}
+
+	/**
+	 * methode qui permet à un joueur de poser un de ses jetons sur une des cases du
+	 * plateau où il a le droit d'en poser
+	 * 
+	 * @param c
+	 */
+	public void poserJeton(Case c) {
+
+	}
+
+	public void retirerJeton(Case c) {
+
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public int getNbLancer() {
+		return nbLancer;
+	}
+
+	public void setNbLancer(int nbLancer) {
+		this.nbLancer = nbLancer;
+	}
+}

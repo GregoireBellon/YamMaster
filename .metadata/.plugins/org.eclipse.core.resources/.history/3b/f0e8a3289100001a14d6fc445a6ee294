@@ -1,0 +1,179 @@
+import java.util.List;
+
+public class Joueur {
+	private int score;
+	private De[] des;
+	private int[] actu;
+	private int nbLancer;
+	private Jeton[] jetons;
+	private Combinaison combinaisonEnCours;
+	private Combinaison combinaisonDefi;
+
+	public Joueur() {
+		des = new De[6];
+		for (int i = 0; i < 5; i++) {
+			des[i] = new De();
+		}
+		jetons = new Jeton[12];
+		for (int i = 0; i < 12; i++) {
+			jetons[i] = new Jeton();
+		}
+		actu = new int[6];
+	}
+
+	public void jouerUnTour() {
+
+		Scanner_perso sc = new Scanner_perso();
+		// 5 premiers lancé de dés
+		System.out.println("Premier lancer :");
+		for (int i = 0; i < 5; i++) {
+			actu[i] = des[i].rouler();
+			System.out.print(actu[i] + " / ");
+		}
+		System.out.println();
+		
+		
+		// verification de la combinaison
+		afficherDesActuel();
+		verifierCombinaisons();
+
+		// Annoncer défi
+		System.out.println("Voulez vous tenter un défi ? oui/non");
+		// scanner oui ou non
+		String reponse = sc.Reponse();
+		if (reponse.equals("oui")) {
+			// scanner si oui : quel défi
+			System.out.println("Sélectionner le numéro du défi que vous voulez réaliser :");
+			System.out.println("1 : carré");
+			System.out.println("2 : suite");
+			System.out.println("3 : full");
+			System.out.println("4 : <= 8");
+			System.out.println("1 : Yam");
+
+			//choix du type de défi
+			switch (sc.Reponse()) {
+			case "1":
+				System.out.println("vous avez choisi le carré");
+				combinaisonDefi = Combinaison.CARRE;
+				break;
+
+			case "2":
+				System.out.println("vous avez choisi la suite");
+				combinaisonDefi = Combinaison.SUITE;
+				break;
+
+			case "3":
+				System.out.println("vous avez choisi le full");
+				combinaisonDefi = Combinaison.FULL;
+				break;
+			case "4":
+				System.out.println("vous avez choisi inférieur ou égal à 8");
+				combinaisonDefi = Combinaison.INF8;
+				break;
+			case "5":
+				System.out.println("vous avez choisi le Yam");
+				combinaisonDefi = Combinaison.YAM;
+				break;
+			default:
+				System.out.println("Vous n'avez pas sélectionné un défi valable, défi annulé");
+				break;
+
+			}
+		}
+		//choix de pas de défi ou réponse ratée
+		else if(reponse.equals("non")) {}
+		else {System.out.println("vous avez échoué à choisir un choix valable : pas de défi pour vous");}
+
+		// garder des dés
+		System.out.println("Voulez vous gardez des dés ? Indiquez la position du dé ou des dés à relancer "
+				+ "chiffre par chiffre à la suite, n'importe quoi si non");
+		String rep = sc.Reponse();
+		for(int i=0; i<rep.length(); i++)
+		{
+			switch(rep.charAt(i)) {
+		case '1':
+			System.out.println("vous avez relancé " + actu[0]);
+			this.actu[0] = des[0].rouler();
+			break;
+
+		case '2':
+			System.out.println("vous avez relancé " + actu[1]);
+			this.actu[1] = des[1].rouler();
+			break;
+
+		case '3':
+			System.out.println("vous avez relancé " + actu[2]);
+			this.actu[2] = des[2].rouler();
+			break;
+		case '4':
+			System.out.println("vous avez relancé " + actu[3]);
+			this.actu[3] = des[3].rouler();
+			break;
+		case '5':
+			System.out.println("vous avez relancé " + actu[4]);
+			this.actu[4] = des[4].rouler();
+			break;
+		case '6':
+			System.out.println("vous avez relancé " + actu[5]);
+			this.actu[5] = des[5].rouler();
+			break;
+		default:
+			System.out.println("Vous n'avez pas sélectionné un chiffre valable, tous les dés sont gardés");
+			break;
+			
+		}
+			
+			
+		}
+		afficherDesActuel();
+		verifierCombinaisons();
+		
+		
+	}
+
+	private void verifierCombinaisons() {
+		
+		
+		
+		
+	}
+
+	private void afficherDesActuel()
+	{
+		for(int i=0; i<5; i++)
+		{
+			System.out.println(this.actu[i]);
+		}
+	}
+
+
+	/**
+	 * methode qui permet à un joueur de poser un de ses jetons sur une des cases du
+	 * plateau où il a le droit d'en poser
+	 * 
+	 * @param c
+	 */
+	public void poserJeton(Case c) {
+
+	}
+
+	public void retirerJeton(Case c) {
+
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public int getNbLancer() {
+		return nbLancer;
+	}
+
+	public void setNbLancer(int nbLancer) {
+		this.nbLancer = nbLancer;
+	}
+}

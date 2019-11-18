@@ -1,0 +1,32 @@
+
+public class Plateau {
+
+	public static Case[] CASES	= new Case[25];
+	
+	/**
+	 * parcours de gauche à droite et de haut en bas
+	 */
+	public Plateau()
+	{
+		CASES[0]=new Case(Combinaison.BRELAN1);
+		CASES[1]=new Case(Combinaison.BRELAN3);
+		CASES[2]=new Case(Combinaison.DEFI);
+		CASES[3]=new Case(Combinaison.BRELAN4);
+		CASES[4]=new Case(Combinaison.BRELAN6);
+		
+		CASES[5]=new Case(Combinaison.BRELAN2);
+		CASES[6]=new Case(Combinaison.CARRE);
+		CASES[7]=new Case(Combinaison.BRELAN1);
+		CASES[8]=new Case(Combinaison.BRELAN1);
+		
+		
+	}
+	
+	
+	public int checkAlignement(Couleur couleur)
+	{
+		return -1;
+	}
+	
+	
+}

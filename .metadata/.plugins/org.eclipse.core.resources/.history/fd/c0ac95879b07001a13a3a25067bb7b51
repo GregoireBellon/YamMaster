@@ -1,0 +1,85 @@
+import java.util.Enumeration;
+
+public class Partie {
+
+	private Plateau plateau;
+	private Joueur joueur1;
+	private Joueur joueur2;
+
+	public Partie(Joueur joueur1, Joueur joueur2) {
+		plateau = new Plateau();
+		this.joueur1 = joueur1;
+		this.joueur2 = joueur2;
+	}
+
+	public void commencerPartie() {
+		joueur1.setCouleurJeton(Couleur.BLANC);
+		joueur2.setCouleurJeton(Couleur.NOIR);
+
+		while (joueur1.peutJouer() && joueur2.peutJouer()) {
+			joueur1.jouerUnTour();
+			plateau.checkAlignement(joueur1.getCouleurJeton());
+			plateauJeu(joueur1);
+			// joueur2.jouerUnTour();
+			// plateau.checkAlignement(joueur2.getCouleurJeton());
+			// plateauJeu(joueur2);
+		}
+	}
+
+	public void finPartie() {
+
+	}
+
+	public Plateau getPlateau() {
+		return this.plateau;
+	}
+	/**
+	 * affiche le plateau d'un joueur après son tour, lui montre les jetons déjà sur le plateau mais aussi à quel 
+	 * endroit il peut en poser ce tour là
+	 * @param joueur
+	 */
+	public void plateauJeu(Joueur joueur) {
+
+		//this.plateau.CASES[0].setJeton( new Jeton(Couleur.BLANC));
+		String s = "";
+		System.out.println("Vous pouvez placer des jetons aux endroits ou un X est indiqué");
+		for (int i = 0; i < 5; i ++) {
+			
+
+			for (int k = 0; k < 5; k++) {
+				
+
+				if (joueur.getCombinaisonEnCours().size() > 0) {
+					s = "";
+					//joueur.afficherCombinaisonsActuelles();
+					for (Combinaison c : joueur.getCombinaisonEnCours()) {
+						
+						
+						if (c.equals(this.getPlateau().CASES[k][i].getCombinaison())) {
+							//System.out.println(c);
+							//System.out.println(this.getPlateau().CASES[i + k].getCombinaison());
+							s = "X";
+						}
+
+					}
+				}
+				if(this.getPlateau().CASES[k][i].isEstRemplie())
+				{
+					Couleur c = this.getPlateau().CASES[k][i].getJeton().getCouleur();
+					s= c.name();
+				}
+				System.out.print(getPlateau().CASES[k][i].getCombinaison() + "[" + s + "] | ");
+
+			}
+			System.out.println();
+		}
+		boolean bonneCaseSelect = false;
+		while(!bonneCaseSelect) {
+		System.out.println("Choisissez un des nombres qui va apparaitre pour placer votre jeton : tout autre nombre"
+				+ "non affiché ne sera pas efficient ");
+		}
+	}
+	
+	
+
+}

@@ -1,0 +1,21 @@
+
+public class Dice {
+
+	private int[] faces;
+	
+	
+	public Dice()
+	{
+		faces= new int[6];
+		faces[0]=1;
+		faces[1]=2;
+		faces[2]=3;
+		faces[3]=4;
+		faces[4]=5;
+		faces[5]=6;
+		
+	}
+	
+	
+	
+}

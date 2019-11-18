@@ -1,0 +1,7 @@
+
+public class Plateau {
+
+	public static Case[] = new Case[25];
+	
+	
+}

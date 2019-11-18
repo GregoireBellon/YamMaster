@@ -1,0 +1,63 @@
+
+public class Plateau {
+
+	public static Case[][] CASES	= new Case[5][5];
+	
+	/**
+	 * parcours de gauche à droite et de haut en bas
+	 */
+	public Plateau()
+	{
+		CASES[0]=new Case(Combinaison.BRELAN1);
+		CASES[1]=new Case(Combinaison.BRELAN3);
+		CASES[2]=new Case(Combinaison.DEFI);
+		CASES[3]=new Case(Combinaison.BRELAN4);
+		CASES[4]=new Case(Combinaison.BRELAN6);
+		
+		CASES[5]=new Case(Combinaison.BRELAN2);
+		CASES[6]=new Case(Combinaison.CARRE);
+		CASES[7]=new Case(Combinaison.SEC);
+		CASES[8]=new Case(Combinaison.FULL);
+		CASES[9]=new Case(Combinaison.BRELAN5);
+		
+		CASES[10]=new Case(Combinaison.INF8);
+		CASES[11]=new Case(Combinaison.FULL);
+		CASES[12]=new Case(Combinaison.YAM);
+		CASES[13]=new Case(Combinaison.DEFI);
+		CASES[14]=new Case(Combinaison.SUITE);
+		
+		CASES[15]=new Case(Combinaison.BRELAN6);
+		CASES[16]=new Case(Combinaison.SEC);
+		CASES[17]=new Case(Combinaison.SUITE);
+		CASES[18]=new Case(Combinaison.INF8);
+		CASES[19]=new Case(Combinaison.BRELAN1);
+		
+		CASES[20]=new Case(Combinaison.BRELAN3);
+		CASES[21]=new Case(Combinaison.BRELAN2);
+		CASES[22]=new Case(Combinaison.CARRE);
+		CASES[23]=new Case(Combinaison.BRELAN5);
+		CASES[24]=new Case(Combinaison.BRELAN4);
+		
+		
+	}
+	public void afficherPlateau()
+	{
+		for(int i=0; i<25;i+=5)
+		{
+			
+			for(int k=0; k<5;k++)
+			{
+				
+				System.out.print(this.CASES[i+k].getCombinaison()+ " | ");
+			}
+			System.out.println();
+		}
+	}
+	
+	public int checkAlignement(Couleur couleur)
+	{
+		return -1;
+	}
+	
+	
+}

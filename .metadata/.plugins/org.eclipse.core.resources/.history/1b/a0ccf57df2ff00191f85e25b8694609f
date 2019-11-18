@@ -1,0 +1,8 @@
+
+public class Case {
+	
+	private Combinaison combinaison;
+	private boolean estRemplie;
+	
+	
+}

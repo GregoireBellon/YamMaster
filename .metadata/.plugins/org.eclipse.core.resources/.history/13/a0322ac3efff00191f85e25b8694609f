@@ -1,0 +1,29 @@
+import java.util.Random;
+
+public class De {
+
+	private int[] faces;
+	
+	
+	public De()
+	{
+		faces= new int[6];
+		faces[0]=1;
+		faces[1]=2;
+		faces[2]=3;
+		faces[3]=4;
+		faces[4]=5;
+		faces[5]=6;
+		
+	}
+	
+	
+	public int giveAFace()
+	{
+		Random r = new Random;
+		return 
+	}
+	
+	
+	
+}

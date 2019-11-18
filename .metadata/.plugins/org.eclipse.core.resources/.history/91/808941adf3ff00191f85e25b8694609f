@@ -1,0 +1,22 @@
+
+public class Plateau {
+
+	public static Case[] CASES	= new Case[25];
+	
+	/**
+	 * parcours de gauche à droite et de haut en bas
+	 */
+	public Plateau()
+	{
+		CASES[0]=new Case();
+		
+	}
+	
+	
+	public int checkAlignement(Couleur couleur)
+	{
+		return -1;
+	}
+	
+	
+}

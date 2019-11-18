@@ -1,0 +1,39 @@
+
+public class Case {
+	
+	private Combinaison combinaison;
+	private boolean estRemplie;
+	private Jeton jeton;
+	
+	public Case(Combinaison combinaison) {
+		this.combinaison=combinaison;
+		this.estRemplie=false;
+		this.jeton=null;
+	}
+	
+	public Combinaison getCombinaison() {
+		return combinaison;
+	}
+	public void setCombinaison(Combinaison combinaison) {
+		this.combinaison = combinaison;
+	}
+	public boolean isEstRemplie() {
+		return estRemplie;
+	}
+	public void setEstRemplie(boolean estRemplie) {
+		this.estRemplie = estRemplie;
+	}
+	public Jeton getJeton() {
+		return jeton;
+	}
+	public void setJeton(Jeton jeton) {
+		this.jeton = jeton;
+		if(jeton!=null)
+		{
+			this.setEstRemplie(true);
+		}
+		else this.setEstRemplie(false);
+	}
+	
+	
+}

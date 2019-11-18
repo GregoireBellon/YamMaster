@@ -1,0 +1,366 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Joueur {
+	private int score;
+	private De[] des;
+	private int[] actu;
+	private int nbLancer;
+	private ArrayList<Jeton> jetons;
+	private List<Combinaison> combinaisonEnCours;
+
+
+	private Combinaison combinaisonDefi;
+	private Couleur couleurJeton;
+	private boolean peutJouer;
+
+
+
+
+	Scanner_perso sc = new Scanner_perso();
+	
+
+	public Joueur() {
+		//créée les dés du joueur et les stocke dans un tableau
+		des = new De[6];
+		for (int i = 0; i < 5; i++) {
+			des[i] = new De();
+		}
+		
+		//créée les jetons du joueur, leur donne une couleur et les stocke
+		jetons = new ArrayList();
+		for (int i = 0; i < 12; i++) { 
+			jetons.add(new Jeton(this.getCouleurJeton()));
+		}
+		actu = new int[6];
+		nbLancer = 0;
+		
+		this.setPeutJouer(true);
+		this.setScore(0);
+		
+
+	}
+	
+
+	
+	
+	public void jouerUnTour() {
+
+		System.out.println("DEBUT TOUR JOUEUR");
+		//1er lancer
+		lancerDes();
+		afficherDesActuel();
+		verifierCombinaison();
+		afficherCombinaisonsActuelles();
+		
+		//défi +2e lancer
+		choisirDefi();
+		lancerDes();
+		afficherDesActuel();
+		verifierCombinaison();
+		afficherCombinaisonsActuelles();
+		
+		//3e tour
+		lancerDes();
+		afficherDesActuel();
+		verifierCombinaison();
+		afficherCombinaisonsActuelles();
+		verifJeton();
+		
+		System.out.println("FIN TOUR JOUEUR");
+	}
+	
+	public void choisirDefi() {
+		// Annoncer défi
+	
+		System.out.println("Voulez vous tenter un défi ? oui/non");
+				// scanner oui ou non
+				String reponse = sc.Reponse();
+				if (reponse.equals("oui")) {
+					// scanner si oui : quel défi
+					System.out.println("Sélectionner le numéro du défi que vous voulez réaliser :");
+					System.out.println("1 : carré");
+					System.out.println("2 : suite");
+					System.out.println("3 : full");
+					System.out.println("4 : <= 8");
+					System.out.println("5 : Yam");
+
+					// choix du type de défi
+					switch (sc.Reponse()) {
+					case "1":
+						System.out.println("vous avez choisi le carré");
+						combinaisonDefi = Combinaison.CARRE;
+						break;
+
+					case "2":
+						System.out.println("vous avez choisi la suite");
+						combinaisonDefi = Combinaison.SUITE;
+						break;
+
+					case "3":
+						System.out.println("vous avez choisi le full");
+						combinaisonDefi = Combinaison.FULL;
+						break;
+					case "4":
+						System.out.println("vous avez choisi inférieur ou égal à 8");
+						combinaisonDefi = Combinaison.INF8;
+						break;
+					case "5":
+						System.out.println("vous avez choisi le Yam");
+						combinaisonDefi = Combinaison.YAM;
+						break;
+					default:
+						System.out.println("Vous n'avez pas sélectionné un défi valable, défi annulé");
+						break;
+
+					}
+				}
+				// choix de pas de défi ou réponse ratée
+				else if (reponse.equals("non")) {
+				} else {
+					System.out.println("vous avez échoué à choisir un choix valable : pas de défi pour vous");
+				}
+	}
+
+	public void lancerDes() {
+		
+		if(nbLancer==0)
+		{
+			nbLancer++;
+			System.out.println("Lancer n°"+this.getNbLancer());
+			for (int i = 0; i < 5; i++) {
+				//actu[i] = 1; //des[i].rouler();
+				System.out.print(actu[i] + " / ");
+			}
+			actu[0]=2;
+			actu[1]=2;
+			actu[2]=3;
+			actu[3]=3;
+			actu[4]=3;
+			
+			System.out.println();
+			
+		}
+		else if(nbLancer<=2){
+		System.out.println("Voulez vous gardez des dés ? Indiquez la position du dé ou des dés à relancer "
+				+ "chiffre par chiffre à la suite, n'importe quoi si non");
+		nbLancer++;
+		
+		 String rep = sc.Reponse();
+		 System.out.println("Lancer n°"+this.getNbLancer());
+		 boolean quit =false;
+		 while(!quit) {
+		for (int i = 0; i < rep.length(); i++) {
+			switch (rep.charAt(i)) {
+			case '1':
+				System.out.println("vous avez relancé " + actu[0]);
+				this.actu[0] = des[0].rouler();
+				System.out.println("nouveau dé : " +this.actu[0]);
+				break;
+
+			case '2':
+				System.out.println("vous avez relancé " + actu[1]);
+				this.actu[1] = des[1].rouler();
+				System.out.println("nouveau dé : " +this.actu[1]);
+				break;
+
+			case '3':
+				System.out.println("vous avez relancé " + actu[2]);
+				this.actu[2] = des[2].rouler();
+				System.out.println("nouveau dé : " +this.actu[2]);
+				break;
+			case '4':
+				System.out.println("vous avez relancé " + actu[3]);
+				this.actu[3] = des[3].rouler();
+				System.out.println("nouveau dé : " +this.actu[3]);
+				break;
+			case '5':
+				System.out.println("vous avez relancé " + actu[4]);
+				this.actu[4] = des[4].rouler();
+				System.out.println("nouveau dé : " +this.actu[4]);
+				break;
+			default:
+				System.out.println("Vous n'avez pas sélectionné un chiffre valable, tous les dés sont gardés");
+				quit=true;
+				break;
+
+			}
+		}
+		quit=true;
+
+			
+		 }
+		
+		}
+		
+	}
+
+	/**
+	 * vérifie la combinaison
+	 */
+	public void verifierCombinaison() {
+		boolean secos = false;
+		
+		combinaisonEnCours = new ArrayList();
+		int[] tableauCombi = new int[6];
+
+		// test
+
+		//afficherDesActuel();
+
+		int somme = 0;
+		for (int i = 0; i < 5; i++) {
+			tableauCombi[i] = 0;
+		}
+		// recupere dans un tableau le nombre d'itérations d'un chiffre sur les dés
+		for (int i = 0; i < 5; i++) {
+			switch (actu[i]) {
+			case 1:
+				tableauCombi[0]++;
+				break;
+			case 2:
+				tableauCombi[1]++;
+				break;
+			case 3:
+				tableauCombi[2]++;
+				break;
+			case 4:
+				tableauCombi[3]++;
+				break;
+			case 5:
+				tableauCombi[4]++;
+				break;
+			case 6:
+				tableauCombi[5]++;
+				break;
+
+			}
+			somme += actu[i];
+
+		}
+		System.out.println("somme :" + somme);
+		// vérifie chaque combinaison
+
+		int compteurSuite = 0;
+		for (int i = 0; i <= 5; i++) {
+
+			// yam
+			if (tableauCombi[i] == 5)
+				this.combinaisonEnCours.add(Combinaison.YAM);
+			// carre
+			if (tableauCombi[i] == 4)
+				this.combinaisonEnCours.add(Combinaison.CARRE);
+			// brelan
+			if (tableauCombi[i] == 3) {
+				int num = i + 1;
+				Combinaison combi = Combinaison.valueOf("BRELAN" + num);
+
+				this.combinaisonEnCours.add(combi);
+				//attention
+				for (int k = 0; k < 5; k++) {
+					if (k!=i && tableauCombi[k] ==2) // si k est différent de la face "brelan" et face k+1 présentes 2 fois
+						this.combinaisonEnCours.add(Combinaison.FULL);
+				}
+
+			}
+			// suite
+			// 0 à la fin ou au début 
+			if (tableauCombi[i] == 1)
+				compteurSuite++;
+			else if (tableauCombi[i] != 1) {
+				compteurSuite = 0;
+			}
+
+		}
+		if (compteurSuite == 5)
+			this.combinaisonEnCours.add(Combinaison.SUITE);
+		// somme totale des faces inferieure ou égale à 8
+		if (somme <= 8)
+			this.combinaisonEnCours.add(Combinaison.INF8);
+		// sec : n'importe quelle combinaison mais des le premier tour
+		if (nbLancer == 1 && this.combinaisonEnCours.size() != 0) {
+			this.combinaisonEnCours.add(Combinaison.SEC);
+		}
+
+		// si une combinaison de la liste des combinaisons réalisées par le joueur est
+		// égale à celle qu'il avait annoncée pour son défi, alors
+		// il peut poser son jeton sur la case défi
+		/*for (Combinaison b : combinaisonEnCours) {
+			if (b.equals(combinaisonDefi)) {
+				this.combinaisonEnCours.add(Combinaison.DEFI);
+				this.setScore(this.getScore()+3));
+			}
+		}
+		*/
+	
+
+	}
+	// afficher les combinaisons que le joueur a validé actuellement
+	public void afficherCombinaisonsActuelles() {
+		for (int i = 0; i < combinaisonEnCours.size(); i++) {
+			System.out.print(this.combinaisonEnCours.get(i) + " / ");
+		}
+		System.out.println();
+	}
+	//afficher les faces des dés du joueur
+	public void afficherDesActuel() {
+		System.out.println("Dés actuels : ");
+		for (int i = 0; i < 5; i++) {
+			System.out.println(this.actu[i]);
+		}
+	}
+	
+	public void verifJeton()
+	{
+		peutJouer=!jetons.isEmpty();
+	}
+	
+	public List<Combinaison> getCombinaisonEnCours() {
+		return combinaisonEnCours;
+	}
+
+	/**
+	 * methode qui permet à un joueur de poser un de ses jetons sur une des cases du
+	 * plateau où il a le droit d'en poser
+	 * 
+	 * @param c
+	 */
+	public void poserJeton(Case c) {
+			
+	}
+
+	public void retirerJeton(Case c) {
+
+	}
+	
+	public boolean peutJouer() {
+		return peutJouer;
+	}
+
+	public void setPeutJouer(boolean peutJouer) {
+		this.peutJouer = peutJouer;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public int getNbLancer() {
+		return nbLancer;
+	}
+
+	public void setNbLancer(int nbLancer) {
+		this.nbLancer = nbLancer;
+	}
+	public Couleur getCouleurJeton() {
+		return couleurJeton;
+	}
+
+	public void setCouleurJeton(Couleur couleurJeton) {
+		this.couleurJeton = couleurJeton;
+	}
+}

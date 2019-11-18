@@ -1,0 +1,7 @@
+
+public class Partie {
+
+	private Plateau plateau;
+	private Joueur j1;
+	private Joueur j2;
+}
