@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#003fe0"
+    android:background="#2E63A7"
     tools:context=".EcranJeu">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/plateau_jeu_yammaster" />
+        android:layout_width="412dp"
+        android:layout_height="378dp"
+        app:srcCompat="@drawable/plateau_jeu_yammaster"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="125dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
