@@ -10,7 +10,8 @@ android:paddingLeft="0dp"
 android:paddingTop="0dp"
 android:paddingRight="0dp"
 android:paddingBottom="0dp"
-tools:context=".EcranEdition">
+tools:context=".EcranEdition"
+android:background="#273c75">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,6 +53,7 @@ tools:context=".EcranEdition">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Skins"
+                    android:textColor="#FFFFFF"
                     android:textSize="24sp" />
 
             </LinearLayout>
@@ -75,6 +77,7 @@ tools:context=".EcranEdition">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Plateaux"
+                    android:textColor="#FFFFFF"
                     android:textSize="24sp" />
             </LinearLayout>
 

@@ -9,8 +9,7 @@ public class EcranEdition extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ecran_accueil);
-        getSupportActionBar().hide();
+        setContentView(R.layout.ecran_edition);
     }
 
 }

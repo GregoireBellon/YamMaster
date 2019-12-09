@@ -11,6 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MenuJouer" android:theme="@style/AppTheme.NoActionBar"></activity>
 
+        <activity android:name=".EcranEdition" android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <activity android:name=".EcranAccueil" android:theme="@style/AppTheme.NoActionBar">
 
             <intent-filter>

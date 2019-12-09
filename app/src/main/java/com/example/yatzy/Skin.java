@@ -7,7 +7,7 @@ import android.widget.ImageView;
 public class Skin {
 
 
-
+/*
 
     EcranSkin context;
     ImageButton sprite;
@@ -52,7 +52,7 @@ public class Skin {
         this.sprite.setY(y);
     }
 
-
+*/
 
 
 }
