@@ -2,11 +2,13 @@ package com.example.yatzy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MenuJouer extends AppCompatActivity {
 
@@ -16,6 +18,7 @@ public class MenuJouer extends AppCompatActivity {
 
     private int selected_button;
 
+    private ImageButton retour;
     private Button vs;
     private Button ia;
 
@@ -27,6 +30,21 @@ public class MenuJouer extends AppCompatActivity {
 
         initValues();
 
+        retour = findViewById(R.id.imageButton2);
+
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                retournerEcranAccueil();
+            }
+        });
+
+    }
+
+    private void retournerEcranAccueil() {
+        Intent intent = new Intent(this, EcranAccueil.class);
+        startActivity(intent);
+        finish();
     }
 
     private void initValues(){

@@ -35,12 +35,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <ImageButton
+        android:id="@+id/imageButton2"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="25dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/background_back_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/retour" />
