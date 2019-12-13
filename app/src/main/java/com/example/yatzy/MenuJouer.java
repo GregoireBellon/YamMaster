@@ -28,7 +28,6 @@ public class MenuJouer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_jouer);
         initValues();
-<<<<<<< HEAD
 
         retour = findViewById(R.id.imageButton2);
 
@@ -45,8 +44,6 @@ public class MenuJouer extends AppCompatActivity {
         Intent intent = new Intent(this, EcranAccueil.class);
         startActivity(intent);
         finish();
-=======
->>>>>>> 890998010a07c28e48d0b98dafac64f2f5285ff1
     }
 
     private void initValues(){
