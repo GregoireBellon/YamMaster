@@ -8,15 +8,6 @@
     tools:context=".EcranJeu">
 
     <ImageView
-<<<<<<< HEAD
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-=======
         android:id="@+id/plateau"
         android:layout_width="458dp"
         android:layout_height="406dp"
@@ -27,12 +18,7 @@
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< HEAD
         app:layout_constraintVertical_bias="1.0"
->>>>>>> 890998010a07c28e48d0b98dafac64f2f5285ff1
-=======
-        app:layout_constraintVertical_bias="0.853"
->>>>>>> 570cee772c4f34ea64a9f610e78ce354e4880138
         app:srcCompat="@drawable/plateau_jeu_yammaster" />
 
     <ImageButton
@@ -60,4 +46,17 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/menuBouton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/fondJeu"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menu" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
