@@ -1,3 +1,4 @@
+package com.example.yatzy.model;
 
 public enum Combinaison {
 BRELAN1,BRELAN2,BRELAN3,BRELAN4,BRELAN5,

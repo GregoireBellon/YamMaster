@@ -1,3 +1,6 @@
+
+package com.example.yatzy.model;
+
 import java.util.Random;
 
 public class De {
@@ -20,7 +23,7 @@ public class De {
 	}
 	
 	/**
-	 * renvoie une face aléatoire du dé (entre 0 et 5 pour accéder au tableau)
+	 * renvoie une face alï¿½atoire du dï¿½ (entre 0 et 5 pour accï¿½der au tableau)
 	 * @return
 	 */
 	public int rouler()

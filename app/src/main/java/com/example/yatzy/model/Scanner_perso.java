@@ -1,3 +1,5 @@
+package com.example.yatzy.model;
+
 import java.util.Scanner;
 
 public class Scanner_perso {

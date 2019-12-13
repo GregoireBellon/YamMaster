@@ -1,7 +1,10 @@
+package com.example.yatzy.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Joueur {
+
 	private int score;
 	private De[] des;
 	private int[] actu;
@@ -21,13 +24,13 @@ public class Joueur {
 	
 
 	public Joueur() {
-		//créée les dés du joueur et les stocke dans un tableau
+		//crï¿½ï¿½e les dï¿½s du joueur et les stocke dans un tableau
 		des = new De[6];
 		for (int i = 0; i < 5; i++) {
 			des[i] = new De();
 		}
 		
-		//créée les jetons du joueur, leur donne une couleur et les stocke
+		//crï¿½ï¿½e les jetons du joueur, leur donne une couleur et les stocke
 		jetons = new ArrayList();
 		for (int i = 0; i < 12; i++) { 
 			jetons.add(new Jeton(this.getCouleurJeton()));
@@ -53,7 +56,7 @@ public class Joueur {
 		verifierCombinaison();
 		afficherCombinaisonsActuelles();
 		
-		//défi +2e lancer
+		//dï¿½fi +2e lancer
 		choisirDefi();
 		lancerDes();
 		afficherDesActuel();
@@ -71,24 +74,24 @@ public class Joueur {
 	}
 	
 	public void choisirDefi() {
-		// Annoncer défi
+		// Annoncer dï¿½fi
 	
-		System.out.println("Voulez vous tenter un défi ? oui/non");
+		System.out.println("Voulez vous tenter un dï¿½fi ? oui/non");
 				// scanner oui ou non
 				String reponse = sc.Reponse();
 				if (reponse.equals("oui")) {
-					// scanner si oui : quel défi
-					System.out.println("Sélectionner le numéro du défi que vous voulez réaliser :");
-					System.out.println("1 : carré");
+					// scanner si oui : quel dï¿½fi
+					System.out.println("Sï¿½lectionner le numï¿½ro du dï¿½fi que vous voulez rï¿½aliser :");
+					System.out.println("1 : carrï¿½");
 					System.out.println("2 : suite");
 					System.out.println("3 : full");
 					System.out.println("4 : <= 8");
 					System.out.println("5 : Yam");
 
-					// choix du type de défi
+					// choix du type de dï¿½fi
 					switch (sc.Reponse()) {
 					case "1":
-						System.out.println("vous avez choisi le carré");
+						System.out.println("vous avez choisi le carrï¿½");
 						combinaisonDefi = Combinaison.CARRE;
 						break;
 
@@ -102,7 +105,7 @@ public class Joueur {
 						combinaisonDefi = Combinaison.FULL;
 						break;
 					case "4":
-						System.out.println("vous avez choisi inférieur ou égal à 8");
+						System.out.println("vous avez choisi infï¿½rieur ou ï¿½gal ï¿½ 8");
 						combinaisonDefi = Combinaison.INF8;
 						break;
 					case "5":
@@ -110,15 +113,15 @@ public class Joueur {
 						combinaisonDefi = Combinaison.YAM;
 						break;
 					default:
-						System.out.println("Vous n'avez pas sélectionné un défi valable, défi annulé");
+						System.out.println("Vous n'avez pas sï¿½lectionnï¿½ un dï¿½fi valable, dï¿½fi annulï¿½");
 						break;
 
 					}
 				}
-				// choix de pas de défi ou réponse ratée
+				// choix de pas de dï¿½fi ou rï¿½ponse ratï¿½e
 				else if (reponse.equals("non")) {
 				} else {
-					System.out.println("vous avez échoué à choisir un choix valable : pas de défi pour vous");
+					System.out.println("vous avez ï¿½chouï¿½ ï¿½ choisir un choix valable : pas de dï¿½fi pour vous");
 				}
 	}
 
@@ -127,7 +130,7 @@ public class Joueur {
 		if(nbLancer==0)
 		{
 			nbLancer++;
-			System.out.println("Lancer n°"+this.getNbLancer());
+			System.out.println("Lancer nï¿½"+this.getNbLancer());
 			for (int i = 0; i < 5; i++) {
 				//actu[i] = 1; //des[i].rouler();
 				System.out.print(actu[i] + " / ");
@@ -142,45 +145,45 @@ public class Joueur {
 			
 		}
 		else if(nbLancer<=2){
-		System.out.println("Voulez vous gardez des dés ? Indiquez la position du dé ou des dés à relancer "
-				+ "chiffre par chiffre à la suite, n'importe quoi si non");
+		System.out.println("Voulez vous gardez des dï¿½s ? Indiquez la position du dï¿½ ou des dï¿½s ï¿½ relancer "
+				+ "chiffre par chiffre ï¿½ la suite, n'importe quoi si non");
 		nbLancer++;
 		
 		 String rep = sc.Reponse();
-		 System.out.println("Lancer n°"+this.getNbLancer());
+		 System.out.println("Lancer nï¿½"+this.getNbLancer());
 		 boolean quit =false;
 		 while(!quit) {
 		for (int i = 0; i < rep.length(); i++) {
 			switch (rep.charAt(i)) {
 			case '1':
-				System.out.println("vous avez relancé " + actu[0]);
+				System.out.println("vous avez relancï¿½ " + actu[0]);
 				this.actu[0] = des[0].rouler();
-				System.out.println("nouveau dé : " +this.actu[0]);
+				System.out.println("nouveau dï¿½ : " +this.actu[0]);
 				break;
 
 			case '2':
-				System.out.println("vous avez relancé " + actu[1]);
+				System.out.println("vous avez relancï¿½ " + actu[1]);
 				this.actu[1] = des[1].rouler();
-				System.out.println("nouveau dé : " +this.actu[1]);
+				System.out.println("nouveau dï¿½ : " +this.actu[1]);
 				break;
 
 			case '3':
-				System.out.println("vous avez relancé " + actu[2]);
+				System.out.println("vous avez relancï¿½ " + actu[2]);
 				this.actu[2] = des[2].rouler();
-				System.out.println("nouveau dé : " +this.actu[2]);
+				System.out.println("nouveau dï¿½ : " +this.actu[2]);
 				break;
 			case '4':
-				System.out.println("vous avez relancé " + actu[3]);
+				System.out.println("vous avez relancï¿½ " + actu[3]);
 				this.actu[3] = des[3].rouler();
-				System.out.println("nouveau dé : " +this.actu[3]);
+				System.out.println("nouveau dï¿½ : " +this.actu[3]);
 				break;
 			case '5':
-				System.out.println("vous avez relancé " + actu[4]);
+				System.out.println("vous avez relancï¿½ " + actu[4]);
 				this.actu[4] = des[4].rouler();
-				System.out.println("nouveau dé : " +this.actu[4]);
+				System.out.println("nouveau dï¿½ : " +this.actu[4]);
 				break;
 			default:
-				System.out.println("Vous n'avez pas sélectionné un chiffre valable, tous les dés sont gardés");
+				System.out.println("Vous n'avez pas sï¿½lectionnï¿½ un chiffre valable, tous les dï¿½s sont gardï¿½s");
 				quit=true;
 				break;
 
@@ -196,10 +199,10 @@ public class Joueur {
 	}
 
 	/**
-	 * vérifie la combinaison
+	 * vï¿½rifie la combinaison
 	 */
 	public void verifierCombinaison() {
-		boolean secos = false; // vérifie que sec et défi étaient dans la liste de combinaisons avant
+		boolean secos = false; // vï¿½rifie que sec et dï¿½fi ï¿½taient dans la liste de combinaisons avant
 		// si oui, les rajoute dans la nouvelle liste
 		boolean defi = false;
 		if(nbLancer>1)
@@ -230,7 +233,7 @@ public class Joueur {
 		for (int i = 0; i < 5; i++) {
 			tableauCombi[i] = 0;
 		}
-		// recupere dans un tableau le nombre d'itérations d'un chiffre sur les dés
+		// recupere dans un tableau le nombre d'itï¿½rations d'un chiffre sur les dï¿½s
 		for (int i = 0; i < 5; i++) {
 			switch (actu[i]) {
 			case 1:
@@ -257,7 +260,7 @@ public class Joueur {
 
 		}
 		System.out.println("somme :" + somme);
-		// vérifie chaque combinaison
+		// vï¿½rifie chaque combinaison
 
 		int compteurSuite = 0;
 		for (int i = 0; i <= 5; i++) {
@@ -276,13 +279,13 @@ public class Joueur {
 				this.combinaisonEnCours.add(combi);
 				//attention
 				for (int k = 0; k < 5; k++) {
-					if (k!=i && tableauCombi[k] ==2) // si k est différent de la face "brelan" et face k+1 présentes 2 fois
+					if (k!=i && tableauCombi[k] ==2) // si k est diffï¿½rent de la face "brelan" et face k+1 prï¿½sentes 2 fois
 						this.combinaisonEnCours.add(Combinaison.FULL);
 				}
 
 			}
 			// suite
-			// 0 à la fin ou au début 
+			// 0 ï¿½ la fin ou au dï¿½but 
 			if (tableauCombi[i] == 1)
 				compteurSuite++;
 			else if (tableauCombi[i] != 1) {
@@ -292,7 +295,7 @@ public class Joueur {
 		}
 		if (compteurSuite == 5)
 			this.combinaisonEnCours.add(Combinaison.SUITE);
-		// somme totale des faces inferieure ou égale à 8
+		// somme totale des faces inferieure ou ï¿½gale ï¿½ 8
 		if (somme <= 8)
 			this.combinaisonEnCours.add(Combinaison.INF8);
 		// sec : n'importe quelle combinaison mais des le premier tour
@@ -300,9 +303,9 @@ public class Joueur {
 			this.combinaisonEnCours.add(Combinaison.SEC);
 		}
 
-		// si une combinaison de la liste des combinaisons réalisées par le joueur est
-		// égale à celle qu'il avait annoncée pour son défi, alors
-		// il peut poser son jeton sur la case défi
+		// si une combinaison de la liste des combinaisons rï¿½alisï¿½es par le joueur est
+		// ï¿½gale ï¿½ celle qu'il avait annoncï¿½e pour son dï¿½fi, alors
+		// il peut poser son jeton sur la case dï¿½fi
 		/*for (Combinaison b : combinaisonEnCours) {
 			if (b.equals(combinaisonDefi)) {
 				this.combinaisonEnCours.add(Combinaison.DEFI);
@@ -313,16 +316,16 @@ public class Joueur {
 	
 
 	}
-	// afficher les combinaisons que le joueur a validé actuellement
+	// afficher les combinaisons que le joueur a validï¿½ actuellement
 	public void afficherCombinaisonsActuelles() {
 		for (int i = 0; i < combinaisonEnCours.size(); i++) {
 			System.out.print(this.combinaisonEnCours.get(i) + " / ");
 		}
 		System.out.println();
 	}
-	//afficher les faces des dés du joueur
+	//afficher les faces des dï¿½s du joueur
 	public void afficherDesActuel() {
-		System.out.println("Dés actuels : ");
+		System.out.println("Dï¿½s actuels : ");
 		for (int i = 0; i < 5; i++) {
 			System.out.println(this.actu[i]);
 		}
@@ -338,8 +341,8 @@ public class Joueur {
 	}
 
 	/**
-	 * methode qui permet à un joueur de poser un de ses jetons sur une des cases du
-	 * plateau où il a le droit d'en poser
+	 * methode qui permet ï¿½ un joueur de poser un de ses jetons sur une des cases du
+	 * plateau oï¿½ il a le droit d'en poser
 	 * 
 	 * @param c
 	 */

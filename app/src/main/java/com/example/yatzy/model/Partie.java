@@ -1,3 +1,5 @@
+package com.example.yatzy.model;
+
 import java.util.Enumeration;
 
 public class Partie {
@@ -35,8 +37,8 @@ public class Partie {
 	}
 
 	/**
-	 * affiche le plateau d'un joueur après son tour, lui montre les jetons déjà sur
-	 * le plateau mais aussi à quel endroit il peut en poser ce tour là
+	 * affiche le plateau d'un joueur aprï¿½s son tour, lui montre les jetons dï¿½jï¿½ sur
+	 * le plateau mais aussi ï¿½ quel endroit il peut en poser ce tour lï¿½
 	 * 
 	 * @param joueur
 	 */
@@ -44,7 +46,7 @@ public class Partie {
 
 		// this.plateau.CASES[0].setJeton( new Jeton(Couleur.BLANC));
 		String s = "";
-		System.out.println("Vous pouvez placer des jetons aux endroits ou un X est indiqué");
+		System.out.println("Vous pouvez placer des jetons aux endroits ou un X est indiquï¿½");
 		for (int i = 0; i < 5; i++) {
 
 			for (int k = 0; k < 5; k++) {
@@ -102,7 +104,7 @@ public class Partie {
 				
 				
 			System.out.println("Choisissez un des nombres qui va apparaitre pour placer votre jeton : tout autre nombre"
-					+ "non affiché ne sera pas efficient ");
+					+ "non affichï¿½ ne sera pas efficient ");
 				rep=sc.Reponse();
 				int repInt = Integer.parseInt(rep);
 				if(rep.length()==2 && repInt<=45)

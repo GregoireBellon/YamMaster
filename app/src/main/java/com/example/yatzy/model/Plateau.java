@@ -1,10 +1,11 @@
+package com.example.yatzy.model;
 
 public class Plateau {
 
 	public static Case[][] CASES	= new Case[5][5];
 	
 	/**
-	 * parcours de gauche à droite et de haut en bas
+	 * parcours de gauche ï¿½ droite et de haut en bas
 	 */
 	public Plateau()
 	{
