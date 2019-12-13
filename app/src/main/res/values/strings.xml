@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Yatzy!</string>
+    <string name="texteTourJoueur">Au tour de Joueur 1</string>
 </resources>
