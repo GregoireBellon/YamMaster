@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/fenetrePrincipale"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingLeft="0dp"
+android:paddingTop="0dp"
+android:paddingRight="0dp"
+android:paddingBottom="0dp"
+tools:context=".EcranEdition"
+android:background="#273c75">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/retourBtn"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/retour" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:clipToPadding="false"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/skinBtn"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/bouton_skin" />
+
+                <TextView
+                    android:id="@+id/skinTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Skins"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/plateauBtn"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/bouton_plateau" />
+
+                <TextView
+                    android:id="@+id/plateauTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Plateaux"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

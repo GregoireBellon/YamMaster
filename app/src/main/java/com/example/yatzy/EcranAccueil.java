@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -11,6 +12,8 @@ import android.widget.ImageButton;
 public class EcranAccueil extends AppCompatActivity {
 
     ImageButton boutonJouer;
+    ImageButton boutonOptions;
+    ImageButton boutonEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,24 @@ public class EcranAccueil extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(EcranAccueil.this, MenuJouer.class);
                 startActivity(myIntent);
+            }
+        });
+
+        boutonEdit = findViewById(R.id.boutonEdit);
+        boutonEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(EcranAccueil.this, EcranEdition.class);
+                startActivity(myIntent);
+            }
+        });
+
+        boutonOptions = findViewById(R.id.boutonOptions);
+        boutonOptions.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                    // A COMPLETER (Lien vers écran Options)
+                return true;
             }
         });
     }
