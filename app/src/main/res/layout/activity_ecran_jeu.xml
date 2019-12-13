@@ -37,11 +37,13 @@
         android:id="@+id/texteIndicTourJoueur"
         android:layout_width="139dp"
         android:layout_height="63dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="16dp"
         android:text="Au tour de Joueur 1"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="1dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
