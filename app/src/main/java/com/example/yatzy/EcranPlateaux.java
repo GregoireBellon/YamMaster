@@ -1,4 +1,13 @@
 package com.example.yatzy;
 
-public class EcranPlateaux {
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class EcranPlateaux extends AppCompatActivity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+
+    }
 }

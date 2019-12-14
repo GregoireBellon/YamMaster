@@ -1,4 +1,4 @@
-
+package com.example.yatzy.model;
 public class Case {
 	
 	private Combinaison combinaison;

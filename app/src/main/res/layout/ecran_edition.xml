@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/fenetrePrincipale"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:paddingLeft="0dp"
-android:paddingTop="0dp"
-android:paddingRight="0dp"
-android:paddingBottom="0dp"
-tools:context=".EcranEdition"
-android:background="#273c75">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fenetrePrincipale"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondJeu"
+    android:paddingLeft="0dp"
+    android:paddingTop="0dp"
+    android:paddingRight="0dp"
+    android:paddingBottom="0dp"
+    tools:context=".EcranEdition">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@ android:background="#273c75">
                     android:id="@+id/skinBtn"
                     android:layout_width="250dp"
                     android:layout_height="250dp"
-                    android:backgroundTint="@color/colorAccent"
+                    android:backgroundTint="@android:color/transparent"
                     android:scaleType="centerInside"
                     app:srcCompat="@drawable/bouton_skin" />
 
@@ -68,7 +68,7 @@ android:background="#273c75">
                     android:id="@+id/plateauBtn"
                     android:layout_width="250dp"
                     android:layout_height="250dp"
-                    android:backgroundTint="@color/colorAccent"
+                    android:backgroundTint="@android:color/transparent"
                     android:scaleType="centerInside"
                     app:srcCompat="@drawable/bouton_plateau" />
 
