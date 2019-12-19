@@ -19,10 +19,7 @@
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< HEAD
         app:layout_constraintVertical_bias="1.0"
-=======
->>>>>>> 2f07eb0f9dc220388c59fc1fef2413fb3d097894
         app:srcCompat="@drawable/plateau_jeu_yammaster" />
 
     <ImageButton
@@ -51,7 +48,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<<<<<<< HEAD
     <ImageButton
         android:id="@+id/menuBouton"
         android:layout_width="60dp"
@@ -64,7 +60,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/menu" />
 
-=======
     <ImageView
         android:id="@+id/containerDes"
         android:layout_width="217dp"
@@ -110,5 +105,4 @@
         app:layout_constraintEnd_toStartOf="@+id/lancerRestant3"
         app:layout_constraintStart_toEndOf="@+id/lancerRestant1"
         app:srcCompat="@drawable/progression_nblancers" />
->>>>>>> 2f07eb0f9dc220388c59fc1fef2413fb3d097894
 </androidx.constraintlayout.widget.ConstraintLayout>
