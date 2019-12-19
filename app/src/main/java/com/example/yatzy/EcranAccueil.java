@@ -37,12 +37,13 @@ public class EcranAccueil extends AppCompatActivity {
         });
 
         boutonOptions = findViewById(R.id.boutonOptions);
-        boutonOptions.setOnTouchListener(new View.OnTouchListener() {
+        boutonOptions.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                    // A COMPLETER (Lien vers écran Options)
-                return true;
+            public void onClick(View v) {
+                Intent go_options = new Intent(EcranAccueil.this, Options.class);
+                startActivity(go_options);
             }
+
         });
     }
 }
