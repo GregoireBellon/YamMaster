@@ -22,7 +22,7 @@ public class EcranAccueil extends AppCompatActivity {
         boutonJouer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(EcranAccueil.this, MenuJouer.class);
+                Intent myIntent = new Intent(EcranAccueil.this, EcranJeu.class);
                 startActivity(myIntent);
             }
         });

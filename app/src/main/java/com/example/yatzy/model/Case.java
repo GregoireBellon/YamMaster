@@ -1,12 +1,19 @@
 package com.example.yatzy.model;
+
+import android.widget.ImageButton;
+
+import com.example.yatzy.Plateau;
+import com.example.yatzy.TypeCase;
+
 public class Case {
 	
 	private Combinaison combinaison;
 	private boolean estRemplie;
 	private boolean joueurPeutPoser;
 	private Jeton jeton;
-	
+
 	public Case(Combinaison combinaison) {
+
 		this.combinaison=combinaison;
 		this.estRemplie=false;
 		this.jeton=null;
