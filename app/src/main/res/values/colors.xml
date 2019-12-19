@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#002177</color> <!-- -->
     <color name="colorAccent">#D81B60</color>
     <color name="fondJeu">#373D80</color>
+    <color name="blanc">#FFFFFF</color>
 </resources>
