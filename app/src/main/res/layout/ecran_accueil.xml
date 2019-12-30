@@ -14,6 +14,7 @@
         android:layout_marginStart="155dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="155dp"
+        android:fontFamily="@font/"
         android:text="Yam Master !"
         android:textColor="#f5f6fa"
         android:textSize="30sp"
