@@ -1,4 +1,4 @@
-package com.example.yatzy.model;
+package com.example.yatzy;
 
 public enum TypeCase {
 

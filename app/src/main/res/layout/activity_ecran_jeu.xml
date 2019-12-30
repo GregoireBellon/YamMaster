@@ -8,88 +8,119 @@
     android:background="@color/fondJeu"
     tools:context=".EcranJeu">
 
-    <ImageView
-        android:id="@+id/plateau"
-        android:layout_width="458dp"
-        android:layout_height="406dp"
-        android:layout_marginTop="168dp"
-        android:layout_marginBottom="85dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+    <ImageButton
+        android:id="@+id/boutonMenu"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/plateau_jeu_yammaster" />
+        app:srcCompat="@drawable/bouton_menu_jaune" />
+
+    <TextView
+        android:id="@+id/texteIndicTourJoueur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/texteTourJoueur"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textIndicNomJoueur"
+        style="@style/OmbreSurTexte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nomJoueur"
+        android:textAlignment="center"
+        android:textColor="@color/blanc"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texteIndicTourJoueur" />
 
     <ImageButton
         android:id="@+id/gobelet"
-        android:layout_width="102dp"
-        android:layout_height="103dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@android:color/transparent"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/gobelet" />
+        app:srcCompat="@drawable/gobelet_orange" />
 
-    <TextView
-        android:id="@+id/texteIndicTourJoueur"
-        android:layout_width="139dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/texteTourJoueur"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold"
+    <ImageView
+        android:id="@+id/plateau"
+        android:layout_width="420dp"
+        android:layout_height="420dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginBottom="85dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/plateau_jeu_yammaster" />
 
     <ImageView
         android:id="@+id/containerDes"
         android:layout_width="217dp"
         android:layout_height="64dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/plateau"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/texteIndicTourJoueur"
         app:srcCompat="@drawable/reserve_des_fond" />
 
     <ImageView
         android:id="@+id/lancerRestant1"
-        android:layout_width="59dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/lancerRestant2"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/progression_nblancers" />
-
-    <ImageView
-        android:id="@+id/lancerRestant3"
-        android:layout_width="59dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="185dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lancerRestant2"
-        app:srcCompat="@drawable/progression_nblancers" />
+        app:layout_constraintTop_toBottomOf="@+id/plateau"
+        app:srcCompat="@drawable/progression_nblancers_jaune" />
 
     <ImageView
         android:id="@+id/lancerRestant2"
-        android:layout_width="59dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="3dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="3dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/lancerRestant3"
         app:layout_constraintStart_toEndOf="@+id/lancerRestant1"
-        app:srcCompat="@drawable/progression_nblancers" />
+        app:layout_constraintTop_toBottomOf="@+id/plateau"
+        app:srcCompat="@drawable/progression_nblancers_jaune" />
+
+    <ImageView
+        android:id="@+id/lancerRestant3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lancerRestant2"
+        app:layout_constraintTop_toBottomOf="@+id/plateau"
+        app:srcCompat="@drawable/progression_nblancers_jaune" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

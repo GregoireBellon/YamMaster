@@ -36,10 +36,11 @@ public class EcranAccueil extends AppCompatActivity {
         themeDeGerardDeRiviere.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
         boutonJouer = findViewById(R.id.boutonJouer);
+
         boutonJouer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(EcranAccueil.this, MenuJouer.class);
+                Intent myIntent = new Intent(EcranAccueil.this, EcranJeu.class);
                 startActivity(myIntent);
             }
         });

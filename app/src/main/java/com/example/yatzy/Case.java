@@ -1,7 +1,10 @@
 package com.example.yatzy;
 
-import com.example.yatzy.model.Jeton;
-import com.example.yatzy.model.TypeCase;
+import android.app.Dialog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class Case {
 
@@ -10,13 +13,18 @@ public class Case {
     private boolean caseRemplie; // Indique si un jeton est posé sur cette case
     private boolean peutPoser;  // Indique si la case correspond à la combinaison tirée par le joueur
     private Jeton jetonPose; // Contient le jeton posé sur cette case
+    private Plateau plateau; // Plateau auquel appartient la case
+    private ImageButton imageCase; // Image de la case (pas d'image pour l'instant mais pourra être utilisé pour
+                                   // afficher les cases en surbrillance ou pour afficher la case si on enlève l'image du plateau)
 
     // Quand la case est créée, on considère qu'elle n'a pas de jeton posé et qu'on ne peut pas poser de jeton dessus
-    public Case(TypeCase type) {
+    public Case(TypeCase type, Plateau plateau) {
         this.type = type;
         this.caseRemplie = false;
         this.peutPoser = false;
         this.jetonPose = null;
+        this.plateau = plateau;
+        imageCase = new ImageButton(plateau.getJeu());
     }
 
     // Fonction à utiliser pour poser un jeton sur cette case
@@ -33,6 +41,7 @@ public class Case {
             setCaseRemplie(true);
         }
     }
+
 
     // ---------------------------------------- Getters et Setters
 
@@ -78,5 +87,14 @@ public class Case {
 
     public void setJetonPose(Jeton jetonPose) {
         this.jetonPose = jetonPose;
+    }
+
+
+    public ImageButton getImageCase() {
+        return imageCase;
+    }
+
+    public void setImageCase(ImageButton imageCase) {
+        this.imageCase = imageCase;
     }
 }

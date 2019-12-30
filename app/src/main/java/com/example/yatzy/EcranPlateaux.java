@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class EcranPlateaux extends AppCompatActivity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
-
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 }
