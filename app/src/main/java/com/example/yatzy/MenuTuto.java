@@ -8,10 +8,10 @@ import android.view.WindowManager;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.github.paolorotolo.appintro.AppIntroFragment;
+//import com.github.paolorotolo.appintro.AppIntroFragment;
 
-public class MenuTuto extends com.github.paolorotolo.appintro.AppIntro {
-
+public class MenuTuto /*extends com.github.paolorotolo.appintro.AppIntro*/ {
+    /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +38,15 @@ public class MenuTuto extends com.github.paolorotolo.appintro.AppIntro {
     }
 
     @Override
-    public void onDonePressed(Fragment currentFragment)
-    {
+    public void onDonePressed(Fragment currentFragment) {
         super.onDonePressed(currentFragment);
+<<<<<<< HEAD
         //Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
         //startActivity(intent);
     }
+=======
+        Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+        startActivity(intent);
+    }*/
+>>>>>>> b2858335c12656eb8078636cf125a7141671fef9
 }

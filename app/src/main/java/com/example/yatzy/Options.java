@@ -1,60 +1,117 @@
 package com.example.yatzy;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
-import android.os.Bundle;
+import android.media.AudioManager;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class Options extends AppCompatActivity {
+import androidx.core.content.res.ResourcesCompat;
 
-    public static boolean dyslexique_font;
-    private Switch dyslexique_switch;
-    private SharedPreferences optionpref;
-    private Typeface used_font;
+import com.example.yatzy.model.SoundEffects;
+import com.example.yatzy.model.SoundMusic;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_options);
+import static android.content.Context.MODE_PRIVATE;
 
-        optionpref = getSharedPreferences("option", MODE_PRIVATE);
-        dyslexique_font = optionpref.getBoolean("dyslexique_font", false);
+public class Options {
 
-        dyslexique_switch = findViewById(R.id.dyslexique_switch);
-        dyslexique_switch.setChecked(dyslexique_font);
-        dyslexique_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                dyslexique_font=!dyslexique_font;
-                Toast.makeText(Options.this,Boolean.toString(dyslexique_font), Toast.LENGTH_SHORT).show();
+    public Activity context;
 
-                save();
-            }
-        });
+    public static String SHARED_PREFS = "sharedPrefs";
+    public static String SEEKBAR_EFFECTS = "seekbarEffects";
+    public static String SEEKBAR_MUSIC = "seekbarMusic";
+    public static String SWITCH_DYSLEX = "switchDyslex";
+    public static String SWITCH_DALTON = "switchDalton";
+
+    public static int PROGRESS_SEEKBAR_EFFECTS, PROGRESS_SEEKBAR_MUSIC;
+    public static boolean SWITCH_DALTON_STATE, SWITCH_DYSLEX_STATE;
+
+    public static Typeface CURRENT_FONT;
+
+    public static AudioManager audioManagerMusic;
+
+    public Options (Activity context)
+    {
+        this.context = context;
+        audioManagerMusic = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
+        load();
+
+        audioManagerMusic.setStreamVolume(AudioManager.STREAM_MUSIC, PROGRESS_SEEKBAR_MUSIC, 1);
+    }
+
+    /**
+     * Sauvegarde les paramètres dans les sharedPreferences
+     * @param volumeEffects
+     * Volume des effets à sauvegarder
+     * @param volumeMusic
+     * Volume de la musique à sauvegarder
+     * @param switchDalton
+     * Etat du switch daltonien à sauvegarder
+     * @param switchDyslex
+     * Etat du switch dyslexique à sauvegarder
+     */
+    public void save(int volumeEffects, int volumeMusic, boolean switchDalton, boolean switchDyslex)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putInt(SEEKBAR_EFFECTS, volumeEffects);
+        editor.putInt(SEEKBAR_MUSIC, volumeMusic);
+
+        editor.putBoolean(SWITCH_DALTON, switchDalton);
+        editor.putBoolean(SWITCH_DYSLEX, switchDyslex);
+
+        editor.apply();
 
     }
 
+    /**
+     * Permet de charger les valeurs des sharedPreferences, et d'instancier / attribuer
+     * les valeurs aux champs statiques de la classe
+     */
+    public void load()
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
 
-    private void save(){
-        SharedPreferences.Editor editor = optionpref.edit();
+        PROGRESS_SEEKBAR_EFFECTS = sharedPreferences.getInt(SEEKBAR_EFFECTS,  (maxMusicVolume()/2));
+        PROGRESS_SEEKBAR_MUSIC = sharedPreferences.getInt(SEEKBAR_MUSIC, (maxMusicVolume()/2));
 
-        editor.putBoolean("dyslexique_font", this.dyslexique_font).apply();
+        SWITCH_DALTON_STATE = sharedPreferences.getBoolean(SWITCH_DALTON, false);
+        SWITCH_DYSLEX_STATE = sharedPreferences.getBoolean(SWITCH_DYSLEX, false);
+
+        if(SWITCH_DYSLEX_STATE)
+            setDyslexFont();
+        else
+            setRegularFont();
 
 
+        SoundEffects.setVolume((float) PROGRESS_SEEKBAR_EFFECTS /100f);
     }
 
-    public static void loadFont(View v, Context c, Typeface used_font){
+    /**
+     * Permet de modifier le volume de la musique
+     * @param newVolume
+     * Nouveau volume de la musique
+     */
+    public void setVolume(int newVolume)
+    {
+        audioManagerMusic.setStreamVolume(AudioManager.STREAM_MUSIC, newVolume, 1);
+    }
 
-        ViewGroup group = (ViewGroup) v.getParent();
+    /**
+     * Permet de renvoyer le max du stream 'music' pour définir le max de la SeekBar de musique
+     * @return
+     * Valeur max du stream 'music"
+     */
+    public int maxMusicVolume()
+    {
+        return audioManagerMusic.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+    }
 
+<<<<<<< HEAD
         int i;
         for (i = 0; i<group.getChildCount(); i++){
             View child = group.getChildAt(i);
@@ -62,6 +119,22 @@ public class Options extends AppCompatActivity {
                 //((TextView) child).setTypeface(tf);
             }
         }
-
+=======
+    /**
+     * Fonction permettant de passer à la police adaptée aux dyslexiques
+     */
+    public void setDyslexFont()
+    {
+        CURRENT_FONT = Typeface.createFromAsset(this.context.getAssets(),"res/font/open_dyslexic_regular.otf");
     }
+>>>>>>> b2858335c12656eb8078636cf125a7141671fef9
+
+    /**
+     * Fonction permettant de passer à la police standard
+     */
+    public void setRegularFont()
+    {
+        CURRENT_FONT = Typeface.createFromAsset(this.context.getAssets(),"res/font/landasans_demo.ttf");
+    }
+
 }
