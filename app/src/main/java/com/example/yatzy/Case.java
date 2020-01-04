@@ -25,6 +25,7 @@ public class Case {
         this.jetonPose = null;
         this.plateau = plateau;
         imageCase = new ImageButton(plateau.getJeu());
+        imageCase.setImageResource(R.drawable.des_cinq);
     }
 
     // Fonction à utiliser pour poser un jeton sur cette case

@@ -59,7 +59,7 @@ public class Options extends AppCompatActivity {
         for (i = 0; i<group.getChildCount(); i++){
             View child = group.getChildAt(i);
             if(child instanceof TextView){
-                ((TextView) child).setTypeface(tf);
+                //((TextView) child).setTypeface(tf);
             }
         }
 

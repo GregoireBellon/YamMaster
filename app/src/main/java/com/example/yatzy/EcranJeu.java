@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.app.Dialog;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +28,8 @@ public class EcranJeu extends AppCompatActivity {
         setContentView(R.layout.activity_ecran_jeu);
 
         // ------- Initialisation des éléments de l'application
-        texteTourJoueur = (TextView)findViewById(R.id.texteIndicTourJoueur);
-        texteNomJoueur = (TextView)findViewById(R.id.textIndicNomJoueur);
+        texteTourJoueur = findViewById(R.id.texteIndicTourJoueur);
+        texteNomJoueur = findViewById(R.id.textIndicNomJoueur);
         containerDes = findViewById(R.id.containerDes);
         lancerRestants1 = findViewById(R.id.lancerRestant1);
         lancerRestants2 = findViewById(R.id.lancerRestant2);
@@ -38,27 +39,18 @@ public class EcranJeu extends AppCompatActivity {
         plateau = new Plateau(this);
         plateau.ajouterVuesCases();
 
-        Typeface custom_font_player_turn = Typeface.createFromAsset(getAssets(),  "fonts/Alef-Bold.ttf");
-        Typeface custom_font_player_name = Typeface.createFromAsset(getAssets(), "fonts/seguibl.ttf");
+        /*Typeface custom_font_player_turn = Typeface.createFromAsset(getAssets(),  "@font/alef_bold.ttf");
+        Typeface custom_font_player_name = Typeface.createFromAsset(getAssets(), "font/seguibl.ttf");
 
         texteTourJoueur.setTypeface(custom_font_player_turn);
-        texteNomJoueur.setTypeface(custom_font_player_name);
+        texteNomJoueur.setTypeface(custom_font_player_name);*/
     }
 
     public void ajusterCases(Case caseAPlacer){
-        ViewGroup.LayoutParams param = new ViewGroup.LayoutParams(plateau.getDimensionCases(),plateau.getDimensionCases());
-        addContentView(caseAPlacer.getImageCase(),param);
-        caseAPlacer.getImageCase().setX(caseAPlacer.getCoordX());
-        caseAPlacer.getImageCase().setY(caseAPlacer.getCoordY());
-        final String test = caseAPlacer.getType().toString();
         caseAPlacer.getImageCase().setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                Dialog dialog = new Dialog(EcranJeu.this);
-                dialog.setContentView(R.layout.test_cases);
-                TextView texte = dialog.findViewById(R.id.typeCase);
-                texte.setText("Combinaison : "+ test);
-                dialog.show();
+                Log.e("Appui sur une case", "Case touchée");
                 return true;
             }
         });
