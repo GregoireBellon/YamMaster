@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +22,7 @@ public class EcranJeu extends AppCompatActivity {
     ImageButton gobelet;
     ConstraintLayout layout;
     Plateau plateau;
-
+    De de1, de2, de3, de4, de5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +40,29 @@ public class EcranJeu extends AppCompatActivity {
         plateau = new Plateau(this);
         plateau.ajouterVuesCases();
 
+        de1 = new De(plateau);
+        de2 = new De(plateau);
+        de3 = new De(plateau);
+        de4 = new De(plateau);
+        de5 = new De(plateau);
+
+        DataHolder.getHolder().setDe1(de1);
+        DataHolder.getHolder().setDe2(de2);
+        DataHolder.getHolder().setDe3(de3);
+        DataHolder.getHolder().setDe4(de4);
+        DataHolder.getHolder().setDe5(de5);
+
         /*Typeface custom_font_player_turn = Typeface.createFromAsset(getAssets(),  "@font/alef_bold.ttf");
         Typeface custom_font_player_name = Typeface.createFromAsset(getAssets(), "font/seguibl.ttf");
 
         texteTourJoueur.setTypeface(custom_font_player_turn);
         texteNomJoueur.setTypeface(custom_font_player_name);*/
+
+        // Lancement du tour pour le J1
+        Intent intentPopupDes = new Intent(getApplicationContext(), PopDes.class);
+
+        startActivity(intentPopupDes);
+
     }
 
     public void ajusterCases(Case caseAPlacer){

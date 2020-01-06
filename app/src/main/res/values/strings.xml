@@ -2,4 +2,5 @@
     <string name="app_name">Yatzy!</string>
     <string name="texteTourJoueur">Au tour de</string>
     <string name="nomJoueur">J1</string>
+    <string name="texteIndicationDes">Faites glisser les dés que vous souhaitez garder dans la réserve</string>
 </resources>

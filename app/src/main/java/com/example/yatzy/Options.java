@@ -33,8 +33,7 @@ public class Options {
 
     public static AudioManager audioManagerMusic;
 
-    public Options (Activity context)
-    {
+    public Options(Activity context) {
         this.context = context;
         audioManagerMusic = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
         load();
@@ -44,17 +43,13 @@ public class Options {
 
     /**
      * Sauvegarde les paramètres dans les sharedPreferences
-     * @param volumeEffects
-     * Volume des effets à sauvegarder
-     * @param volumeMusic
-     * Volume de la musique à sauvegarder
-     * @param switchDalton
-     * Etat du switch daltonien à sauvegarder
-     * @param switchDyslex
-     * Etat du switch dyslexique à sauvegarder
+     *
+     * @param volumeEffects Volume des effets à sauvegarder
+     * @param volumeMusic   Volume de la musique à sauvegarder
+     * @param switchDalton  Etat du switch daltonien à sauvegarder
+     * @param switchDyslex  Etat du switch dyslexique à sauvegarder
      */
-    public void save(int volumeEffects, int volumeMusic, boolean switchDalton, boolean switchDyslex)
-    {
+    public void save(int volumeEffects, int volumeMusic, boolean switchDalton, boolean switchDyslex) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -72,69 +67,63 @@ public class Options {
      * Permet de charger les valeurs des sharedPreferences, et d'instancier / attribuer
      * les valeurs aux champs statiques de la classe
      */
-    public void load()
-    {
+    public void load() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
 
-        PROGRESS_SEEKBAR_EFFECTS = sharedPreferences.getInt(SEEKBAR_EFFECTS,  (maxMusicVolume()/2));
-        PROGRESS_SEEKBAR_MUSIC = sharedPreferences.getInt(SEEKBAR_MUSIC, (maxMusicVolume()/2));
+        PROGRESS_SEEKBAR_EFFECTS = sharedPreferences.getInt(SEEKBAR_EFFECTS, (maxMusicVolume() / 2));
+        PROGRESS_SEEKBAR_MUSIC = sharedPreferences.getInt(SEEKBAR_MUSIC, (maxMusicVolume() / 2));
 
         SWITCH_DALTON_STATE = sharedPreferences.getBoolean(SWITCH_DALTON, false);
         SWITCH_DYSLEX_STATE = sharedPreferences.getBoolean(SWITCH_DYSLEX, false);
 
-        if(SWITCH_DYSLEX_STATE)
-            setDyslexFont();
-        else
-            setRegularFont();
+        if (SWITCH_DYSLEX_STATE){}
+            //setDyslexFont();
+        else{}
+            //setRegularFont();
 
 
-        SoundEffects.setVolume((float) PROGRESS_SEEKBAR_EFFECTS /100f);
+        SoundEffects.setVolume((float) PROGRESS_SEEKBAR_EFFECTS / 100f);
     }
 
     /**
      * Permet de modifier le volume de la musique
-     * @param newVolume
-     * Nouveau volume de la musique
+     *
+     * @param newVolume Nouveau volume de la musique
      */
-    public void setVolume(int newVolume)
-    {
+    public void setVolume(int newVolume) {
         audioManagerMusic.setStreamVolume(AudioManager.STREAM_MUSIC, newVolume, 1);
     }
 
     /**
      * Permet de renvoyer le max du stream 'music' pour définir le max de la SeekBar de musique
-     * @return
-     * Valeur max du stream 'music"
+     *
+     * @return Valeur max du stream 'music"
      */
-    public int maxMusicVolume()
-    {
+    public int maxMusicVolume() {
         return audioManagerMusic.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-    }
 
-<<<<<<< HEAD
-        int i;
-        for (i = 0; i<group.getChildCount(); i++){
+    /*int i;
+    for(i = 0; i<group.getChildCount(); i++){
             View child = group.getChildAt(i);
             if(child instanceof TextView){
                 //((TextView) child).setTypeface(tf);
             }
-        }
-=======
-    /**
-     * Fonction permettant de passer à la police adaptée aux dyslexiques
-     */
-    public void setDyslexFont()
+        }*/
+        /**
+         * Fonction permettant de passer à la police adaptée aux dyslexiques
+         */
+    /*public void setDyslexFont()
     {
         CURRENT_FONT = Typeface.createFromAsset(this.context.getAssets(),"res/font/open_dyslexic_regular.otf");
-    }
->>>>>>> b2858335c12656eb8078636cf125a7141671fef9
+    }*/
 
-    /**
-     * Fonction permettant de passer à la police standard
-     */
-    public void setRegularFont()
+        /**
+         * Fonction permettant de passer à la police standard
+         */
+    /*public void setRegularFont()
     {
         CURRENT_FONT = Typeface.createFromAsset(this.context.getAssets(),"res/font/landasans_demo.ttf");
-    }
+    }*/
 
+    }
 }

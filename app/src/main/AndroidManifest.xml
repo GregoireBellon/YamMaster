@@ -16,6 +16,10 @@
             android:theme="@style/AppTheme.PopOptions"
         ></activity>
 
+        <activity android:name=".PopDes"
+            android:theme="@style/AppTheme.PopOptions"
+            ></activity>
+
         <activity
             android:name=".MenuJouer"
             android:theme="@style/AppTheme.NoActionBar" />

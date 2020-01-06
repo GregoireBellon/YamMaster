@@ -12,7 +12,7 @@ public class Plateau {
 
     public Plateau(EcranJeu jeu) {
         this.jeu = jeu;
-        dimensionCases = jeu.getLayout().getWidth() / 5;
+        dimensionCases =150 ;
         dispositionCases = new Case[5][5];
         placerCases();
     }
