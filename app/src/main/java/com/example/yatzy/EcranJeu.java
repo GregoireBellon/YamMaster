@@ -38,7 +38,7 @@ public class EcranJeu extends AppCompatActivity {
         gobelet = findViewById(R.id.gobelet);
         layout = findViewById(R.id.layoutJeu);
         plateau = new Plateau(this);
-        plateau.ajouterVuesCases();
+        //plateau.ajouterVuesCases();
 
         de1 = new De(plateau);
         de2 = new De(plateau);
@@ -72,6 +72,9 @@ public class EcranJeu extends AppCompatActivity {
     }
 
     public void ajusterCases(Case caseAPlacer){
+        caseAPlacer.getImageCase().setX(caseAPlacer.getCoordX());
+        caseAPlacer.getImageCase().setY(caseAPlacer.getCoordY());
+
         caseAPlacer.getImageCase().setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

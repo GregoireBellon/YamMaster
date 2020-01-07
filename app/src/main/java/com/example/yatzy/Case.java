@@ -25,7 +25,7 @@ public class Case {
         this.jetonPose = null;
         this.plateau = plateau;
         imageCase = new ImageButton(plateau.getJeu());
-        imageCase.setImageResource(R.drawable.des_cinq);
+        determinerImage();
     }
 
     // Fonction à utiliser pour poser un jeton sur cette case
@@ -43,7 +43,9 @@ public class Case {
         }
     }
 
+    public void determinerImage(){
 
+    }
     // ---------------------------------------- Getters et Setters
 
     public int getCoordX() {
