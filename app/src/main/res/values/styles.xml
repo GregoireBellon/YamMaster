@@ -24,6 +24,18 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
+    <style name="AppTheme.PopDes">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+
     <style name="OmbreSurTexte">
         <item name="android:paddingLeft">4px</item>
         <item name="android:paddingBottom">4px</item>

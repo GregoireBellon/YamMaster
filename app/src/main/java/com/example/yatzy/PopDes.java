@@ -2,20 +2,33 @@ package com.example.yatzy;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class PopDes extends Activity {
 
     ImageButton imageDe1, imageDe2, imageDe3, imageDe4, imageDe5;
     De de1, de2, de3, de4, de5;
     Button boutonLancer;
+    ConstraintLayout layout;
+    List<De> listeDes;
+    List<ImageButton> listeImgDes;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop_des);
+
+        listeDes = new LinkedList();
+        listeImgDes = new LinkedList();
+
         imageDe1 = findViewById(R.id.des1);
         imageDe2 = findViewById(R.id.des2);
         imageDe3 = findViewById(R.id.des3);
@@ -28,15 +41,33 @@ public class PopDes extends Activity {
         de4 = DataHolder.getHolder().getDe4();
         de5 = DataHolder.getHolder().getDe5();
 
+        listeImgDes.add(imageDe1);
+        listeImgDes.add(imageDe2);
+        listeImgDes.add(imageDe3);
+        listeImgDes.add(imageDe4);
+        listeImgDes.add(imageDe5);
+
+        listeDes.add(de1);
+        listeDes.add(de2);
+        listeDes.add(de3);
+        listeDes.add(de4);
+        listeDes.add(de5);
+
         boutonLancer = findViewById(R.id.boutonLancer);
         boutonLancer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                de1.rouler();
-                de2.rouler();
-                de3.rouler();
-                de4.rouler();
-                de5.rouler();
+                Log.e("Appuie", "Lancer");
+                int i = 0;
+                for (De de: listeDes) {
+                    if (!de.isSelected()){
+                        de.rouler();
+                    }
+                }
+                for (ImageButton img : listeImgDes){
+                    De de = listeDes.get(i);
+                    img = de.getBoutonDe();
+                }
             }
         });
     }

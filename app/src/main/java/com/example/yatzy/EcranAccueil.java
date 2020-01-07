@@ -32,8 +32,8 @@ public class EcranAccueil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ecran_accueil);
 
-        themeDeGerardDeRiviere = MediaPlayer.create(EcranAccueil.this, R.raw.a1_test);
-        themeDeGerardDeRiviere.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        //themeDeGerardDeRiviere = MediaPlayer.create(EcranAccueil.this, R.raw.a1_test);
+        //themeDeGerardDeRiviere.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
         boutonJouer = findViewById(R.id.boutonJouer);
 
@@ -67,7 +67,7 @@ public class EcranAccueil extends AppCompatActivity {
 
         options = new Options(this);
         //SoundMusic.setVolume(options.getSavedMusicVolume());
-        SoundMusic.play(themeDeGerardDeRiviere);
+        //SoundMusic.play(themeDeGerardDeRiviere);
         loadFont();
     }
 

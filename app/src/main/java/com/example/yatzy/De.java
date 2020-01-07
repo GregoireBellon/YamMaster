@@ -6,6 +6,7 @@ public class De extends com.example.yatzy.model.De{
 
     private ImageButton boutonDe;
     private Plateau plateau;
+    private Boolean selected = false;
 
     public De(Plateau plateau) {
         super();
@@ -27,5 +28,21 @@ public class De extends com.example.yatzy.model.De{
             default: boutonDe.setImageResource(R.drawable.des_un);
         }
         return random;
+    }
+
+    public Boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(Boolean selected) {
+        this.selected = selected;
+    }
+
+    public ImageButton getBoutonDe() {
+        return boutonDe;
+    }
+
+    public void setBoutonDe(ImageButton boutonDe) {
+        this.boutonDe = boutonDe;
     }
 }

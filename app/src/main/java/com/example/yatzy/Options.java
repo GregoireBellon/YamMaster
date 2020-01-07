@@ -38,7 +38,7 @@ public class Options {
         audioManagerMusic = (AudioManager) context.getSystemService(context.AUDIO_SERVICE);
         load();
 
-        audioManagerMusic.setStreamVolume(AudioManager.STREAM_MUSIC, PROGRESS_SEEKBAR_MUSIC, 1);
+       // audioManagerMusic.setStreamVolume(AudioManager.STREAM_MUSIC, PROGRESS_SEEKBAR_MUSIC, 1);
     }
 
     /**

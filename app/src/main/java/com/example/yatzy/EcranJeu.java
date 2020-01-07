@@ -59,9 +59,15 @@ public class EcranJeu extends AppCompatActivity {
         texteNomJoueur.setTypeface(custom_font_player_name);*/
 
         // Lancement du tour pour le J1
-        Intent intentPopupDes = new Intent(getApplicationContext(), PopDes.class);
+        gobelet.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Intent intentPopupDes = new Intent(getApplicationContext(), PopDes.class);
+                startActivity(intentPopupDes);
+                return true;
+            }
+        });
 
-        startActivity(intentPopupDes);
 
     }
 
