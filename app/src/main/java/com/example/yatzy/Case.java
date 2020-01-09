@@ -1,10 +1,18 @@
 package com.example.yatzy;
 
+import android.app.Application;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import static java.security.AccessController.getContext;
 
 public class Case {
 
@@ -44,7 +52,11 @@ public class Case {
     }
 
     public void determinerImage(){
-
+        Resources res = plateau.getJeu().getResources();
+        String nomFichier = "case_"+ type.toString().toLowerCase();
+        int resID = res.getIdentifier(nomFichier , "drawable", plateau.getJeu().getPackageName());
+        imageCase.setImageResource(resID);
+        imageCase.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     }
     // ---------------------------------------- Getters et Setters
 
@@ -100,4 +112,5 @@ public class Case {
     public void setImageCase(ImageButton imageCase) {
         this.imageCase = imageCase;
     }
+
 }

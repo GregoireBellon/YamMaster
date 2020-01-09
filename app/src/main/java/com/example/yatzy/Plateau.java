@@ -33,7 +33,7 @@ public class Plateau {
 
         dispositionCases[0][1]=new Case(TypeCase.BRELAN2, this);
         dispositionCases[1][1]=new Case(TypeCase.CARRE, this);
-        dispositionCases[2][1]=new Case(TypeCase.ONESHOT, this);
+        dispositionCases[2][1]=new Case(TypeCase.SEC, this);
         dispositionCases[3][1]=new Case(TypeCase.FULL, this);
         dispositionCases[4][1]=new Case(TypeCase.BRELAN5, this);
 
@@ -44,7 +44,7 @@ public class Plateau {
         dispositionCases[4][2]=new Case(TypeCase.SUITE, this);
 
         dispositionCases[0][3]=new Case(TypeCase.BRELAN6, this);
-        dispositionCases[1][3]=new Case(TypeCase.ONESHOT, this);
+        dispositionCases[1][3]=new Case(TypeCase.SEC, this);
         dispositionCases[2][3]=new Case(TypeCase.SUITE, this);
         dispositionCases[3][3]=new Case(TypeCase.INF8, this);
         dispositionCases[4][3]=new Case(TypeCase.BRELAN1, this);
@@ -61,12 +61,10 @@ public class Plateau {
         for (int i = 0; i <= 4; i++){
             for (int j = 0 ; j <= 4 ; j++){
                 Case nouvelleCase = dispositionCases[i][j];
-                nouvelleCase.getImageCase().setImageResource(R.drawable.des_cinq);
                 nouvelleCase.setCoordX(i * getDimensionCases());
                 nouvelleCase.setCoordY(j * getDimensionCases() + hauteurPlateau);
                 ViewGroup.LayoutParams param = new ViewGroup.LayoutParams(getDimensionCases(),getDimensionCases());
                 jeu.addContentView(nouvelleCase.getImageCase(),param);
-
                 jeu.ajusterCases(dispositionCases[i][j]);
             }
 

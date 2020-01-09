@@ -10,7 +10,7 @@ public enum TypeCase {
     BRELAN6,
     FULL,
     CARRE,
-    ONESHOT,
+    SEC,
     SUITE,
     YAM,
     DEFI,
