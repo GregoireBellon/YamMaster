@@ -32,6 +32,9 @@ public class EcranAccueil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ecran_accueil);
 
+        options = new Options(this);
+
+
         //themeDeGerardDeRiviere = MediaPlayer.create(EcranAccueil.this, R.raw.a1_test);
         //themeDeGerardDeRiviere.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
@@ -61,29 +64,15 @@ public class EcranAccueil extends AppCompatActivity {
 
                 Intent intentPopup = new Intent(getApplicationContext(), PopOptions.class);
                 startActivity(intentPopup);
+
             }
 
         });
 
-        options = new Options(this);
         //SoundMusic.setVolume(options.getSavedMusicVolume());
         //SoundMusic.play(themeDeGerardDeRiviere);
-        loadFont();
-    }
-
-    public void loadFont()
-    {
-        ViewGroup group = getWindow().getDecorView().findViewById(android.R.id.content);
-
-        int i;
-        for (i = 0; i < group.getChildCount(); i++){
-            View child = group.getChildAt(i);
-            if(child instanceof TextView){
-                ((TextView) child).setTypeface(options.CURRENT_FONT);
-            }
-
-        }
 
     }
+
 
 }
