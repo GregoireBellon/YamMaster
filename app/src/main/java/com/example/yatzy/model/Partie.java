@@ -4,17 +4,19 @@ import java.util.Enumeration;
 
 public class Partie {
 
-	private Plateau plateau;
 	private Joueur joueur1;
 	private Joueur joueur2;
 
+	public Partie(){
+
+	}
+
 	public Partie(Joueur joueur1, Joueur joueur2) {
-		plateau = new Plateau();
 		this.joueur1 = joueur1;
 		this.joueur2 = joueur2;
 	}
 
-	public void commencerPartie() {
+	/*public void commencerPartie() {
 		joueur1.setCouleurJeton(Couleur.BLANC);
 		joueur2.setCouleurJeton(Couleur.NOIR);
 
@@ -41,7 +43,7 @@ public class Partie {
 	 * le plateau mais aussi � quel endroit il peut en poser ce tour l�
 	 * 
 	 * @param joueur
-	 */
+
 	public void plateauJeu(Joueur joueur) {
 
 		// this.plateau.CASES[0].setJeton( new Jeton(Couleur.BLANC));
@@ -123,6 +125,6 @@ public class Partie {
 				
 				
 		}
-	}
+	}*/
 
 }

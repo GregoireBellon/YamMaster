@@ -6,73 +6,46 @@ import java.util.List;
 public class Joueur {
 
 	private int score;
-	private De[] des;
-	private int[] actu;
 	private int nbLancer;
-	private ArrayList<Jeton> jetons;
 	private List<Combinaison> combinaisonEnCours;
-
-
 	private Combinaison combinaisonDefi;
 	private Couleur couleurJeton;
 	private boolean peutJouer;
 
 
-
-
-	Scanner_perso sc = new Scanner_perso();
-	
-
 	public Joueur() {
-		//cr��e les d�s du joueur et les stocke dans un tableau
-		des = new De[6];
-		for (int i = 0; i < 5; i++) {
-			des[i] = new De();
-		}
-		
 		//cr��e les jetons du joueur, leur donne une couleur et les stocke
-		jetons = new ArrayList();
-		for (int i = 0; i < 12; i++) { 
-			jetons.add(new Jeton(this.getCouleurJeton()));
-		}
-		actu = new int[6];
 		nbLancer = 0;
-		
-		this.setPeutJouer(true);
+		this.setPeutJouer(false);
 		this.setScore(0);
-		
-
 	}
-	
 
-	
-	
-	public void jouerUnTour() {
+
+
+
+	/*public void jouerUnTour() {
 
 		System.out.println("DEBUT TOUR JOUEUR");
 		//1er lancer
-		lancerDes();
 		afficherDesActuel();
 		verifierCombinaison();
 		afficherCombinaisonsActuelles();
-		
+
 		//d�fi +2e lancer
 		choisirDefi();
-		lancerDes();
 		afficherDesActuel();
 		verifierCombinaison();
 		afficherCombinaisonsActuelles();
-		
+
 		//3e tour
-		lancerDes();
 		afficherDesActuel();
 		verifierCombinaison();
 		afficherCombinaisonsActuelles();
 		verifJeton();
-		
+
 		System.out.println("FIN TOUR JOUEUR");
 	}
-	
+
 	public void choisirDefi() {
 		// Annoncer d�fi
 	
@@ -125,82 +98,6 @@ public class Joueur {
 				}
 	}
 
-	public void lancerDes() {
-		
-		if(nbLancer==0)
-		{
-			nbLancer++;
-			System.out.println("Lancer n�"+this.getNbLancer());
-			for (int i = 0; i < 5; i++) {
-				//actu[i] = 1; //des[i].rouler();
-				System.out.print(actu[i] + " / ");
-			}
-			actu[0]=2;
-			actu[1]=2;
-			actu[2]=3;
-			actu[3]=3;
-			actu[4]=3;
-			
-			System.out.println();
-			
-		}
-		else if(nbLancer<=2){
-		System.out.println("Voulez vous gardez des d�s ? Indiquez la position du d� ou des d�s � relancer "
-				+ "chiffre par chiffre � la suite, n'importe quoi si non");
-		nbLancer++;
-		
-		 String rep = sc.Reponse();
-		 System.out.println("Lancer n�"+this.getNbLancer());
-		 boolean quit =false;
-		 while(!quit) {
-		for (int i = 0; i < rep.length(); i++) {
-			switch (rep.charAt(i)) {
-			case '1':
-				System.out.println("vous avez relanc� " + actu[0]);
-				this.actu[0] = des[0].rouler();
-				System.out.println("nouveau d� : " +this.actu[0]);
-				break;
-
-			case '2':
-				System.out.println("vous avez relanc� " + actu[1]);
-				this.actu[1] = des[1].rouler();
-				System.out.println("nouveau d� : " +this.actu[1]);
-				break;
-
-			case '3':
-				System.out.println("vous avez relanc� " + actu[2]);
-				this.actu[2] = des[2].rouler();
-				System.out.println("nouveau d� : " +this.actu[2]);
-				break;
-			case '4':
-				System.out.println("vous avez relanc� " + actu[3]);
-				this.actu[3] = des[3].rouler();
-				System.out.println("nouveau d� : " +this.actu[3]);
-				break;
-			case '5':
-				System.out.println("vous avez relanc� " + actu[4]);
-				this.actu[4] = des[4].rouler();
-				System.out.println("nouveau d� : " +this.actu[4]);
-				break;
-			default:
-				System.out.println("Vous n'avez pas s�lectionn� un chiffre valable, tous les d�s sont gard�s");
-				quit=true;
-				break;
-
-			}
-		}
-		quit=true;
-
-			
-		 }
-		
-		}
-		
-	}
-
-	/**
-	 * v�rifie la combinaison
-	 */
 	public void verifierCombinaison() {
 		boolean secos = false; // v�rifie que sec et d�fi �taient dans la liste de combinaisons avant
 		// si oui, les rajoute dans la nouvelle liste
@@ -306,12 +203,12 @@ public class Joueur {
 		// si une combinaison de la liste des combinaisons r�alis�es par le joueur est
 		// �gale � celle qu'il avait annonc�e pour son d�fi, alors
 		// il peut poser son jeton sur la case d�fi
-		/*for (Combinaison b : combinaisonEnCours) {
+		for (Combinaison b : combinaisonEnCours) {
 			if (b.equals(combinaisonDefi)) {
 				this.combinaisonEnCours.add(Combinaison.DEFI);
 				this.setScore(this.getScore()+3);
 			}
-		}*/
+		}
 		
 	
 
@@ -345,7 +242,7 @@ public class Joueur {
 	 * plateau o� il a le droit d'en poser
 	 * 
 	 * @param c
-	 */
+
 	public void poserJeton(Case c) {
 			System.out.println("le joueur pose un jeton sur la case " + c.getCombinaison());
 			c.setJeton(this.jetons.get(this.jetons.size()-1));
@@ -354,7 +251,7 @@ public class Joueur {
 
 	public void retirerJeton(Case c) {
 
-	}
+	}*/
 	
 	public boolean peutJouer() {
 		return peutJouer;

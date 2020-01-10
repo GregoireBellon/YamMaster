@@ -1,6 +1,7 @@
 package com.example.yatzy;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -60,13 +61,21 @@ public class PopDes extends Activity {
                 Log.e("Appuie", "Lancer");
                 int i = 0;
                 for (De de: listeDes) {
-                    if (!de.isSelected()){
-                        de.rouler();
-                    }
+                    de.rouler();
                 }
+
+                DataHolder.getHolder().setDe1(de1);
+                DataHolder.getHolder().setDe2(de2);
+                DataHolder.getHolder().setDe3(de3);
+                DataHolder.getHolder().setDe4(de4);
+                DataHolder.getHolder().setDe5(de5);
+
                 for (ImageButton img : listeImgDes){
                     De de = listeDes.get(i);
-                    img = de.getBoutonDe();
+                    Resources res = getResources();
+                    int resId = res.getIdentifier(de.getNom_img(), "drawable", getPackageName());
+                    img.setImageResource(resId);
+                    i++;
                 }
             }
         });

@@ -23,6 +23,8 @@ public class EcranJeu extends AppCompatActivity {
     ConstraintLayout layout;
     Plateau plateau;
     De de1, de2, de3, de4, de5;
+    Partie partie;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,7 @@ public class EcranJeu extends AppCompatActivity {
         gobelet = findViewById(R.id.gobelet);
         layout = findViewById(R.id.layoutJeu);
         plateau = new Plateau(this);
-        //plateau.ajouterVuesCases();
+        partie = new Partie(this);
 
         de1 = new De(plateau);
         de2 = new De(plateau);
@@ -71,20 +73,27 @@ public class EcranJeu extends AppCompatActivity {
 
     }
 
-    public void ajusterCases(Case caseAPlacer){
+    public void ajusterCases(final Case caseAPlacer){
         caseAPlacer.getImageCase().setX(caseAPlacer.getCoordX());
         caseAPlacer.getImageCase().setY(caseAPlacer.getCoordY());
-
         caseAPlacer.getImageCase().setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                Log.e("Appui sur une case", "Case touchée");
+                partie.placerJeton(caseAPlacer);
                 return true;
             }
         });
     }
+    public void poserJeton(Jeton jetonAPoser, int coordX, int coordY){
+        jetonAPoser.getView().setX(coordX);
+        jetonAPoser.getView().setY(coordY);
+    }
 
     public ConstraintLayout getLayout() {
         return layout;
+    }
+
+    public Plateau getPlateau() {
+        return plateau;
     }
 }

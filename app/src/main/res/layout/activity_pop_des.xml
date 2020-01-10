@@ -31,7 +31,6 @@
 
     <ImageButton
         android:id="@+id/des5"
-        style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="70dp"
         android:layout_height="65dp"
         android:background="@android:color/transparent"
@@ -39,23 +38,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/des4"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/des_un" />
+        android:src="@drawable/des_un" />
 
     <ImageButton
         android:id="@+id/des1"
-        style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="70dp"
         android:layout_height="65dp"
         android:background="@android:color/transparent"
         android:scaleType="centerInside"
+        android:src="@drawable/des_un"
         app:layout_constraintEnd_toStartOf="@+id/des2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/des_un" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageButton
         android:id="@+id/des3"
-        style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="70dp"
         android:layout_height="65dp"
         android:background="@android:color/transparent"
@@ -63,11 +60,10 @@
         app:layout_constraintEnd_toStartOf="@+id/des4"
         app:layout_constraintStart_toEndOf="@+id/des2"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/des_un" />
+        android:src="@drawable/des_un" />
 
     <ImageButton
         android:id="@+id/des4"
-        style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="70dp"
         android:layout_height="65dp"
         android:background="@android:color/transparent"
@@ -75,11 +71,10 @@
         app:layout_constraintEnd_toStartOf="@+id/des5"
         app:layout_constraintStart_toEndOf="@+id/des3"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/des_un" />
+        android:src="@drawable/des_un"/>
 
     <ImageButton
         android:id="@+id/des2"
-        style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="70dp"
         android:layout_height="65dp"
         android:background="@android:color/transparent"
@@ -87,5 +82,5 @@
         app:layout_constraintEnd_toStartOf="@+id/des3"
         app:layout_constraintStart_toEndOf="@+id/des1"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/des_un" />
+        android:src="@drawable/des_un" />
 </androidx.constraintlayout.widget.ConstraintLayout>
