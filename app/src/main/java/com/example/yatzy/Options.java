@@ -1,22 +1,17 @@
 package com.example.yatzy;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.media.AudioManager;
-import android.provider.MediaStore;
-import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.core.content.res.ResourcesCompat;
 
 import com.example.yatzy.model.SoundEffects;
-import com.example.yatzy.model.SoundMusic;
 
 import static android.content.Context.MODE_PRIVATE;
 
