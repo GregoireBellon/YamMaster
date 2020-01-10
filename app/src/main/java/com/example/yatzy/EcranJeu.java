@@ -23,8 +23,12 @@ public class EcranJeu extends AppCompatActivity {
     ConstraintLayout layout;
     Plateau plateau;
     De de1, de2, de3, de4, de5;
+<<<<<<< HEAD
     Partie partie;
 
+=======
+    Options options;
+>>>>>>> 1f0f6f2dc5e30211b2bda67dec7c111f85ee0ff6
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
