@@ -2,6 +2,7 @@ package com.example.yatzy;
 
 public class DataHolder {
     private De de1, de2, de3, de4, de5;
+    private Partie partie;
 
     private static final DataHolder holder = new DataHolder();
 
@@ -47,5 +48,13 @@ public class DataHolder {
 
     public void setDe5(De de5) {
         this.de5 = de5;
+    }
+
+    public Partie getPartie() {
+        return partie;
+    }
+
+    public void setPartie(Partie partie) {
+        this.partie = partie;
     }
 }

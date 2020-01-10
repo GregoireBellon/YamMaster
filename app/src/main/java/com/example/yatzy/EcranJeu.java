@@ -23,12 +23,9 @@ public class EcranJeu extends AppCompatActivity {
     ConstraintLayout layout;
     Plateau plateau;
     De de1, de2, de3, de4, de5;
-<<<<<<< HEAD
     Partie partie;
-
-=======
     Options options;
->>>>>>> 1f0f6f2dc5e30211b2bda67dec7c111f85ee0ff6
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +42,7 @@ public class EcranJeu extends AppCompatActivity {
         layout = findViewById(R.id.layoutJeu);
         plateau = new Plateau(this);
         partie = new Partie(this);
+        texteNomJoueur.setText(R.string.nomJoueur1);
 
         de1 = new De(plateau);
         de2 = new De(plateau);
@@ -57,6 +55,7 @@ public class EcranJeu extends AppCompatActivity {
         DataHolder.getHolder().setDe3(de3);
         DataHolder.getHolder().setDe4(de4);
         DataHolder.getHolder().setDe5(de5);
+        DataHolder.getHolder().setPartie(partie);
 
         /*Typeface custom_font_player_turn = Typeface.createFromAsset(getAssets(),  "@font/alef_bold.ttf");
         Typeface custom_font_player_name = Typeface.createFromAsset(getAssets(), "font/seguibl.ttf");
@@ -64,27 +63,25 @@ public class EcranJeu extends AppCompatActivity {
         texteTourJoueur.setTypeface(custom_font_player_turn);
         texteNomJoueur.setTypeface(custom_font_player_name);*/
 
-        // Lancement du tour pour le J1
-        gobelet.setOnTouchListener(new View.OnTouchListener() {
+        gobelet.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public void onClick(View v) {
                 Intent intentPopupDes = new Intent(getApplicationContext(), PopDes.class);
                 startActivity(intentPopupDes);
-                return true;
             }
         });
-
-
     }
+
 
     public void ajusterCases(final Case caseAPlacer){
         caseAPlacer.getImageCase().setX(caseAPlacer.getCoordX());
         caseAPlacer.getImageCase().setY(caseAPlacer.getCoordY());
-        caseAPlacer.getImageCase().setOnTouchListener(new View.OnTouchListener() {
+        caseAPlacer.getImageCase().setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                partie.placerJeton(caseAPlacer);
-                return true;
+            public void onClick(View v) {
+                if (partie.getJoueurActuel().isPeutPoser()){
+                    partie.getJoueurActuel().placerJeton(caseAPlacer);
+                }
             }
         });
     }
@@ -99,5 +96,9 @@ public class EcranJeu extends AppCompatActivity {
 
     public Plateau getPlateau() {
         return plateau;
+    }
+
+    public TextView getTexteNomJoueur() {
+        return texteNomJoueur;
     }
 }
