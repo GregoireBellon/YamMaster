@@ -194,8 +194,8 @@ public class Options {
      * Fonction permettant de passer à la police standard
      */
     public void setRegularFont() {
-        //CURRENT_FONT = Typeface.createFromAsset(this.context.getAssets(), "res/fonts/landasans_demo.ttf");
-        CURRENT_FONT = ResourcesCompat.getFont(context, R.font.landasans_demo);
+        //CURRENT_FONT = Typeface.createFromAsset(this.context.getAssets(), "res/fonts/alef_bold.ttf");
+        CURRENT_FONT = ResourcesCompat.getFont(context, R.font.alef_bold);
 
     }
 

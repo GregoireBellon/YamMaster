@@ -19,7 +19,7 @@ public class EcranJeu extends AppCompatActivity {
 
     TextView texteTourJoueur, texteNomJoueur;
     ImageView  containerDes, lancerRestants1, lancerRestants2, lancerRestants3;
-    ImageButton gobelet;
+    ImageButton gobelet, boutonMenu;
     ConstraintLayout layout;
     Plateau plateau;
     De de1, de2, de3, de4, de5;
@@ -30,6 +30,19 @@ public class EcranJeu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ecran_jeu);
+
+        options = new Options(this);
+
+        boutonMenu = findViewById(R.id.boutonMenu);
+        boutonMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intentPopup = new Intent(getApplicationContext(), PopOptions.class);
+                startActivity(intentPopup);
+
+            }
+        });
 
         // ------- Initialisation des éléments de l'application
         texteTourJoueur = findViewById(R.id.texteIndicTourJoueur);
@@ -57,12 +70,6 @@ public class EcranJeu extends AppCompatActivity {
         DataHolder.getHolder().setDe5(de5);
         DataHolder.getHolder().setPartie(partie);
 
-        /*Typeface custom_font_player_turn = Typeface.createFromAsset(getAssets(),  "@font/alef_bold.ttf");
-        Typeface custom_font_player_name = Typeface.createFromAsset(getAssets(), "font/seguibl.ttf");
-
-        texteTourJoueur.setTypeface(custom_font_player_turn);
-        texteNomJoueur.setTypeface(custom_font_player_name);*/
-
         gobelet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +77,13 @@ public class EcranJeu extends AppCompatActivity {
                 startActivity(intentPopupDes);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        options = new Options(this);
     }
 
 
@@ -89,6 +103,8 @@ public class EcranJeu extends AppCompatActivity {
         jetonAPoser.getView().setX(coordX);
         jetonAPoser.getView().setY(coordY);
     }
+
+    /*public void compterPoints*/
 
     public ConstraintLayout getLayout() {
         return layout;
