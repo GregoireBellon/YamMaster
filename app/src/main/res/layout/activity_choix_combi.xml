@@ -14,7 +14,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="544dp"
+        android:layout_height="373dp"
         android:animationCache="true"
         android:gravity="center"
         android:orientation="vertical">
@@ -171,6 +171,38 @@
             android:background="@drawable/background_click_button"
             android:text="Yam"
             android:textColor="@color/blanc" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/boutonRelancer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_click_button"
+                android:padding="3dp"
+                android:text="Relancer les dés"
+                android:textColor="#FFFFFF" />
+
+            <Space
+                android:layout_width="15dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/boutonPasserTour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_click_button"
+                android:padding="3dp"
+                android:text="Passer Son Tour"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
 
     </LinearLayout>
 

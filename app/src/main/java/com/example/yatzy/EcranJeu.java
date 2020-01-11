@@ -105,6 +105,9 @@ public class EcranJeu extends AppCompatActivity {
             plateau = partie.getPlateau();
             afficherCasePosables();
             partie.getJoueurActuel().setPeutPoser(true);
+        }else if(DataHolder.getHolder().getResult() == 5){
+            setPartie(DataHolder.getHolder().getPartie());
+            plateau = partie.getPlateau();
         }
     }
 
@@ -132,7 +135,6 @@ public class EcranJeu extends AppCompatActivity {
         jetonAPoser.getView().setX(coordX);
         jetonAPoser.getView().setY(coordY);
         partie.getJoueurActuel().setPeutPoser(false);
-        partie.passerTour();
     }
 
     public void afficherCasePosables(){

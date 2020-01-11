@@ -177,7 +177,9 @@ public class PopDes extends Activity {
         super.onResume();
         if (DataHolder.getHolder().getResult() == RESULT_OK){
             DataHolder.getHolder().setResult(RESULT_CANCELED);
-            setResult(RESULT_OK);
+            finish();
+        }else if(DataHolder.getHolder().getResult() == 3){
+            DataHolder.getHolder().setResult(5);
             finish();
         }
     }

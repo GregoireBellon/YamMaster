@@ -1,5 +1,6 @@
 package com.example.yatzy;
 
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -13,6 +14,7 @@ public class Partie extends com.example.yatzy.model.Partie{
     private Joueur joueurActuel;
     private Joueur joueur1;
     private Joueur joueur2;
+    private int numJoueurActuel;
     private List<Jeton> jetonsPoses;
     private Plateau plateau;
     private EcranJeu jeu;
@@ -28,6 +30,7 @@ public class Partie extends com.example.yatzy.model.Partie{
         joueur1 = new com.example.yatzy.Joueur(Couleur.BLANC, this);
         joueur2 = new com.example.yatzy.Joueur(Couleur.NOIR, this);
         joueurActuel = joueur1;
+        numJoueurActuel = 1;
         jetonsPoses = new ArrayList<>();
         listeDes = new ArrayList<>();
 
@@ -54,23 +57,30 @@ public class Partie extends com.example.yatzy.model.Partie{
     }
 
     public void passerTour(){
-        if(joueurActuel == joueur1) {
-            joueurActuel = joueur2;
-            joueurActuel.setNbrLancers(0);
+        Log.e("Passer tour", "Début de passerTour()");
+        if(numJoueurActuel == 1) {
             jeu.getTexteNomJoueur().setText(R.string.nomJoueur2);
+            joueur1 = joueurActuel;
+            joueurActuel = joueur2;
+            numJoueurActuel = 2;
+            joueurActuel.setNbrLancers(0);
             plateau.resetPlateau();
             for (De de : listeDes){
                 de.setSelected(false);
             }
+            return;
         }
-        else if(joueurActuel == joueur2) {
+        else if(numJoueurActuel == 2) {
+            joueur2 = joueurActuel;
             joueurActuel = joueur1;
+            numJoueurActuel = 1;
             joueurActuel.setNbrLancers(0);
             jeu.getTexteNomJoueur().setText(R.string.nomJoueur1);
             plateau.resetPlateau();
             for (De de : listeDes){
                 de.setSelected(false);
             }
+            return;
         }
 
     }

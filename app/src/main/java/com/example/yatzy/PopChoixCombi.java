@@ -15,6 +15,8 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Switch;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.example.yatzy.model.SoundEffects;
 
 public class PopChoixCombi extends Activity {
@@ -26,6 +28,7 @@ public class PopChoixCombi extends Activity {
     public Switch switchDyslex, switchDalton;
     public SeekBar seekbarMusic, seekbarEffects;
     public Button boutonParDefaut, boutonAccepter;
+    public Button boutonPasserTour, boutonRevenirDes;
     public ImageButton boutonExit;
     private Button brelan, yam, carre, suite, sec, inf8, full;
     public Options options;
@@ -67,6 +70,38 @@ public class PopChoixCombi extends Activity {
         params.y = 0;
 
         getWindow().setAttributes(params);
+
+        boutonPasserTour= findViewById(R.id.boutonPasserTour);
+        boutonRevenirDes = findViewById(R.id.boutonRelancer);
+
+        if (partie.getJoueurActuel().getNbrLancers() == 3){
+            boutonRevenirDes.setEnabled(false);
+            boutonRevenirDes.setAlpha(0.5f);
+        }else{
+            boutonRevenirDes.setEnabled(true);
+            boutonRevenirDes.setAlpha(1f);
+        }
+
+
+        boutonPasserTour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                partie.passerTour();
+                DataHolder.getHolder().setPartie(partie);
+                DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                DataHolder.getHolder().setResult(3);
+                finish();
+            }
+        });
+
+        boutonRevenirDes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataHolder.getHolder().setPartie(partie);
+                DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                finish();
+            }
+        });
 
     }
 
