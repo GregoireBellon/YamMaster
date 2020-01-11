@@ -19,28 +19,39 @@ public class De extends com.example.yatzy.model.De{
     @Override
     public int rouler()
     {
-        int random = (int) (Math.random() * 5);
-        switch (random){
-            case 0: boutonDe.setImageResource(R.drawable.des_un);
-                    nom_img="des_un";
+        int random;
+        if (!isSelected()) {
+            random = (int) (Math.random() * 5);
+            switch (random) {
+                case 0:
+                    boutonDe.setImageResource(R.drawable.des_un);
+                    nom_img = "des_un";
                     break;
-            case 1: boutonDe.setImageResource(R.drawable.des_deux);
-                    nom_img="des_deux";
+                case 1:
+                    boutonDe.setImageResource(R.drawable.des_deux);
+                    nom_img = "des_deux";
                     break;
-            case 2: boutonDe.setImageResource(R.drawable.des_trois);
-                    nom_img="des_trois";
+                case 2:
+                    boutonDe.setImageResource(R.drawable.des_trois);
+                    nom_img = "des_trois";
                     break;
-            case 3: boutonDe.setImageResource(R.drawable.des_quatre);
-                    nom_img="des_quatre";
+                case 3:
+                    boutonDe.setImageResource(R.drawable.des_quatre);
+                    nom_img = "des_quatre";
                     break;
-            case 4: boutonDe.setImageResource(R.drawable.des_cinq);
-                nom_img="des_cinq";
-                break;
-            case 5: boutonDe.setImageResource(R.drawable.des_six);
-                nom_img="des_six";
-                break;
+                case 4:
+                    boutonDe.setImageResource(R.drawable.des_cinq);
+                    nom_img = "des_cinq";
+                    break;
+                case 5:
+                    boutonDe.setImageResource(R.drawable.des_six);
+                    nom_img = "des_six";
+                    break;
+            }
+            face = random;
+        }else{
+             random = face;
         }
-        face = random;
         return random;
     }
 

@@ -52,13 +52,14 @@ public class Partie extends com.example.yatzy.model.Partie{
     }
 
     public void lancersDes(){
-        if (listeDes.size() == 0){
+
             de1 = DataHolder.getHolder().getDe1();
             de2 = DataHolder.getHolder().getDe2();
             de3 = DataHolder.getHolder().getDe3();
             de4 = DataHolder.getHolder().getDe4();
             de5 = DataHolder.getHolder().getDe5();
 
+        if (listeDes.size() == 0){
             listeDes.add(de1);
             listeDes.add(de2);
             listeDes.add(de3);
@@ -66,7 +67,7 @@ public class Partie extends com.example.yatzy.model.Partie{
             listeDes.add(de5);
         }
 
-        if (joueurActuel.getNbrLancers() <= 3){
+        if (joueurActuel.getNbrLancers() < 3){
             for (De de: listeDes) {
                 de.rouler();
             }
