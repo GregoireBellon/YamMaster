@@ -14,7 +14,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="544dp"
         android:animationCache="true"
         android:gravity="center"
         android:orientation="vertical">
@@ -131,7 +131,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/sup8"
+                android:id="@+id/inf8"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

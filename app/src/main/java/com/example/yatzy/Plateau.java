@@ -6,6 +6,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.ViewGroup;
+import android.view.ViewManager;
 import android.widget.ImageView;
 
 import com.example.yatzy.model.Couleur;
@@ -78,10 +79,26 @@ public class Plateau {
                 nouvelleCase.setCoordX(i * getDimensionCases());
                 nouvelleCase.setCoordY(j * getDimensionCases() + hauteurPlateau);
                 ViewGroup.LayoutParams param = new ViewGroup.LayoutParams(getDimensionCases(),getDimensionCases());
-                jeu.addContentView(nouvelleCase.getImageCase(),param);
+                jeu.getLayoutPlateau().addView(nouvelleCase.getImageCase(),param);
                 jeu.ajusterCases(dispositionCases[i][j]);
             }
+        }
+    }
 
+    public void ajouterUneVueCase(Case caseAPlacer){
+        jeu.getLayoutPlateau().removeView(caseAPlacer.getImageCase());
+        ViewGroup.LayoutParams param = new ViewGroup.LayoutParams(getDimensionCases(),getDimensionCases());
+        jeu.getLayoutPlateau().addView(caseAPlacer.getImageCase(),param);
+        jeu.ajusterCases(caseAPlacer);
+    }
+
+    public void resetPlateau(){
+        jeu.getLayoutPlateau().removeAllViews();
+        for (int i = 0; i <= 4; i++) {
+            for (int j = 0; j <= 4; j++) {
+                dispositionCases[i][j].setPeutPoser(true);
+                ajouterUneVueCase(dispositionCases[i][j]);
+            }
         }
     }
 
@@ -103,5 +120,9 @@ public class Plateau {
 
     public List<Jeton> getJetonsPoses() {
         return jetonsPoses;
+    }
+
+    public Case[][] getDispositionCases() {
+        return dispositionCases;
     }
 }

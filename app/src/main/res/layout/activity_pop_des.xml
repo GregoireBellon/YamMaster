@@ -25,16 +25,12 @@
         android:id="@+id/boutonLancer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/background_click_button"
         android:padding="10px"
         android:text="Lancer les dés"
-=======
-        android:layout_marginTop="8dp"
-        android:text="Mettre Le vrai bouton"
->>>>>>> 00faa2ecc8afaf9e94d8ce6d2b7b4619cf9e9caf
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.721"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/des3" />
 
@@ -44,11 +40,12 @@
         android:layout_height="65dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
+        android:clickable="false"
         android:scaleType="centerInside"
+        android:src="@drawable/des_un"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/des4"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:src="@drawable/des_un" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageButton
         android:id="@+id/des1"
@@ -56,6 +53,8 @@
         android:layout_height="65dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
+        android:clickable="false"
+        android:contextClickable="false"
         android:scaleType="centerInside"
         android:src="@drawable/des_un"
         app:layout_constraintEnd_toStartOf="@+id/des2"
@@ -68,11 +67,12 @@
         android:layout_height="65dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
+        android:clickable="false"
         android:scaleType="centerInside"
+        android:src="@drawable/des_un"
         app:layout_constraintEnd_toStartOf="@+id/des4"
         app:layout_constraintStart_toEndOf="@+id/des2"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:src="@drawable/des_un" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageButton
         android:id="@+id/des4"
@@ -80,11 +80,12 @@
         android:layout_height="65dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
+        android:clickable="false"
         android:scaleType="centerInside"
+        android:src="@drawable/des_un"
         app:layout_constraintEnd_toStartOf="@+id/des5"
         app:layout_constraintStart_toEndOf="@+id/des3"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:src="@drawable/des_un"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageButton
         android:id="@+id/des2"
@@ -92,11 +93,12 @@
         android:layout_height="65dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
+        android:clickable="false"
         android:scaleType="centerInside"
+        android:src="@drawable/des_un"
         app:layout_constraintEnd_toStartOf="@+id/des3"
         app:layout_constraintStart_toEndOf="@+id/des1"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:src="@drawable/des_un" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageView
         android:id="@+id/tick1"
@@ -152,5 +154,22 @@
         android:src="@drawable/tick"
         app:layout_constraintBottom_toTopOf="@+id/boutonLancer"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/boutonCombinaisons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:alpha="0.5"
+        android:background="@drawable/background_click_button"
+        android:clickable="true"
+        android:enabled="false"
+        android:padding="10px"
+        android:text="Combinaisons"
+        app:layout_constraintEnd_toStartOf="@+id/boutonLancer"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/des3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

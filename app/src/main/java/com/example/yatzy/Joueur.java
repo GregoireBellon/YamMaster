@@ -12,7 +12,6 @@ public class Joueur extends com.example.yatzy.model.Joueur {
 
     private List<Jeton> jetonsJoueurs;
     private Couleur couleurJetons;
-    private int score;
     private int nbrLancers;
     private boolean peutJouer;
     private boolean peutPoser;
