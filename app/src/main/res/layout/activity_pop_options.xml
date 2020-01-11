@@ -44,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/alef_bold"
                 android:text="Volume de la musique"
                 android:textColor="#ffffff"
                 android:textSize="20dp" />
@@ -78,6 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/alef_bold"
                 android:text="Volume des effets sonores"
                 android:textColor="#ffffff"
                 android:textSize="20dp" />
@@ -113,6 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/alef_bold"
                 android:text="Mode Dyslexique"
                 android:textColor="#ffffff"
                 android:textSize="20dp" />
@@ -149,6 +152,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/alef_bold"
                 android:text="Mode Daltonien  "
                 android:textColor="#ffffff"
                 android:textSize="20dp" />
