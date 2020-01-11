@@ -85,6 +85,10 @@ public class Plateau {
         }
     }
 
+    public void compterPoints() {
+
+    }
+
     public EcranJeu getJeu() {
         return jeu;
     }

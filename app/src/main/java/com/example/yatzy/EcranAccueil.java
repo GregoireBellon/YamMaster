@@ -20,6 +20,7 @@ import com.example.yatzy.model.SoundMusic;
 
 public class EcranAccueil extends AppCompatActivity {
 
+    TextView nomJeu;
     ImageButton boutonJouer, boutonOptions, boutonEdit;
 
     public MediaPlayer themeDeGerardDeRiviere;
@@ -34,10 +35,11 @@ public class EcranAccueil extends AppCompatActivity {
 
         options = new Options(this);
 
-
         //themeDeGerardDeRiviere = MediaPlayer.create(EcranAccueil.this, R.raw.a1_test);
         //themeDeGerardDeRiviere.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
+        // ------- Initialisation des éléments de l'application
+        nomJeu = findViewById(R.id.nomJeu);
         boutonJouer = findViewById(R.id.boutonJouer);
 
         boutonJouer.setOnClickListener(new View.OnClickListener() {
@@ -74,5 +76,10 @@ public class EcranAccueil extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        options = new Options(this);
+    }
 }

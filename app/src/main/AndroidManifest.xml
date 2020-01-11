@@ -9,26 +9,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".EcranEdition"
+        <activity
+            android:name=".EcranEdition"
             android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".Options"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".PopOptions"
-            android:theme="@style/AppTheme.PopOptions"
-            android:screenOrientation="portrait"
-        ></activity>
+            android:theme="@style/AppTheme.PopOptions"/>
 
         <activity android:name=".PopDes"
-            android:theme="@style/AppTheme.PopDes"
-            android:screenOrientation="portrait"
-            ></activity>
+            android:theme="@style/AppTheme.PopDes"/>
 
         <activity
             android:name=".MenuJouer"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
+
         <activity
             android:name=".EcranAccueil"
             android:theme="@style/AppTheme.NoActionBar"

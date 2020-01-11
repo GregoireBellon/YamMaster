@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Yatzy!</string>
     <string name="texteTourJoueur">Au tour de</string>
+    <string name="texteIndicationDes">Sélectionnez les dés que vous\nsouhaitez garder et relancez</string>
     <string name="nomJoueur1">J1</string>
     <string name="nomJoueur2">J2</string>
-    <string name="texteIndicationDes">Faites glisser les dés que vous souhaitez garder dans la réserve</string>
 </resources>

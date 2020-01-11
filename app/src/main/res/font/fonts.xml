@@ -2,6 +2,14 @@
 <font-family xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/alef_bold" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/landasans_demo" />
+    <font
         android:font="@font/open_dyslexic_regular"
         android:fontStyle="normal"
         android:fontWeight="400"
@@ -9,4 +17,8 @@
         app:font="@font/open_dyslexic_regular"
         app:fontStyle="normal"
         app:fontWeight="400" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/seguibl" />
 </font-family>
