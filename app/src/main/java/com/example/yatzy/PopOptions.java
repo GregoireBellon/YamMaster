@@ -9,6 +9,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,6 +121,9 @@ public class PopOptions extends Activity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // do something, the isChecked will be
                 // true if the switch is in the On position
+
+                options.touchSwitchDislexState();
+
             }
         });
 
@@ -138,6 +142,7 @@ public class PopOptions extends Activity {
 
         load();
         update();
+
     }
 
     /**
@@ -179,8 +184,7 @@ public class PopOptions extends Activity {
      * Permet d'instancier les variables d'options d'après les sharedPreferences
      */
     public void load() {
-        options.load();
-/*
+/*=
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
 
         progressSeekbarEffects = sharedPreferences.getInt(SEEKBAR_EFFECTS, (seekbarEffects.getMax()/2));
@@ -205,12 +209,11 @@ public class PopOptions extends Activity {
 
         switchDalton.setChecked(options.SWITCH_DALTON_STATE);
         switchDyslex.setChecked(options.SWITCH_DYSLEX_STATE);
+       options.updatefont(this.findViewById(android.R.id.content).getRootView());
 
-
-        loadFont();
     }
 
-    public void loadFont()
+    /*public void loadFont()
     {
         ViewGroup group = getWindow().getDecorView().findViewById(android.R.id.content);
 
@@ -225,9 +228,10 @@ public class PopOptions extends Activity {
             if(child instanceof Button)
             {
                 ((Button) child).setTypeface(options.CURRENT_FONT);
+                Log.e("font", "Update to CURRENT FONT");
             }
         }
 
-    }
+    }*/
 
 }

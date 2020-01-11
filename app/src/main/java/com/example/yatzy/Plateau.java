@@ -3,14 +3,26 @@ package com.example.yatzy;
 
 import android.text.PrecomputedText;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.example.yatzy.model.Couleur;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Plateau {
 
     private int dimensionCases;
+    private int dimensionJetons;
     private EcranJeu jeu;
     private Case[][] dispositionCases;
+    private List<Jeton> jetonsPoses;
+    private Joueur joueur1;
+    private Joueur joueur2;
     DisplayMetrics tailleEcran;
 
     public Plateau(EcranJeu jeu) {
@@ -18,7 +30,9 @@ public class Plateau {
         jeu.getWindowManager().getDefaultDisplay().getMetrics(tailleEcran);
         this.jeu = jeu;
         dimensionCases = tailleEcran.widthPixels / 5 ;
+        dimensionJetons = tailleEcran.widthPixels / 6;
         dispositionCases = new Case[5][5];
+        jetonsPoses = new ArrayList<>();
         placerCases();
         ajouterVuesCases();
     }
@@ -77,5 +91,13 @@ public class Plateau {
 
     public int getDimensionCases() {
         return dimensionCases;
+    }
+
+    public int getDimensionJetons() {
+        return dimensionJetons;
+    }
+
+    public List<Jeton> getJetonsPoses() {
+        return jetonsPoses;
     }
 }
