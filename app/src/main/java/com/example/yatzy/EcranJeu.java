@@ -18,10 +18,11 @@ import android.widget.TextView;
 public class EcranJeu extends AppCompatActivity {
 
     TextView texteTourJoueur, texteNomJoueur;
-    ImageView  containerDes, lancerRestants1, lancerRestants2, lancerRestants3;
+    ImageView  containerDes;
     ImageButton gobelet, boutonMenu;
     ConstraintLayout layoutPlateau;
     Plateau plateau;
+    TextView jetonsBlancsRestants, jetonsNoirsRestants;
     De de1, de2, de3, de4, de5;
     Partie partie;
     Options options;
@@ -48,12 +49,10 @@ public class EcranJeu extends AppCompatActivity {
         texteTourJoueur = findViewById(R.id.texteIndicTourJoueur);
         texteNomJoueur = findViewById(R.id.textIndicNomJoueur);
         containerDes = findViewById(R.id.containerDes);
-        lancerRestants1 = findViewById(R.id.lancerRestant1);
-        lancerRestants2 = findViewById(R.id.lancerRestant2);
-        lancerRestants3 = findViewById(R.id.lancerRestant3);
         gobelet = findViewById(R.id.gobelet);
         layoutPlateau = findViewById(R.id.layoutPlateau);
-
+        jetonsBlancsRestants = findViewById(R.id.jetonsBlancsRestants);
+        jetonsNoirsRestants = findViewById(R.id.jetonsNoirsRestants);
         de1 = new De(this);
         de2 = new De(this);
         de3 = new De(this);
@@ -137,6 +136,15 @@ public class EcranJeu extends AppCompatActivity {
         jetonAPoser.getView().setX(coordX);
         jetonAPoser.getView().setY(coordY);
         partie.getJoueurActuel().setPeutPoser(false);
+        jetonsBlancsRestants.setText(""+partie.getJoueur1().getJetonsJoueurs().size());
+        jetonsNoirsRestants.setText(""+partie.getJoueur2().getJetonsJoueurs().size());
+
+        if (partie.getJoueur1().getJetonsJoueurs().size() == 0 && partie.getJoueur2().getJetonsJoueurs().size() == 0){
+            Intent finPartie = new Intent(EcranJeu.this, FinDePartie.class);
+            DataHolder.getHolder().setScoreFinalJ1(partie.getJoueur1().getScore());
+            DataHolder.getHolder().setScoreFinalJ2(partie.getJoueur2().getScore());
+            startActivity(finPartie);
+        }
     }
 
     public void afficherCasePosables(){
@@ -150,17 +158,18 @@ public class EcranJeu extends AppCompatActivity {
                 String combChoisie;
                 if (DataHolder.getHolder().getCombChoisie() == null)  combChoisie = "";
                 else  combChoisie = DataHolder.getHolder().getCombChoisie().toString();
+
                 if (casesPlateau[i][j].getJetonPose() != null){
                     casesPlateau[i][j].setPeutPoser(false);
                     plateau.ajouterUneVueCase(casesPlateau[i][j]);
 
-                } else if (typeCase != combChoisie && combChoisie != Combinaison.AUCUNE.toString()){
+                } else if (typeCase != combChoisie && combChoisie != ""){
                     casesPlateau[i][j].setPeutPoser(false);
                     plateau.ajouterUneVueCase(casesPlateau[i][j]);
 
-                } else if(combChoisie == "" ){
+                } else if(combChoisie == ""){
                     for (Combinaison combi : partie.getCombinaisonEnCours()){
-                        if (typeCase != combChoisie){
+                        if (typeCase != combi.toString()){
                             casesPlateau[i][j].setPeutPoser(false);
                             plateau.ajouterUneVueCase(casesPlateau[i][j]);
                         }else{
@@ -174,10 +183,9 @@ public class EcranJeu extends AppCompatActivity {
                     plateau.ajouterUneVueCase(casesPlateau[i][j]);
 
                 }
-                if (partie.getCombinaisonEnCours().contains(Combinaison.DEFI) && typeCase == Combinaison.DEFI.toString()) {
+                if (partie.isDefiReussi() && typeCase == Combinaison.DEFI.toString()) {
                     casesPlateau[i][j].setPeutPoser(true);
                     plateau.ajouterUneVueCase(casesPlateau[i][j]);
-
                 }
             }
         }

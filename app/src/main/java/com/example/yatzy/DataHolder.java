@@ -12,6 +12,7 @@ public class DataHolder {
     private List<De> listeDes = new ArrayList<>();
     private EcranJeu partieEnCours;
     private Combinaison combChoisie;
+    private int scoreFinalJ1, scoreFinalJ2;
 
     private static final DataHolder holder = new DataHolder();
 
@@ -103,5 +104,21 @@ public class DataHolder {
 
     public void setCombChoisie(Combinaison combChoisie) {
         this.combChoisie = combChoisie;
+    }
+
+    public int getScoreFinalJ1() {
+        return scoreFinalJ1;
+    }
+
+    public void setScoreFinalJ1(int scoreFinalJ1) {
+        this.scoreFinalJ1 = scoreFinalJ1;
+    }
+
+    public int getScoreFinalJ2() {
+        return scoreFinalJ2;
+    }
+
+    public void setScoreFinalJ2(int scoreFinalJ2) {
+        this.scoreFinalJ2 = scoreFinalJ2;
     }
 }

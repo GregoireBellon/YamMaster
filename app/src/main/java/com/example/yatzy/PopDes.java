@@ -112,14 +112,14 @@ public class PopDes extends Activity {
                         boutonCombi.setEnabled(true);
                         boutonCombi.setAlpha(1);
                         break;
-                    case 2 :
-                        boutonDefi.setEnabled(false);
-                        boutonDefi.setAlpha(0.5f);
                     case 3 :
                         DataHolder.getHolder().setPartie(partie);
                         Intent intentPopupCombi = new Intent(getApplicationContext(), PopChoixCombi.class);
                         startActivity(intentPopupCombi);
                 }
+
+                boutonCombi.setEnabled(true);
+                boutonCombi.setAlpha(1);
 
             }
         });
@@ -206,6 +206,9 @@ public class PopDes extends Activity {
             partie = DataHolder.getHolder().getPartie();
             boutonDefi.setEnabled(false);
             boutonDefi.setAlpha(0.5f);
+
+            boutonCombi.setEnabled(false);
+            boutonCombi.setAlpha(0.5f);
         }
     }
 }

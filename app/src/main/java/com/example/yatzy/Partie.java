@@ -1,5 +1,6 @@
 package com.example.yatzy;
 
+import android.content.Intent;
 import android.util.Log;
 
 import com.example.yatzy.model.Couleur;
@@ -58,7 +59,6 @@ public class Partie extends com.example.yatzy.model.Partie{
     }
 
     public void passerTour(){
-        Log.e("Passer tour", "Début de passerTour()");
         if(numJoueurActuel == 1) {
             jeu.getTexteNomJoueur().setText(R.string.nomJoueur2);
             joueur1 = joueurActuel;
@@ -117,6 +117,8 @@ public class Partie extends com.example.yatzy.model.Partie{
     }
 
     public void determinerCombinaisons() {
+
+        joueurActuel.setCombinaisonDefi(DataHolder.getHolder().getPartie().getJoueurActuel().getCombinaisonDefi());
         boolean secos = false; // v�rifie que sec et d�fi �taient dans la liste de combinaisons avant
         // si oui, les rajoute dans la nouvelle liste
         boolean defi = false;
@@ -175,10 +177,10 @@ public class Partie extends com.example.yatzy.model.Partie{
             if (tableauCombi[i] == 5)
                 this.combinaisonEnCours.add(Combinaison.YAM);
             // carre
-            if (tableauCombi[i] == 4)
+            if (tableauCombi[i] >= 4)
                 this.combinaisonEnCours.add(Combinaison.CARRE);
             // brelan
-            if (tableauCombi[i] == 3) {
+            if (tableauCombi[i] >= 3) {
                 int num = i + 1;
                 Combinaison combi = Combinaison.valueOf("BRELAN" + num);
 
@@ -217,14 +219,15 @@ public class Partie extends com.example.yatzy.model.Partie{
                 this.setDefiReussi(true);
                 this.combinaisonEnCours.add(Combinaison.DEFI);
                 joueurActuel.setScore(joueurActuel.getScore() + 3);
-            }/*else if (joueurActuel.getCombinaisonDefi() == Combinaison.AUCUNE){
+            }else if (joueurActuel.getCombinaisonDefi() == Combinaison.AUCUNE){
                 if (b.equals(Combinaison.BRELAN1)||b.equals(Combinaison.BRELAN2)||b.equals(Combinaison.BRELAN3)||
                         b.equals(Combinaison.BRELAN4)||b.equals(Combinaison.BRELAN5)||b.equals(Combinaison.BRELAN6)){
                     this.setDefiReussi(true);
                     this.combinaisonEnCours.add(Combinaison.DEFI);
                     joueurActuel.setScore(joueurActuel.getScore() + 3);
                 }
-            }*/
+            }
+            Log.e("Défi Réussi", "Le défi a été ajouté à la liste des combinaisons réussies");
         }
     }
 
@@ -250,5 +253,13 @@ public class Partie extends com.example.yatzy.model.Partie{
 
     public void setDefiReussi(boolean defiReussi) {
         this.defiReussi = defiReussi;
+    }
+
+    public Joueur getJoueur1() {
+        return joueur1;
+    }
+
+    public Joueur getJoueur2() {
+        return joueur2;
     }
 }
