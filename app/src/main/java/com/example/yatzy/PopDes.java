@@ -16,7 +16,7 @@ public class PopDes extends Activity {
 
     ImageButton imageDe1, imageDe2, imageDe3, imageDe4, imageDe5;
     ImageView tick1, tick2, tick3, tick4, tick5;
-    Button boutonLancer, boutonCombi;
+    Button boutonLancer, boutonCombi, boutonDefi;
     List<ImageButton> listeImgDes;
     Partie partie;
 
@@ -56,6 +56,17 @@ public class PopDes extends Activity {
         listeImgDes.add(imageDe4);
         listeImgDes.add(imageDe5);
 
+        boutonDefi = findViewById(R.id.boutonDefi);
+        boutonDefi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                partie.setChoixDefi(true);
+                DataHolder.getHolder().setPartie(partie);
+                Intent intentPopupCombi = new Intent(getApplicationContext(), PopChoixCombi.class);
+                startActivity(intentPopupCombi);
+            }
+        });
+
         boutonCombi = findViewById(R.id.boutonCombinaisons);
         boutonCombi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,26 +94,33 @@ public class PopDes extends Activity {
                     i++;
                 }
 
-                if (partie.getJoueurActuel().getNbrLancers() >= 1){
-                    for (ImageButton img : listeImgDes){
-                        img.setEnabled(true);
-                    }
-                    boutonCombi.setEnabled(true);
-                    boutonCombi.setAlpha(1);
+                switch (partie.getJoueurActuel().getNbrLancers()){
+                    case 0:
+                        for (ImageButton img : listeImgDes){
+                            img.setEnabled(false);
+                        }
+                        boutonCombi.setEnabled(false);
+                        boutonCombi.setAlpha(0.5f);
+                        break;
+                    case 1 :
+                        boutonDefi.setEnabled(true);
+                        boutonDefi.setAlpha(1);
+
+                        for (ImageButton img : listeImgDes){
+                            img.setEnabled(true);
+                        }
+                        boutonCombi.setEnabled(true);
+                        boutonCombi.setAlpha(1);
+                        break;
+                    case 2 :
+                        boutonDefi.setEnabled(false);
+                        boutonDefi.setAlpha(0.5f);
+                    case 3 :
+                        DataHolder.getHolder().setPartie(partie);
+                        Intent intentPopupCombi = new Intent(getApplicationContext(), PopChoixCombi.class);
+                        startActivity(intentPopupCombi);
                 }
 
-                if (partie.getJoueurActuel().getNbrLancers() == 0){
-                    for (ImageButton img : listeImgDes){
-                        img.setEnabled(false);
-                    }
-                    boutonCombi.setEnabled(false);
-                    boutonCombi.setAlpha(0.5f);
-                }
-                if (partie.getJoueurActuel().getNbrLancers() == 3){
-                    DataHolder.getHolder().setPartie(partie);
-                    Intent intentPopupCombi = new Intent(getApplicationContext(), PopChoixCombi.class);
-                    startActivity(intentPopupCombi);
-                }
             }
         });
 
@@ -175,12 +193,19 @@ public class PopDes extends Activity {
     @Override
     protected void onResume(){
         super.onResume();
+        partie = DataHolder.getHolder().getPartie();
         if (DataHolder.getHolder().getResult() == RESULT_OK){
             DataHolder.getHolder().setResult(RESULT_CANCELED);
+            DataHolder.getHolder().setPartie(partie);
             finish();
         }else if(DataHolder.getHolder().getResult() == 3){
             DataHolder.getHolder().setResult(5);
+            DataHolder.getHolder().setPartie(partie);
             finish();
+        }else if (DataHolder.getHolder().getResult() == 10){
+            partie = DataHolder.getHolder().getPartie();
+            boutonDefi.setEnabled(false);
+            boutonDefi.setAlpha(0.5f);
         }
     }
 }

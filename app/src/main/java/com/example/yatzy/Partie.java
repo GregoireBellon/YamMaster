@@ -1,8 +1,6 @@
 package com.example.yatzy;
 
 import android.util.Log;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.example.yatzy.model.Couleur;
 
@@ -19,8 +17,9 @@ public class Partie extends com.example.yatzy.model.Partie{
     private Plateau plateau;
     private EcranJeu jeu;
     private List<De> listeDes;
-    private List<Combinaison> combinaisonEnCours;
-    private Combinaison combinaisonDefi;
+    private List<Combinaison> combinaisonEnCours = new ArrayList<>();
+    private boolean choixDefi;
+    private boolean defiReussi;
 
     private De de1, de2 , de3, de4, de5;
 
@@ -33,6 +32,8 @@ public class Partie extends com.example.yatzy.model.Partie{
         numJoueurActuel = 1;
         jetonsPoses = new ArrayList<>();
         listeDes = new ArrayList<>();
+        choixDefi = false;
+        defiReussi = false;
 
         de1 = DataHolder.getHolder().getDe1();
         de2 = DataHolder.getHolder().getDe2();
@@ -64,10 +65,13 @@ public class Partie extends com.example.yatzy.model.Partie{
             joueurActuel = joueur2;
             numJoueurActuel = 2;
             joueurActuel.setNbrLancers(0);
+            joueurActuel.setCombinaisonDefi(null);
             plateau.resetPlateau();
             for (De de : listeDes){
                 de.setSelected(false);
             }
+            setChoixDefi(false);
+            setDefiReussi(false);
             return;
         }
         else if(numJoueurActuel == 2) {
@@ -75,11 +79,14 @@ public class Partie extends com.example.yatzy.model.Partie{
             joueurActuel = joueur1;
             numJoueurActuel = 1;
             joueurActuel.setNbrLancers(0);
+            joueurActuel.setCombinaisonDefi(null);
             jeu.getTexteNomJoueur().setText(R.string.nomJoueur1);
             plateau.resetPlateau();
             for (De de : listeDes){
                 de.setSelected(false);
             }
+            setChoixDefi(false);
+            setDefiReussi(false);
             return;
         }
 
@@ -206,14 +213,20 @@ public class Partie extends com.example.yatzy.model.Partie{
         // �gale � celle qu'il avait annonc�e pour son d�fi, alors
         // il peut poser son jeton sur la case d�fi
         for (Combinaison b : combinaisonEnCours) {
-            if (b.equals(combinaisonDefi)) {
+            if (b.equals(joueurActuel.getCombinaisonDefi())) {
+                this.setDefiReussi(true);
                 this.combinaisonEnCours.add(Combinaison.DEFI);
                 joueurActuel.setScore(joueurActuel.getScore() + 3);
-            }
+            }/*else if (joueurActuel.getCombinaisonDefi() == Combinaison.AUCUNE){
+                if (b.equals(Combinaison.BRELAN1)||b.equals(Combinaison.BRELAN2)||b.equals(Combinaison.BRELAN3)||
+                        b.equals(Combinaison.BRELAN4)||b.equals(Combinaison.BRELAN5)||b.equals(Combinaison.BRELAN6)){
+                    this.setDefiReussi(true);
+                    this.combinaisonEnCours.add(Combinaison.DEFI);
+                    joueurActuel.setScore(joueurActuel.getScore() + 3);
+                }
+            }*/
         }
     }
-
-
 
     public List<De> getListeDes() {
         return listeDes;
@@ -221,5 +234,21 @@ public class Partie extends com.example.yatzy.model.Partie{
 
     public List<Combinaison> getCombinaisonEnCours() {
         return combinaisonEnCours;
+    }
+
+    public boolean isChoixDefi() {
+        return choixDefi;
+    }
+
+    public void setChoixDefi(boolean choixDefi) {
+        this.choixDefi = choixDefi;
+    }
+
+    public boolean isDefiReussi() {
+        return defiReussi;
+    }
+
+    public void setDefiReussi(boolean defiReussi) {
+        this.defiReussi = defiReussi;
     }
 }

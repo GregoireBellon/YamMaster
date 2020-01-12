@@ -116,14 +116,16 @@ public class EcranJeu extends AppCompatActivity {
             caseAPlacer.getImageCase().setEnabled(true);
             caseAPlacer.getImageCase().setAlpha(1f);
         }
-        caseAPlacer.getImageCase().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (partie.getJoueurActuel().isPeutPoser()){
-                    partie.getJoueurActuel().placerJeton(caseAPlacer);
+        if (caseAPlacer.getJetonPose() == null) {
+            caseAPlacer.getImageCase().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (partie.getJoueurActuel().isPeutPoser()){
+                        partie.getJoueurActuel().placerJeton(caseAPlacer);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     public void poserJeton(Jeton jetonAPoser, int coordX, int coordY){
@@ -142,16 +144,42 @@ public class EcranJeu extends AppCompatActivity {
     public void afficherCasePosables(){
         Case[][] casesPlateau = plateau.getDispositionCases();
         layoutPlateau.removeAllViews();
+
         for (int i = 0 ; i < 5; i++){
             for (int j = 0; j < 5; j++){
-                for (Combinaison combi : partie.getCombinaisonEnCours()){
-                    if (casesPlateau[i][j].getType().toString() != combi.toString()){
-                       casesPlateau[i][j].setPeutPoser(false);
-                       plateau.ajouterUneVueCase(casesPlateau[i][j]);
-                    }else{
-                       casesPlateau[i][j].setPeutPoser(true);
-                       plateau.ajouterUneVueCase(casesPlateau[i][j]);
+
+                String typeCase = casesPlateau[i][j].getType().toString();
+                String combChoisie;
+                if (DataHolder.getHolder().getCombChoisie() == null)  combChoisie = "";
+                else  combChoisie = DataHolder.getHolder().getCombChoisie().toString();
+                if (casesPlateau[i][j].getJetonPose() != null){
+                    casesPlateau[i][j].setPeutPoser(false);
+                    plateau.ajouterUneVueCase(casesPlateau[i][j]);
+
+                } else if (typeCase != combChoisie && combChoisie != Combinaison.AUCUNE.toString()){
+                    casesPlateau[i][j].setPeutPoser(false);
+                    plateau.ajouterUneVueCase(casesPlateau[i][j]);
+
+                } else if(combChoisie == "" ){
+                    for (Combinaison combi : partie.getCombinaisonEnCours()){
+                        if (typeCase != combChoisie){
+                            casesPlateau[i][j].setPeutPoser(false);
+                            plateau.ajouterUneVueCase(casesPlateau[i][j]);
+                        }else{
+                            casesPlateau[i][j].setPeutPoser(true);
+                            plateau.ajouterUneVueCase(casesPlateau[i][j]);
+                        }
                     }
+
+                }else{
+                    casesPlateau[i][j].setPeutPoser(true);
+                    plateau.ajouterUneVueCase(casesPlateau[i][j]);
+
+                }
+                if (partie.getCombinaisonEnCours().contains(Combinaison.DEFI) && typeCase == Combinaison.DEFI.toString()) {
+                    casesPlateau[i][j].setPeutPoser(true);
+                    plateau.ajouterUneVueCase(casesPlateau[i][j]);
+
                 }
             }
         }

@@ -1,27 +1,21 @@
 package com.example.yatzy;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Switch;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-
-import com.example.yatzy.model.SoundEffects;
-
 public class PopChoixCombi extends Activity {
 
 
+    public static final int DEFI_CHOISI = 10;
     public RelativeLayout layout;
     public RelativeLayout.LayoutParams layoutParams;
 
@@ -48,11 +42,6 @@ public class PopChoixCombi extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_combi);
         partie = DataHolder.getHolder().getPartie();
-        partie.determinerCombinaisons();
-
-        afficherBoutonsCombi();
-
-        onClickBoutonsCombi();
 
         options = new Options(this);
 
@@ -69,10 +58,29 @@ public class PopChoixCombi extends Activity {
         params.x = 0;
         params.y = 0;
 
+        yam = findViewById(R.id.yam);
+        brelan = findViewById(R.id.brelan);
+        suite = findViewById(R.id.suite);
+        inf8 = findViewById(R.id.inf8);
+        carre = findViewById(R.id.carre);
+        full = findViewById(R.id.full);
+        sec = findViewById(R.id.sec);
+
         getWindow().setAttributes(params);
 
         boutonPasserTour= findViewById(R.id.boutonPasserTour);
         boutonRevenirDes = findViewById(R.id.boutonRelancer);
+
+        if (!partie.isChoixDefi()) {
+            partie.determinerCombinaisons();
+            afficherBoutonsCombi();
+        }
+        else{
+            boutonPasserTour.setEnabled(false);
+            boutonPasserTour.setAlpha(0.5f);
+        }
+
+        onClickBoutonsCombi();
 
         if (partie.getJoueurActuel().getNbrLancers() == 3){
             boutonRevenirDes.setEnabled(false);
@@ -97,6 +105,9 @@ public class PopChoixCombi extends Activity {
         boutonRevenirDes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (partie.isChoixDefi()){
+                    partie.setChoixDefi(false);
+                }
                 DataHolder.getHolder().setPartie(partie);
                 DataHolder.getHolder().getPartieEnCours().setPartie(partie);
                 finish();
@@ -109,120 +120,202 @@ public class PopChoixCombi extends Activity {
         yam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataHolder.getHolder().setPartie(partie);
-                DataHolder.getHolder().getPartieEnCours().setPartie(partie);
-                DataHolder.getHolder().setResult(RESULT_OK);
-                finish();
+                if (partie.isChoixDefi()){
+                    partie.getJoueurActuel().setCombinaisonDefi(Combinaison.YAM);
+                    partie.setChoixDefi(false);
+                    DataHolder.getHolder().setPartie(partie);
+                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                    DataHolder.getHolder().setResult(DEFI_CHOISI);
+                    finish();
+                }else{
+                    DataHolder.getHolder().setPartie(partie);
+                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                    DataHolder.getHolder().setResult(RESULT_OK);
+                    DataHolder.getHolder().setCombChoisie(Combinaison.YAM);
+                    finish();
+                }
+
             }
         });
 
         carre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataHolder.getHolder().setPartie(partie);
-                DataHolder.getHolder().getPartieEnCours().setPartie(partie);
-                DataHolder.getHolder().setResult(RESULT_OK);
-                finish();
+                if (partie.isChoixDefi()){
+                    partie.getJoueurActuel().setCombinaisonDefi(Combinaison.CARRE);
+                    partie.setChoixDefi(false);
+                    DataHolder.getHolder().setPartie(partie);
+                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                    DataHolder.getHolder().setResult(DEFI_CHOISI);
+                    finish();
+                }else{
+                    DataHolder.getHolder().setPartie(partie);
+                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                    DataHolder.getHolder().setResult(RESULT_OK);
+                    DataHolder.getHolder().setCombChoisie(Combinaison.CARRE);
+                    finish();
+                }
             }
         });
 
         full.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataHolder.getHolder().setPartie(partie);
-                DataHolder.getHolder().getPartieEnCours().setPartie(partie);
-                DataHolder.getHolder().setResult(RESULT_OK);
-                finish();
+                if (partie.isChoixDefi()){
+                    partie.getJoueurActuel().setCombinaisonDefi(Combinaison.FULL);
+                    partie.setChoixDefi(false);
+                    DataHolder.getHolder().setPartie(partie);
+                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                    DataHolder.getHolder().setResult(DEFI_CHOISI);
+                    finish();
+                }else{
+                    DataHolder.getHolder().setPartie(partie);
+                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                    DataHolder.getHolder().setResult(RESULT_OK);
+                    DataHolder.getHolder().setCombChoisie(Combinaison.FULL);
+                    finish();
+                }
             }
         });
 
         brelan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataHolder.getHolder().setPartie(partie);
-                DataHolder.getHolder().getPartieEnCours().setPartie(partie);
-                DataHolder.getHolder().setResult(RESULT_OK);
-                finish();
+                if (partie.isChoixDefi()){
+                    partie.getJoueurActuel().setCombinaisonDefi(Combinaison.AUCUNE);
+                    partie.setChoixDefi(false);
+                    DataHolder.getHolder().setPartie(partie);
+                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                    DataHolder.getHolder().setResult(DEFI_CHOISI);
+                    finish();
+                }else{
+                    DataHolder.getHolder().setPartie(partie);
+                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                    DataHolder.getHolder().setResult(RESULT_OK);
+                    DataHolder.getHolder().setCombChoisie(null);
+                    finish();
+                }
             }
         });
 
         sec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataHolder.getHolder().setPartie(partie);
-                DataHolder.getHolder().getPartieEnCours().setPartie(partie);
-                DataHolder.getHolder().setResult(RESULT_OK);
-                finish();
+                if (partie.isChoixDefi()){
+                    partie.getJoueurActuel().setCombinaisonDefi(Combinaison.SEC);
+                    partie.setChoixDefi(false);
+                    DataHolder.getHolder().setPartie(partie);
+                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                    DataHolder.getHolder().setResult(DEFI_CHOISI);
+                    finish();
+                }else{
+                    DataHolder.getHolder().setPartie(partie);
+                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                    DataHolder.getHolder().setResult(RESULT_OK);
+                    DataHolder.getHolder().setCombChoisie(Combinaison.SEC);
+                    finish();
+                }
             }
         });
 
         suite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataHolder.getHolder().setPartie(partie);
-                DataHolder.getHolder().getPartieEnCours().setPartie(partie);
-                DataHolder.getHolder().setResult(RESULT_OK);
-                finish();;
+                if (partie.isChoixDefi()){
+                    partie.getJoueurActuel().setCombinaisonDefi(Combinaison.SUITE);
+                    partie.setChoixDefi(false);
+                    DataHolder.getHolder().setPartie(partie);
+                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                    DataHolder.getHolder().setResult(DEFI_CHOISI);
+                    finish();
+                }else{
+                    DataHolder.getHolder().setPartie(partie);
+                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                    DataHolder.getHolder().setResult(RESULT_OK);
+                    DataHolder.getHolder().setCombChoisie(Combinaison.SUITE);
+                    finish();
+                }
             }
         });
 
         inf8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataHolder.getHolder().setPartie(partie);
-                DataHolder.getHolder().getPartieEnCours().setPartie(partie);
-                DataHolder.getHolder().setResult(RESULT_OK);
-                finish();
+                if (partie.isChoixDefi()){
+                    partie.getJoueurActuel().setCombinaisonDefi(Combinaison.INF8);
+                    partie.setChoixDefi(false);
+                    DataHolder.getHolder().setPartie(partie);
+                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                    DataHolder.getHolder().setResult(DEFI_CHOISI);
+                    finish();
+                }else{
+                    DataHolder.getHolder().setPartie(partie);
+                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
+                    DataHolder.getHolder().setResult(RESULT_OK);
+                    DataHolder.getHolder().setCombChoisie(Combinaison.INF8);
+                    finish();
+                }
             }
         });
     }
 
     private void afficherBoutonsCombi() {
-        yam = findViewById(R.id.yam);
-        brelan = findViewById(R.id.brelan);
-        suite = findViewById(R.id.suite);
-        inf8 = findViewById(R.id.inf8);
-        carre = findViewById(R.id.carre);
-        full = findViewById(R.id.full);
-        sec = findViewById(R.id.sec);
 
-        if (!partie.getCombinaisonEnCours().contains(Combinaison.YAM)){
+
+        if (!partie.getCombinaisonEnCours().contains(Combinaison.YAM)||combinaisonsComplete(Combinaison.YAM)){
             yam.setEnabled(false);
             yam.setAlpha(0.5f);
         }
 
-        if (!partie.getCombinaisonEnCours().contains(Combinaison.SUITE)){
+        if (!partie.getCombinaisonEnCours().contains(Combinaison.SUITE)||combinaisonsComplete(Combinaison.SUITE)){
             suite.setEnabled(false);
             suite.setAlpha(0.5f);
         }
 
-        if (!partie.getCombinaisonEnCours().contains(Combinaison.INF8)){
+        if (!partie.getCombinaisonEnCours().contains(Combinaison.INF8)||combinaisonsComplete(Combinaison.INF8)){
             inf8.setEnabled(false);
             inf8.setAlpha(0.5f);
         }
-        if (!partie.getCombinaisonEnCours().contains(Combinaison.CARRE)){
+        if (!partie.getCombinaisonEnCours().contains(Combinaison.CARRE)||combinaisonsComplete(Combinaison.CARRE)){
             carre.setEnabled(false);
             carre.setAlpha(0.5f);
         }
-        if (!partie.getCombinaisonEnCours().contains(Combinaison.SEC)){
+        if (!partie.getCombinaisonEnCours().contains(Combinaison.SEC)||combinaisonsComplete(Combinaison.SEC)){
             sec.setEnabled(false);
             sec.setAlpha(0.5f);
         }
-        if (!partie.getCombinaisonEnCours().contains(Combinaison.FULL)){
+        if (!partie.getCombinaisonEnCours().contains(Combinaison.FULL)||combinaisonsComplete(Combinaison.FULL)){
             full.setEnabled(false);
             full.setAlpha(0.5f);
         }
 
-        if (!partie.getCombinaisonEnCours().contains(Combinaison.BRELAN1) &&
-                !partie.getCombinaisonEnCours().contains(Combinaison.BRELAN2) &&
-                !partie.getCombinaisonEnCours().contains(Combinaison.BRELAN3) &&
-                !partie.getCombinaisonEnCours().contains(Combinaison.BRELAN4) &&
-                !partie.getCombinaisonEnCours().contains(Combinaison.BRELAN5) &&
-                !partie.getCombinaisonEnCours().contains(Combinaison.BRELAN6)){
+        if ((!partie.getCombinaisonEnCours().contains(Combinaison.BRELAN1)||combinaisonsComplete(Combinaison.BRELAN1)) &&
+                (!partie.getCombinaisonEnCours().contains(Combinaison.BRELAN2)||combinaisonsComplete(Combinaison.BRELAN2)) &&
+                (!partie.getCombinaisonEnCours().contains(Combinaison.BRELAN3)||combinaisonsComplete(Combinaison.BRELAN3)) &&
+                (!partie.getCombinaisonEnCours().contains(Combinaison.BRELAN4)||combinaisonsComplete(Combinaison.BRELAN4)) &&
+                (!partie.getCombinaisonEnCours().contains(Combinaison.BRELAN5)||combinaisonsComplete(Combinaison.BRELAN5)) &&
+                (!partie.getCombinaisonEnCours().contains(Combinaison.BRELAN6)||combinaisonsComplete(Combinaison.BRELAN6))){
             brelan.setEnabled(false);
             brelan.setAlpha(0.5f);
         }
     }
 
-
+    public boolean combinaisonsComplete(Combinaison combi){
+        Case[][] casesPlateau = partie.getPlateau().getDispositionCases();
+        int cptCasesOccupees = 0;
+        for (int i = 0; i < 5; i++){
+            for (int j = 0; j < 5; j++){
+                if (casesPlateau[i][j].getType().toString() == combi.toString() && casesPlateau[i][j].getJetonPose() != null ){
+                    cptCasesOccupees++;
+                }
+            }
+        }
+        if (combi != Combinaison.YAM && cptCasesOccupees == 2){
+            return true;
+        }else if (combi == Combinaison.YAM && cptCasesOccupees == 1){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
