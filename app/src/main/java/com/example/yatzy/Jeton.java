@@ -1,8 +1,6 @@
 package com.example.yatzy;
 
-import android.content.res.Resources;
 import android.widget.ImageView;
-
 import com.example.yatzy.model.Couleur;
 
 public class Jeton {
@@ -13,7 +11,7 @@ public class Jeton {
 	
 	public Jeton(Couleur couleur, Plateau plateau)
 	{
-		this.couleur=couleur;
+		this.couleur = couleur;
 		this.plateau = plateau;
 		view = new ImageView(plateau.getJeu());
 		determinerCouleurJeton();

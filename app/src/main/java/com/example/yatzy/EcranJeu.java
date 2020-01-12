@@ -2,15 +2,10 @@ package com.example.yatzy;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -86,7 +81,6 @@ public class EcranJeu extends AppCompatActivity {
         options = new Options(this);
     }
 
-
     public void ajusterCases(final Case caseAPlacer){
         caseAPlacer.getImageCase().setX(caseAPlacer.getCoordX());
         caseAPlacer.getImageCase().setY(caseAPlacer.getCoordY());
@@ -99,12 +93,14 @@ public class EcranJeu extends AppCompatActivity {
             }
         });
     }
+
     public void poserJeton(Jeton jetonAPoser, int coordX, int coordY){
         jetonAPoser.getView().setX(coordX);
         jetonAPoser.getView().setY(coordY);
+        Log.e("dispositionCases", " = " + plateau.getJetonsPoses());
+//        Log.e("3 jetons alignes", "V ou F : " + plateau.checkTroisJetonsAlignes(coordX, coordY));
+//        Log.e("3 jetons alignes", "V ou F : " + plateau.checkQuatreJetonsAlignes(coordX, coordY));
     }
-
-    /*public void compterPoints*/
 
     public ConstraintLayout getLayout() {
         return layout;

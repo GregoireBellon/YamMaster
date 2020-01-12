@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
@@ -43,7 +44,6 @@ public class Case {
     }
 
     // Fonction à utiliser pour retirer le jeton posé sur cette case (quand un des joueurs fait un Yam)
-
     public void retirerJeton(){
         if (caseRemplie){
             setJetonPose(null);
@@ -58,6 +58,7 @@ public class Case {
         imageCase.setImageResource(resID);
         imageCase.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     }
+
     // ---------------------------------------- Getters et Setters
 
     public int getCoordX() {

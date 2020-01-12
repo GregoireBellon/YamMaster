@@ -1,17 +1,9 @@
 package com.example.yatzy;
 
 
-import android.text.PrecomputedText;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import com.example.yatzy.model.Couleur;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Plateau {
@@ -81,151 +73,43 @@ public class Plateau {
                 jeu.addContentView(nouvelleCase.getImageCase(), param);
                 jeu.ajusterCases(dispositionCases[i][j]);
             }
-
         }
     }
 
-    public int compterPoints(Couleur couleur) {
-        int cpt1 = 0; // init du compteur
-        int score = 0; // score nul
-
-        // colonne
-        // parcourt chaque colonne
-        for (int i = 0; i < 3; i++) {
-            // parcourt chaque ligne
-            for (int h = 0; h < 3; h++) {
-                // verifie presence d'un jeton ; si oui, compare couleur du jeton et couleur du
-                // joueur
-                if (dispositionCases[i][h].getJetonPose().getCouleur() == couleur) {
-                    cpt1++;
-                }
-            }
-            if (cpt1 == 3)
-                score += 1;
-            if (cpt1 == 4)
-                score += 2;
+    /**
+     * Counts pieces of the given type, starting at (y, x),
+     * in the direction denoted by (dy, dx).
+     * Stops at field boundaries or when a different field type is encountered.
+     */
+    public int compterPoints(int x, int y, int dx, int dy) {
+        int nbJetonsAlignes = 0;
+        x += dx;  // Skip the piece at (y, x) to avoid counting it twice
+        y += dy;  // when looking in both directions on a line.
+        while (x >= 0 && x < 5 && y >= 0 && y < 5 && dispositionCases[x][y] != null) {
+            nbJetonsAlignes++;
+            x += dx;  // Move in the direction denoted by (dy, dx)
+            y += dy;
         }
-
-        // ligne
-        cpt1 = 0;
-        // parcourt chaque colonne
-        for (int i = 0; i < 3; i++) {
-            // parcourt chaque ligne
-            for (int h = 0; h < 3; h++) {
-                if (dispositionCases[h][i].getJetonPose().getCouleur() == couleur) {
-                    cpt1++;
-                }
-            }
-            if (cpt1 == 3)
-                score += 1;
-            if (cpt1 == 4)
-                score += 2;
-        }
-
-        // ===================================
-        // diago
-        // on verifie si 4 jetons sont alignes
-        // les 2 diagonales de 5 cases
-        if ((dispositionCases[0][0].getJetonPose().getCouleur() == couleur && dispositionCases[1][1].getJetonPose().getCouleur() == couleur
-                && dispositionCases[2][2].getJetonPose().getCouleur() == couleur && dispositionCases[3][3].getJetonPose().getCouleur() == couleur)
-                || (dispositionCases[1][1].getJetonPose().getCouleur() == couleur && dispositionCases[2][2].getJetonPose().getCouleur() == couleur
-                && dispositionCases[3][3].getJetonPose().getCouleur() == couleur && dispositionCases[4][4].getJetonPose().getCouleur() == couleur)) {
-            score += 4;
-        }
-
-        if ((dispositionCases[4][0].getJetonPose().getCouleur() == couleur && dispositionCases[3][1].getJetonPose().getCouleur() == couleur
-                && dispositionCases[2][2].getJetonPose().getCouleur() == couleur && dispositionCases[1][3].getJetonPose().getCouleur() == couleur)
-                || (dispositionCases[3][1].getJetonPose().getCouleur() == couleur && dispositionCases[2][2].getJetonPose().getCouleur() == couleur
-                && dispositionCases[1][3].getJetonPose().getCouleur() == couleur && dispositionCases[0][4].getJetonPose().getCouleur() == couleur)) {
-            score += 4;
-        }
-
-        // les 4 diagonales de 4 cases
-        if (dispositionCases[3][0].getJetonPose().getCouleur() == couleur && dispositionCases[2][1].getJetonPose().getCouleur() == couleur
-                && dispositionCases[1][2].getJetonPose().getCouleur() == couleur && dispositionCases[0][3].getJetonPose().getCouleur() == couleur) {
-            score += 4;
-        }
-
-        if (dispositionCases[1][0].getJetonPose().getCouleur() == couleur && dispositionCases[2][1].getJetonPose().getCouleur() == couleur
-                && dispositionCases[3][2].getJetonPose().getCouleur() == couleur && dispositionCases[4][3].getJetonPose().getCouleur() == couleur) {
-            score += 4;
-        }
-
-        if (dispositionCases[0][1].getJetonPose().getCouleur() == couleur && dispositionCases[1][2].getJetonPose().getCouleur() == couleur
-                && dispositionCases[2][3].getJetonPose().getCouleur() == couleur && dispositionCases[3][4].getJetonPose().getCouleur() == couleur) {
-            score += 4;
-        }
-
-        if (dispositionCases[4][1].getJetonPose().getCouleur() == couleur && dispositionCases[3][2].getJetonPose().getCouleur() == couleur
-                && dispositionCases[2][3].getJetonPose().getCouleur() == couleur && dispositionCases[1][4].getJetonPose().getCouleur() == couleur) {
-            score += 4;
-        }
-
-        // ===================================
-        // on verifie si 3 jetons sont alignes
-        // les 2 diagonales de 5 cases
-        if ((dispositionCases[0][0].getJetonPose().getCouleur() == couleur && dispositionCases[1][1].getJetonPose().getCouleur() == couleur
-                && dispositionCases[2][2].getJetonPose().getCouleur() == couleur)
-                || (dispositionCases[1][1].getJetonPose().getCouleur() == couleur && dispositionCases[2][2].getJetonPose().getCouleur() == couleur
-                && dispositionCases[3][3].getJetonPose().getCouleur() == couleur)
-                || (dispositionCases[2][2].getJetonPose().getCouleur() == couleur && dispositionCases[3][3].getJetonPose().getCouleur() == couleur
-                && dispositionCases[4][4].getJetonPose().getCouleur() == couleur)) {
-            score += 1;
-        }
-
-        if ((dispositionCases[4][0].getJetonPose().getCouleur() == couleur && dispositionCases[3][1].getJetonPose().getCouleur() == couleur
-                && dispositionCases[2][2].getJetonPose().getCouleur() == couleur)
-                || (dispositionCases[3][1].getJetonPose().getCouleur() == couleur && dispositionCases[2][2].getJetonPose().getCouleur() == couleur
-                && dispositionCases[1][3].getJetonPose().getCouleur() == couleur)
-                || (dispositionCases[2][2].getJetonPose().getCouleur() == couleur && dispositionCases[1][3].getJetonPose().getCouleur() == couleur
-                && dispositionCases[0][4].getJetonPose().getCouleur() == couleur)) {
-            score += 1;
-        }
-
-        // les 4 diagonales de 3 cases
-        if ((dispositionCases[2][0].getJetonPose().getCouleur() == couleur && dispositionCases[1][1].getJetonPose().getCouleur() == couleur
-                && dispositionCases[0][2].getJetonPose().getCouleur() == couleur)
-                || (dispositionCases[2][0].getJetonPose().getCouleur() == couleur && dispositionCases[3][1].getJetonPose().getCouleur() == couleur
-                && dispositionCases[4][2].getJetonPose().getCouleur() == couleur)
-                || (dispositionCases[0][2].getJetonPose().getCouleur() == couleur && dispositionCases[1][3].getJetonPose().getCouleur() == couleur
-                && dispositionCases[2][4].getJetonPose().getCouleur() == couleur)
-                || (dispositionCases[4][2].getJetonPose().getCouleur() == couleur && dispositionCases[3][3].getJetonPose().getCouleur() == couleur
-                && dispositionCases[2][4].getJetonPose().getCouleur() == couleur)) {
-            score += 1;
-        }
-
-        // les 4 diagonales de 4 cases
-        if ((dispositionCases[3][0].getJetonPose().getCouleur() == couleur && dispositionCases[2][1].getJetonPose().getCouleur() == couleur
-                && dispositionCases[1][2].getJetonPose().getCouleur() == couleur)
-                || (dispositionCases[2][1].getJetonPose().getCouleur() == couleur && dispositionCases[1][2].getJetonPose().getCouleur() == couleur
-                && dispositionCases[0][3].getJetonPose().getCouleur() == couleur)) {
-            score += 1;
-        }
-
-        if ((dispositionCases[4][1].getJetonPose().getCouleur() == couleur && dispositionCases[3][2].getJetonPose().getCouleur() == couleur
-                && dispositionCases[2][3].getJetonPose().getCouleur() == couleur)
-                || (dispositionCases[3][2].getJetonPose().getCouleur() == couleur && dispositionCases[2][3].getJetonPose().getCouleur() == couleur
-                && dispositionCases[1][4].getJetonPose().getCouleur() == couleur)) {
-            score += 1;
-        }
-
-        if ((dispositionCases[1][0].getJetonPose().getCouleur() == couleur && dispositionCases[2][1].getJetonPose().getCouleur() == couleur
-                && dispositionCases[3][2].getJetonPose().getCouleur() == couleur)
-                || (dispositionCases[2][1].getJetonPose().getCouleur() == couleur && dispositionCases[3][2].getJetonPose().getCouleur() == couleur
-                && dispositionCases[4][3].getJetonPose().getCouleur() == couleur)) {
-            score += 1;
-        }
-
-        if ((dispositionCases[0][1].getJetonPose().getCouleur() == couleur && dispositionCases[1][2].getJetonPose().getCouleur() == couleur
-                && dispositionCases[2][3].getJetonPose().getCouleur() == couleur)
-                || (dispositionCases[1][2].getJetonPose().getCouleur() == couleur && dispositionCases[2][3].getJetonPose().getCouleur() == couleur
-                && dispositionCases[3][4].getJetonPose().getCouleur() == couleur)) {
-            score += 1;
-        }
-
-        return -1;
+        return nbJetonsAlignes;
     }
 
+    /**
+     * Main entry point after a new piece of type `type` was added at (y, x).
+     * Returns true if this connects 4 or more in any direction.
+     */
+    public boolean checkTroisJetonsAlignes(int x, int y) {
+        return compterPoints(x, y, -1, 0) + 1 + compterPoints(x, y, 1, 0) == 3  // horizontal
+                || compterPoints(x, y, 0, -1) + 1 + compterPoints(x, y, 0, 1) == 3  // vertical
+                || compterPoints(x, y, -1, -1) + 1 + compterPoints(x, y, 1, 1) == 3 // diagonal
+                || compterPoints(x, y, -1, 1) + 1 + compterPoints(x, y, 1, -1) == 3;
+    }
+
+    public boolean checkQuatreJetonsAlignes(int x, int y) {
+        return compterPoints(x, y, -1, 0) + 1 + compterPoints(x, y, 1, 0) == 4  // horizontal
+                || compterPoints(x, y, 0, -1) + 1 + compterPoints(x, y, 0, 1) == 4  // vertical
+                || compterPoints(x, y, -1, -1) + 1 + compterPoints(x, y, 1, 1) == 4  // diagonal
+                || compterPoints(x, y, -1, 1) + 1 + compterPoints(x, y, 1, -1) == 4;
+    }
 
     public EcranJeu getJeu() {
         return jeu;

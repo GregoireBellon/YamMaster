@@ -2,9 +2,7 @@ package com.example.yatzy;
 
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.example.yatzy.model.Couleur;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +20,7 @@ public class Joueur extends com.example.yatzy.model.Joueur {
 
     public Joueur(Couleur couleurJetons, Partie partie) {
         super();
-        peutPoser = false;
+        peutPoser = true;
         this.couleurJetons = couleurJetons;
         jetonsJoueurs = new ArrayList<>();
         this.partie = partie;
@@ -52,6 +50,12 @@ public class Joueur extends com.example.yatzy.model.Joueur {
             plateau.getJeu().poserJeton(jeton, x ,y);
             partie.passerTour();
         }
+    }
+
+    public int compterScore() {
+
+
+        return 0;
     }
 
     public List<Jeton> getJetonsJoueurs() {
