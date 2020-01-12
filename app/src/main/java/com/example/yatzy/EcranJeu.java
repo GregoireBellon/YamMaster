@@ -131,15 +131,14 @@ public class EcranJeu extends AppCompatActivity {
     public void poserJeton(Jeton jetonAPoser, int coordX, int coordY){
         jetonAPoser.getView().setX(coordX);
         jetonAPoser.getView().setY(coordY);
-        Log.e("dispositionCases", " = " + plateau.getJetonsPoses());
-//        Log.e("3 jetons alignes", "V ou F : " + plateau.checkTroisJetonsAlignes(coordX, coordY));
-//        Log.e("3 jetons alignes", "V ou F : " + plateau.checkQuatreJetonsAlignes(coordX, coordY));
+        Log.e("3 jetons alignes", "V ou F : " + plateau.checkTroisJetonsAlignes(jetonAPoser.getCouleur(), coordX, coordY));
+        Log.e("3 jetons alignes", "V ou F : " + plateau.checkQuatreJetonsAlignes(jetonAPoser.getCouleur(), coordX, coordY));
     }
 
-    public ConstraintLayout getLayout() {
+    /*public ConstraintLayout getLayout() {
         return layout;
         partie.getJoueurActuel().setPeutPoser(false);
-    }
+    }*/
 
     public void afficherCasePosables(){
         Case[][] casesPlateau = plateau.getDispositionCases();

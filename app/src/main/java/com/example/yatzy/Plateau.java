@@ -84,16 +84,34 @@ public class Plateau {
      * in the direction denoted by (dy, dx).
      * Stops at field boundaries or when a different field type is encountered.
      */
-    public int compterPoints(int x, int y, int dx, int dy) {
+    public int compterPoints(Couleur couleur, int x, int y, int dx, int dy) {
         int nbJetonsAlignes = 0;
         x += dx;  // Skip the piece at (y, x) to avoid counting it twice
         y += dy;  // when looking in both directions on a line.
-        while (x >= 0 && x < 5 && y >= 0 && y < 5 && dispositionCases[x][y] != null) {
+        while (x >= 0 && x < 5 && y >= 0 && y < 5 && dispositionCases[x][y].getJetonPose().getCouleur() == couleur) {
             nbJetonsAlignes++;
             x += dx;  // Move in the direction denoted by (dy, dx)
             y += dy;
         }
         return nbJetonsAlignes;
+    }
+
+    /**
+     * Main entry point after a new piece of type `type` was added at (y, x).
+     * Returns true if this connects 4 or more in any direction.
+     */
+    public boolean checkTroisJetonsAlignes(Couleur couleur, int x, int y) {
+        return compterPoints(couleur, x, y, -1, 0) + 1 + compterPoints(couleur, x, y, 1, 0) == 3  // horizontal
+                || compterPoints(couleur, x, y, 0, -1) + 1 + compterPoints(couleur, x, y, 0, 1) == 3  // vertical
+                || compterPoints(couleur, x, y, -1, -1) + 1 + compterPoints(couleur, x, y, 1, 1) == 3 // diagonal
+                || compterPoints(couleur, x, y, -1, 1) + 1 + compterPoints(couleur, x, y, 1, -1) == 3;
+    }
+
+    public boolean checkQuatreJetonsAlignes(Couleur couleur, int x, int y) {
+        return compterPoints(couleur, x, y, -1, 0) + 1 + compterPoints(couleur, x, y, 1, 0) == 4  // horizontal
+                || compterPoints(couleur, x, y, 0, -1) + 1 + compterPoints(couleur, x, y, 0, 1) == 4  // vertical
+                || compterPoints(couleur, x, y, -1, -1) + 1 + compterPoints(couleur, x, y, 1, 1) == 4  // diagonal
+                || compterPoints(couleur, x, y, -1, 1) + 1 + compterPoints(couleur, x, y, 1, -1) == 4;
     }
 
     public void ajouterUneVueCase(Case caseAPlacer){
@@ -111,24 +129,6 @@ public class Plateau {
                 ajouterUneVueCase(dispositionCases[i][j]);
             }
         }
-    }
-
-    /**
-     * Main entry point after a new piece of type `type` was added at (y, x).
-     * Returns true if this connects 4 or more in any direction.
-     */
-    public boolean checkTroisJetonsAlignes(int x, int y) {
-        return compterPoints(x, y, -1, 0) + 1 + compterPoints(x, y, 1, 0) == 3  // horizontal
-                || compterPoints(x, y, 0, -1) + 1 + compterPoints(x, y, 0, 1) == 3  // vertical
-                || compterPoints(x, y, -1, -1) + 1 + compterPoints(x, y, 1, 1) == 3 // diagonal
-                || compterPoints(x, y, -1, 1) + 1 + compterPoints(x, y, 1, -1) == 3;
-    }
-
-    public boolean checkQuatreJetonsAlignes(int x, int y) {
-        return compterPoints(x, y, -1, 0) + 1 + compterPoints(x, y, 1, 0) == 4  // horizontal
-                || compterPoints(x, y, 0, -1) + 1 + compterPoints(x, y, 0, 1) == 4  // vertical
-                || compterPoints(x, y, -1, -1) + 1 + compterPoints(x, y, 1, 1) == 4  // diagonal
-                || compterPoints(x, y, -1, 1) + 1 + compterPoints(x, y, 1, -1) == 4;
     }
 
     public EcranJeu getJeu() {
