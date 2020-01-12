@@ -20,6 +20,9 @@
         <activity android:name=".PopOptions"
             android:theme="@style/AppTheme.PopOptions"/>
 
+        <activity android:name=".PopChoixCombi"
+            android:theme="@style/AppTheme.PopOptions"/>
+
         <activity android:name=".PopDes"
             android:theme="@style/AppTheme.PopDes"/>
 

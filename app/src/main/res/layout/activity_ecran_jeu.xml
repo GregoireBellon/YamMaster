@@ -73,6 +73,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textIndicNomJoueur"
         app:srcCompat="@drawable/reserve_des_fond" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutPlateau"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ImageView
         android:id="@+id/lancerRestant1"
         android:layout_width="40dp"

@@ -30,7 +30,7 @@ public class Case {
     public Case(TypeCase type, Plateau plateau) {
         this.type = type;
         this.caseRemplie = false;
-        this.peutPoser = false;
+        this.peutPoser = true;
         this.jetonPose = null;
         this.plateau = plateau;
         imageCase = new ImageButton(plateau.getJeu());
