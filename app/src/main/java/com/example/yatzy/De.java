@@ -1,5 +1,6 @@
 package com.example.yatzy;
 
+import android.util.Log;
 import android.widget.ImageButton;
 
 public class De extends com.example.yatzy.model.De{
@@ -21,7 +22,7 @@ public class De extends com.example.yatzy.model.De{
     {
         int random;
         if (!isSelected()) {
-            random = (int) (Math.random() * 5);
+            random = (int) (Math.random() * 6);
             switch (random) {
                 case 0:
                     boutonDe.setImageResource(R.drawable.des_un);
@@ -52,6 +53,12 @@ public class De extends com.example.yatzy.model.De{
                     boutonDe.setImageResource(R.drawable.des_six);
                     nom_img = "des_six";
                     face = 6;
+                    break;
+                default:
+                    boutonDe.setImageResource(R.drawable.des_six);
+                    nom_img = "des_six";
+                    face = 6;
+                    Log.e("Chance anormale", "Vous avez eu beaucoup de chance :O");
                     break;
             }
         }else{

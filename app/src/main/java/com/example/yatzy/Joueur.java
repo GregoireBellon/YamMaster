@@ -50,6 +50,7 @@ public class Joueur extends com.example.yatzy.model.Joueur {
             getJetonsJoueurs().remove(jeton);
             plateau.getJeu().poserJeton(jeton, x ,y);
             partie.passerTour();
+            caseCible.setJetonPose(jeton);
         }
     }
 
@@ -80,5 +81,13 @@ public class Joueur extends com.example.yatzy.model.Joueur {
 
     public void setNbrLancers(int nbrLancers) {
         this.nbrLancers = nbrLancers;
+    }
+
+    public Combinaison getCombinaisonDefi() {
+        return combinaisonDefi;
+    }
+
+    public void setCombinaisonDefi(Combinaison combinaisonDefi) {
+        this.combinaisonDefi = combinaisonDefi;
     }
 }
