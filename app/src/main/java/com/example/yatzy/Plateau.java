@@ -149,4 +149,8 @@ public class Plateau {
     public Case[][] getDispositionCases() {
         return dispositionCases;
     }
+
+    public void setDispositionCases(Case[][] dispositionCases) {
+        this.dispositionCases = dispositionCases;
+    }
 }
