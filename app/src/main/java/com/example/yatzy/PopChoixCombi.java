@@ -318,4 +318,9 @@ public class PopChoixCombi extends Activity {
             return false;
         }
     }
+
+    @Override
+    public void onBackPressed(){
+
+    }
 }

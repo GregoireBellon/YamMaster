@@ -102,10 +102,6 @@ public class Plateau {
         }
     }
 
-    public void compterPoints() {
-
-    }
-
     public EcranJeu getJeu() {
         return jeu;
     }
@@ -124,5 +120,9 @@ public class Plateau {
 
     public Case[][] getDispositionCases() {
         return dispositionCases;
+    }
+
+    public void setDispositionCases(Case[][] dispositionCases) {
+        this.dispositionCases = dispositionCases;
     }
 }

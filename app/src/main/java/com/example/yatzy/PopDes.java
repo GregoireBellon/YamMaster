@@ -211,4 +211,9 @@ public class PopDes extends Activity {
             boutonCombi.setAlpha(0.5f);
         }
     }
+
+    @Override
+    public void onBackPressed(){
+
+    }
 }
