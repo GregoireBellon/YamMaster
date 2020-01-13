@@ -1,10 +1,9 @@
 package com.example.yatzy;
 
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.example.yatzy.model.Couleur;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +17,11 @@ public class Joueur extends com.example.yatzy.model.Joueur {
     private Combinaison combinaisonDefi;
     private Partie partie;
     private Plateau plateau;
+    private int score;
 
     public Joueur(Couleur couleurJetons, Partie partie) {
         super();
-        peutPoser = false;
+        peutPoser = true;
         this.couleurJetons = couleurJetons;
         jetonsJoueurs = new ArrayList<>();
         this.partie = partie;
@@ -38,21 +38,32 @@ public class Joueur extends com.example.yatzy.model.Joueur {
 
     public void placerJeton(Case caseCible){
         if (getJetonsJoueurs().size() > 0){
+            Case[][] cases = plateau.getDispositionCases();
+
             Jeton jeton = getJetonsJoueurs().get(0);
             ImageView view = jeton.getView();
 
             int x = caseCible.getCoordX() + (plateau.getDimensionCases() / 8);
             int y = caseCible.getCoordY() + (plateau.getDimensionCases() / 8);
 
+            cases[caseCible.getIndexX()][caseCible.getIndexY()].setJetonPose(jeton);
+
             ViewGroup.LayoutParams param = new ViewGroup.LayoutParams(plateau.getDimensionJetons(),plateau.getDimensionJetons());
             plateau.getJeu().addContentView(view, param);
             plateau.getJetonsPoses().add(jeton);
             getJetonsJoueurs().remove(jeton);
             plateau.getJeu().poserJeton(jeton, x ,y);
+            plateau.setDispositionCases(cases);
             partie.passerTour();
             caseCible.setJetonPose(jeton);
         }
     }
+
+ /*   public int compterScore() {
+        if(plateau.checkTroisJetonsAlignes())
+
+        return 0;
+    }*/
 
     public List<Jeton> getJetonsJoueurs() {
         return jetonsJoueurs;

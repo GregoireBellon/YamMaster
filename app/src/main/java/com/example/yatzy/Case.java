@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
@@ -24,6 +25,8 @@ public class Case {
     private Plateau plateau; // Plateau auquel appartient la case
     private ImageButton imageCase; // Image de la case (pas d'image pour l'instant mais pourra être utilisé pour
                                    // afficher les cases en surbrillance ou pour afficher la case si on enlève l'image du plateau)
+    private int indexX, indexY;
+
 
     // Quand la case est créée, on considère qu'elle n'a pas de jeton posé et qu'on ne peut pas poser de jeton dessus
     public Case(TypeCase type, Plateau plateau) {
@@ -43,7 +46,6 @@ public class Case {
     }
 
     // Fonction à utiliser pour retirer le jeton posé sur cette case (quand un des joueurs fait un Yam)
-
     public void retirerJeton(){
         if (caseRemplie){
             setJetonPose(null);
@@ -58,6 +60,7 @@ public class Case {
         imageCase.setImageResource(resID);
         imageCase.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     }
+
     // ---------------------------------------- Getters et Setters
 
     public int getCoordX() {
@@ -113,4 +116,19 @@ public class Case {
         this.imageCase = imageCase;
     }
 
+    public int getIndexX() {
+        return indexX;
+    }
+
+    public void setIndexX(int indexX) {
+        this.indexX = indexX;
+    }
+
+    public int getIndexY() {
+        return indexY;
+    }
+
+    public void setIndexY(int indexY) {
+        this.indexY = indexY;
+    }
 }

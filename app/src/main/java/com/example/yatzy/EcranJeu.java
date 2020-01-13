@@ -2,15 +2,10 @@ package com.example.yatzy;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -140,6 +135,7 @@ public class EcranJeu extends AppCompatActivity {
         jetonsNoirsRestants.setText(""+partie.getJoueur2().getJetonsJoueurs().size());
 
         if (partie.getJoueur1().getJetonsJoueurs().size() == 0 && partie.getJoueur2().getJetonsJoueurs().size() == 0){
+            partie.calculerScoresJoueurs();
             Intent finPartie = new Intent(EcranJeu.this, FinDePartie.class);
             DataHolder.getHolder().setScoreFinalJ1(partie.getJoueur1().getScore());
             DataHolder.getHolder().setScoreFinalJ2(partie.getJoueur2().getScore());
@@ -190,8 +186,6 @@ public class EcranJeu extends AppCompatActivity {
             }
         }
     }
-
-    /*public void compterPoints*/
 
     public ConstraintLayout getLayoutPlateau() {
         return layoutPlateau;
