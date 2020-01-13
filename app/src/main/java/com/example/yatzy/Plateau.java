@@ -70,11 +70,14 @@ public class Plateau {
         for (int i = 0; i <= 4; i++) {
             for (int j = 0; j <= 4; j++) {
                 Case nouvelleCase = dispositionCases[i][j];
+                nouvelleCase.setIndexX(i);
+                nouvelleCase.setIndexY(j);
                 nouvelleCase.setCoordX(i * getDimensionCases());
                 nouvelleCase.setCoordY(j * getDimensionCases() + hauteurPlateau);
                 ViewGroup.LayoutParams param = new ViewGroup.LayoutParams(getDimensionCases(),getDimensionCases());
                 jeu.getLayoutPlateau().addView(nouvelleCase.getImageCase(),param);
                 jeu.ajusterCases(dispositionCases[i][j]);
+                dispositionCases[i][j] = nouvelleCase;
             }
         }
     }
