@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,12 +21,14 @@ public class EcranJeu extends AppCompatActivity {
     TextView texteTourJoueur, texteNomJoueur;
     ImageView  containerDes;
     ImageButton gobelet, boutonMenu;
+    ImageView jetonBlanc, jetonNoir;
     ConstraintLayout layoutPlateau;
     Plateau plateau;
     TextView jetonsBlancsRestants, jetonsNoirsRestants;
     De de1, de2, de3, de4, de5;
     Partie partie;
     Options options;
+    DisplayMetrics tailleEcran;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,12 @@ public class EcranJeu extends AppCompatActivity {
         setContentView(R.layout.activity_ecran_jeu);
 
         options = new Options(this);
+        tailleEcran = new DisplayMetrics();
+        jetonBlanc = findViewById(R.id.jetonBlancPlateau);
+        jetonBlanc.setY(tailleEcran.heightPixels / 9 );
+
+        jetonNoir = findViewById(R.id.jetonNoirPlateau);
+        jetonNoir.setY(tailleEcran.heightPixels / 9 );
 
         boutonMenu = findViewById(R.id.boutonMenu);
         boutonMenu.setOnClickListener(new View.OnClickListener() {
@@ -191,7 +200,10 @@ public class EcranJeu extends AppCompatActivity {
         }
     }
 
-    /*public void compterPoints*/
+    @Override
+    public void onBackPressed(){
+
+    }
 
     public ConstraintLayout getLayoutPlateau() {
         return layoutPlateau;

@@ -231,6 +231,10 @@ public class Partie extends com.example.yatzy.model.Partie{
         }
     }
 
+    public void calculerScoresJoueurs(){
+
+    }
+
     public List<De> getListeDes() {
         return listeDes;
     }

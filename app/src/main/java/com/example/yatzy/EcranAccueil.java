@@ -35,8 +35,8 @@ public class EcranAccueil extends AppCompatActivity {
 
         options = new Options(this);
 
-        //themeDeGerardDeRiviere = MediaPlayer.create(EcranAccueil.this, R.raw.a1_test);
-        //themeDeGerardDeRiviere.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        themeDeGerardDeRiviere = MediaPlayer.create(EcranAccueil.this, R.raw.a1_test);
+        themeDeGerardDeRiviere.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
         // ------- Initialisation des éléments de l'application
         nomJeu = findViewById(R.id.nomJeu);
@@ -72,7 +72,7 @@ public class EcranAccueil extends AppCompatActivity {
         });
 
         //SoundMusic.setVolume(options.getSavedMusicVolume());
-        //SoundMusic.play(themeDeGerardDeRiviere);
+        SoundMusic.play(themeDeGerardDeRiviere);
 
     }
 

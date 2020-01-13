@@ -22,9 +22,7 @@ public class Plateau {
     private EcranJeu jeu;
     private Case[][] dispositionCases;
     private List<Jeton> jetonsPoses;
-    private Joueur joueur1;
-    private Joueur joueur2;
-    DisplayMetrics tailleEcran;
+    private DisplayMetrics tailleEcran;
 
     public Plateau(EcranJeu jeu) {
         tailleEcran = new DisplayMetrics();

@@ -40,7 +40,7 @@ public class Options {
 
         load();
 
-        // audioManagerMusic.setStreamVolume(AudioManager.STREAM_MUSIC, PROGRESS_SEEKBAR_MUSIC, 1);
+        audioManagerMusic.setStreamVolume(AudioManager.STREAM_MUSIC, PROGRESS_SEEKBAR_MUSIC, 1);
     }
 
     /**

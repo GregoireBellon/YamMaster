@@ -7,35 +7,17 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import android.widget.SeekBar;
-import android.widget.Switch;
 
 public class PopChoixCombi extends Activity {
 
 
     public static final int DEFI_CHOISI = 10;
     public RelativeLayout layout;
-    public RelativeLayout.LayoutParams layoutParams;
-
-    public Switch switchDyslex, switchDalton;
-    public SeekBar seekbarMusic, seekbarEffects;
-    public Button boutonParDefaut, boutonAccepter;
     public Button boutonPasserTour, boutonRevenirDes;
-    public ImageButton boutonExit;
     private Button brelan, yam, carre, suite, sec, inf8, full;
     public Options options;
     private Partie partie;
-
-   /* public static String SHARED_PREFS = "sharedPrefs";
-    public static String SEEKBAR_EFFECTS = "seekbarEffects";
-    public static String SEEKBAR_MUSIC = "seekbarMusic";
-    public static String SWITCH_DYSLEX = "switchDyslex";
-    public static String SWITCH_DALTON = "switchDalton";
-
-    private int progressSeekbarEffects, progressSeekbarMusic;
-    private boolean switchDaltonState, switchDyslexState;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +60,12 @@ public class PopChoixCombi extends Activity {
         else{
             boutonPasserTour.setEnabled(false);
             boutonPasserTour.setAlpha(0.5f);
+
+            brelan.setEnabled(false);
+            brelan.setAlpha(0.5f);
+
+            sec.setEnabled(false);
+            sec.setAlpha(0.5f);
         }
 
         onClickBoutonsCombi();
@@ -181,14 +169,8 @@ public class PopChoixCombi extends Activity {
         brelan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (partie.isChoixDefi()){
-                    partie.getJoueurActuel().setCombinaisonDefi(Combinaison.AUCUNE);
-                    partie.setChoixDefi(false);
-                    DataHolder.getHolder().setPartie(partie);
-                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
-                    DataHolder.getHolder().setResult(DEFI_CHOISI);
-                    finish();
-                }else{
+                if (!partie.isChoixDefi()){
+
                     DataHolder.getHolder().setPartie(partie);
                     DataHolder.getHolder().getPartieEnCours().setPartie(partie);
                     DataHolder.getHolder().setResult(RESULT_OK);
@@ -201,14 +183,7 @@ public class PopChoixCombi extends Activity {
         sec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (partie.isChoixDefi()){
-                    partie.getJoueurActuel().setCombinaisonDefi(Combinaison.SEC);
-                    partie.setChoixDefi(false);
-                    DataHolder.getHolder().setPartie(partie);
-                    DataHolder.getHolder().getPartieEnCours().setPartie(partie);
-                    DataHolder.getHolder().setResult(DEFI_CHOISI);
-                    finish();
-                }else{
+                if (!partie.isChoixDefi()){
                     DataHolder.getHolder().setPartie(partie);
                     DataHolder.getHolder().getPartieEnCours().setPartie(partie);
                     DataHolder.getHolder().setResult(RESULT_OK);

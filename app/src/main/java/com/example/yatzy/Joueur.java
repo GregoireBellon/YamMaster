@@ -54,6 +54,7 @@ public class Joueur extends com.example.yatzy.model.Joueur {
             getJetonsJoueurs().remove(jeton);
             plateau.getJeu().poserJeton(jeton, x ,y);
             plateau.setDispositionCases(cases);
+
             partie.passerTour();
             caseCible.setJetonPose(jeton);
         }
