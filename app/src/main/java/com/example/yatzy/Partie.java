@@ -231,10 +231,6 @@ public class Partie extends com.example.yatzy.model.Partie{
         }
     }
 
-<<<<<<< HEAD
-    public void calculerScoresJoueurs(){
-
-=======
     public void calculerScoresJoueurs() {
         /* Calcul score Joueur1 */
         plateau.checkTroisJetonsAlignesHorizontal(Couleur.NOIR, 0, 0);
@@ -251,7 +247,6 @@ public class Partie extends com.example.yatzy.model.Partie{
         plateau.checkQuatreJetonsAlignesHorizontal(Couleur.BLANC, 0, 0);
         plateau.checkQuatreJetonsAlignesVertical(Couleur.BLANC, 0, 0);
         plateau.checkQuatreJetonsAlignesDiagonal(Couleur.BLANC, 0, 0);
->>>>>>> 40e6453118a86880f6d4923be77ebe6c3ce43fdf
     }
 
     public List<De> getListeDes() {

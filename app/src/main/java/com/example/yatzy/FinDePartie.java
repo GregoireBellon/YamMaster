@@ -25,8 +25,11 @@ public class FinDePartie extends AppCompatActivity {
         scoreJ1 = DataHolder.getHolder().getScoreFinalJ1();
         scoreJ2 = DataHolder.getHolder().getScoreFinalJ2();
 
-        texteScoreJ1.setText(""+scoreJ1);
-        texteScoreJ2.setText(""+scoreJ2);
+        if (scoreJ1 == 10000) texteScoreJ1.setText(R.string.cinqAlignes);
+        else texteScoreJ1.setText(""+scoreJ1);
+
+        if (scoreJ2 == 10000) texteScoreJ2.setText(R.string.cinqAlignes);
+        else texteScoreJ2.setText(""+scoreJ2);
 
         if (scoreJ2 > scoreJ1) texteGagnant.setText(R.string.texteJ2Gagnant);
         else if (scoreJ1 > scoreJ2) texteGagnant.setText(R.string.texteJ1Gagnant);

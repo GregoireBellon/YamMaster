@@ -14,6 +14,7 @@ public class Plateau {
     private int dimensionCases;
     private int dimensionJetons;
     private EcranJeu jeu;
+    private Joueur joueur1, joueur2;
     public Case[][] dispositionCases;
     private List<Jeton> jetonsPoses;
     private DisplayMetrics tailleEcran;
@@ -156,6 +157,16 @@ public class Plateau {
         }
         if(couleur == Couleur.NOIR) {
             joueur2.setScore(joueur2.getScore() + nbAlignements * 2);
+        }
+    }
+
+    public void checkCinqJetonsAlignesHorizontal(Couleur couleur, int x, int y) {
+        int nbAlignements = compterAlignements(couleur, x, y, -1, 0, 5) + compterAlignements(couleur, x, y, 1, 0, 5);  // horizontal
+        if(couleur == Couleur.BLANC && nbAlignements >= 1) {
+            joueur1.setScore(10000);
+        }
+        if(couleur == Couleur.NOIR && nbAlignements >= 1) {
+            joueur2.setScore(10000);
         }
     }
 

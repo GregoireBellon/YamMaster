@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.yatzy.model.Couleur;
+
 public class EcranJeu extends AppCompatActivity {
 
     TextView texteTourJoueur, texteNomJoueur;
@@ -142,9 +144,16 @@ public class EcranJeu extends AppCompatActivity {
         partie.getJoueurActuel().setPeutPoser(false);
         jetonsBlancsRestants.setText(""+partie.getJoueur1().getJetonsJoueurs().size());
         jetonsNoirsRestants.setText(""+partie.getJoueur2().getJetonsJoueurs().size());
+        plateau.checkCinqJetonsAlignesHorizontal(Couleur.BLANC,0,0);
+        plateau.checkCinqJetonsAlignesHorizontal(Couleur.NOIR,0,0);
 
         if (partie.getJoueur1().getJetonsJoueurs().size() == 0 && partie.getJoueur2().getJetonsJoueurs().size() == 0){
             partie.calculerScoresJoueurs();
+            Intent finPartie = new Intent(EcranJeu.this, FinDePartie.class);
+            DataHolder.getHolder().setScoreFinalJ1(partie.getJoueur1().getScore());
+            DataHolder.getHolder().setScoreFinalJ2(partie.getJoueur2().getScore());
+            startActivity(finPartie);
+        }else if(partie.getJoueur1().getScore() == 10000 ||partie.getJoueur2().getScore() == 10000){
             Intent finPartie = new Intent(EcranJeu.this, FinDePartie.class);
             DataHolder.getHolder().setScoreFinalJ1(partie.getJoueur1().getScore());
             DataHolder.getHolder().setScoreFinalJ2(partie.getJoueur2().getScore());
@@ -196,14 +205,11 @@ public class EcranJeu extends AppCompatActivity {
         }
     }
 
-<<<<<<< HEAD
     @Override
     public void onBackPressed(){
 
     }
 
-=======
->>>>>>> 40e6453118a86880f6d4923be77ebe6c3ce43fdf
     public ConstraintLayout getLayoutPlateau() {
         return layoutPlateau;
     }

@@ -58,6 +58,9 @@ public class PopChoixCombi extends Activity {
             afficherBoutonsCombi();
         }
         else{
+
+            afficherBoutonsCombiDefi();
+
             boutonPasserTour.setEnabled(false);
             boutonPasserTour.setAlpha(0.5f);
 
@@ -101,6 +104,33 @@ public class PopChoixCombi extends Activity {
                 finish();
             }
         });
+
+    }
+
+    private void afficherBoutonsCombiDefi() {
+        if (combinaisonsComplete(Combinaison.YAM)){
+            yam.setEnabled(false);
+            yam.setAlpha(0.5f);
+        }
+
+        if (combinaisonsComplete(Combinaison.SUITE)){
+            suite.setEnabled(false);
+            suite.setAlpha(0.5f);
+        }
+
+        if (combinaisonsComplete(Combinaison.INF8)){
+            inf8.setEnabled(false);
+            inf8.setAlpha(0.5f);
+        }
+        if (combinaisonsComplete(Combinaison.CARRE)){
+            carre.setEnabled(false);
+            carre.setAlpha(0.5f);
+        }
+
+        if (combinaisonsComplete(Combinaison.FULL)){
+            full.setEnabled(false);
+            full.setAlpha(0.5f);
+        }
 
     }
 

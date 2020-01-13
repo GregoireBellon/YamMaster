@@ -10,4 +10,5 @@
     <string name="texteEgalite"> Égalité !</string>
     <string name="scoreJ1">Score du Joueur 1 (Pions Blancs):</string>
     <string name="scoreJ2">Score du Joueur 2 (Pions Noirs) :</string>
+    <string name="cinqAlignes"> 5 Jetons alignés</string>
 </resources>
