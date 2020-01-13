@@ -24,6 +24,8 @@ public class Case {
     private Plateau plateau; // Plateau auquel appartient la case
     private ImageButton imageCase; // Image de la case (pas d'image pour l'instant mais pourra être utilisé pour
                                    // afficher les cases en surbrillance ou pour afficher la case si on enlève l'image du plateau)
+    private int indexX, indexY;
+
 
     // Quand la case est créée, on considère qu'elle n'a pas de jeton posé et qu'on ne peut pas poser de jeton dessus
     public Case(TypeCase type, Plateau plateau) {
@@ -113,4 +115,19 @@ public class Case {
         this.imageCase = imageCase;
     }
 
+    public int getIndexX() {
+        return indexX;
+    }
+
+    public void setIndexX(int indexX) {
+        this.indexX = indexX;
+    }
+
+    public int getIndexY() {
+        return indexY;
+    }
+
+    public void setIndexY(int indexY) {
+        this.indexY = indexY;
+    }
 }

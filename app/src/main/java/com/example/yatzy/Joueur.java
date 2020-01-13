@@ -46,10 +46,7 @@ public class Joueur extends com.example.yatzy.model.Joueur {
             int x = caseCible.getCoordX() + (plateau.getDimensionCases() / 8);
             int y = caseCible.getCoordY() + (plateau.getDimensionCases() / 8);
 
-            int indexX = x / plateau.getDimensionCases();
-            int indexY = y / plateau.getDimensionCases();
-
-            cases[indexX][indexY].setJetonPose(jeton);
+            cases[caseCible.getIndexX()][caseCible.getIndexY()].setJetonPose(jeton);
 
             ViewGroup.LayoutParams param = new ViewGroup.LayoutParams(plateau.getDimensionJetons(),plateau.getDimensionJetons());
             plateau.getJeu().addContentView(view, param);
