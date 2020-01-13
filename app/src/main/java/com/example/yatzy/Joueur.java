@@ -1,5 +1,6 @@
 package com.example.yatzy;
 
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.example.yatzy.model.Couleur;
@@ -16,6 +17,7 @@ public class Joueur extends com.example.yatzy.model.Joueur {
     private Combinaison combinaisonDefi;
     private Partie partie;
     private Plateau plateau;
+    private int score;
 
     public Joueur(Couleur couleurJetons, Partie partie) {
         super();
@@ -57,11 +59,11 @@ public class Joueur extends com.example.yatzy.model.Joueur {
         }
     }
 
-    public int compterScore() {
-
+ /*   public int compterScore() {
+        if(plateau.checkTroisJetonsAlignes())
 
         return 0;
-    }
+    }*/
 
     public List<Jeton> getJetonsJoueurs() {
         return jetonsJoueurs;

@@ -119,7 +119,7 @@ public class Partie extends com.example.yatzy.model.Partie{
     public void determinerCombinaisons() {
 
         joueurActuel.setCombinaisonDefi(DataHolder.getHolder().getPartie().getJoueurActuel().getCombinaisonDefi());
-        boolean secos = false; // v�rifie que sec et d�fi �taient dans la liste de combinaisons avant
+        boolean secos = false; // verifie que sec et defi etaient dans la liste de combinaisons avant
         // si oui, les rajoute dans la nouvelle liste
         boolean defi = false;
         combinaisonEnCours = new ArrayList();
@@ -142,7 +142,7 @@ public class Partie extends com.example.yatzy.model.Partie{
         for (int i = 0; i < 5; i++) {
             tableauCombi[i] = 0;
         }
-        // recupere dans un tableau le nombre d'it�rations d'un chiffre sur les d�s
+        // recupere dans un tableau le nombre d'iterations d'un chiffre sur les des
         for (De de: listeDes) {
             switch (de.getFace()) {
                 case 1:
@@ -168,8 +168,8 @@ public class Partie extends com.example.yatzy.model.Partie{
             somme += de.getFace();
 
         }
-        // v�rifie chaque combinaison
 
+        // verifie chaque combinaison
         int compteurSuite = 0;
         for (int i = 0; i <= 5; i++) {
 
@@ -193,7 +193,7 @@ public class Partie extends com.example.yatzy.model.Partie{
             }
 
             // suite
-            // 0 � la fin ou au d�but
+            // 0 a la fin ou au debut
             if (tableauCombi[i] == 1)
                 compteurSuite++;
             else if (tableauCombi[i] != 1 && compteurSuite < 5) {
@@ -211,9 +211,9 @@ public class Partie extends com.example.yatzy.model.Partie{
             this.combinaisonEnCours.add(Combinaison.SEC);
         }
 
-        // si une combinaison de la liste des combinaisons r�alis�es par le joueur est
-        // �gale � celle qu'il avait annonc�e pour son d�fi, alors
-        // il peut poser son jeton sur la case d�fi
+        // si une combinaison de la liste des combinaisons realisees par le joueur est
+        // egale a celle qu'il avait annoncee pour son defi, alors
+        // il peut poser son jeton sur la case defi
         for (Combinaison b : combinaisonEnCours) {
             if (b.equals(joueurActuel.getCombinaisonDefi())) {
                 this.setDefiReussi(true);
@@ -229,6 +229,24 @@ public class Partie extends com.example.yatzy.model.Partie{
             }
             Log.e("Défi Réussi", "Le défi a été ajouté à la liste des combinaisons réussies");
         }
+    }
+
+    public void calculerScoresJoueurs() {
+        /* Calcul score Joueur1 */
+        plateau.checkTroisJetonsAlignesHorizontal(Couleur.NOIR, 0, 0);
+        plateau.checkTroisJetonsAlignesVertical(Couleur.NOIR, 0, 0);
+        plateau.checkTroisJetonsAlignesDiagonal(Couleur.NOIR, 0, 0);
+        plateau.checkQuatreJetonsAlignesHorizontal(Couleur.NOIR, 0, 0);
+        plateau.checkQuatreJetonsAlignesVertical(Couleur.NOIR, 0, 0);
+        plateau.checkQuatreJetonsAlignesDiagonal(Couleur.NOIR, 0, 0);
+
+        /* Calcul score Joueur2 */
+        plateau.checkTroisJetonsAlignesHorizontal(Couleur.BLANC, 0, 0);
+        plateau.checkTroisJetonsAlignesVertical(Couleur.BLANC, 0, 0);
+        plateau.checkTroisJetonsAlignesDiagonal(Couleur.BLANC, 0, 0);
+        plateau.checkQuatreJetonsAlignesHorizontal(Couleur.BLANC, 0, 0);
+        plateau.checkQuatreJetonsAlignesVertical(Couleur.BLANC, 0, 0);
+        plateau.checkQuatreJetonsAlignesDiagonal(Couleur.BLANC, 0, 0);
     }
 
     public List<De> getListeDes() {

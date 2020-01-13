@@ -8,11 +8,13 @@ public class Jeton {
 	private Couleur couleur;
 	private ImageView view;
 	private Plateau plateau;
+	private boolean estSelectionne;
 	
 	public Jeton(Couleur couleur, Plateau plateau)
 	{
 		this.couleur = couleur;
 		this.plateau = plateau;
+		this.estSelectionne = false;
 		view = new ImageView(plateau.getJeu());
 		determinerCouleurJeton();
 	}

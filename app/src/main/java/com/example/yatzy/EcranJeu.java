@@ -130,20 +130,18 @@ public class EcranJeu extends AppCompatActivity {
     public void poserJeton(Jeton jetonAPoser, int coordX, int coordY){
         jetonAPoser.getView().setX(coordX);
         jetonAPoser.getView().setY(coordY);
-        Log.e("3 jetons alignes", "dispositionCases : " + plateau.);
-        Log.e("4 jetons alignes", "V ou F : " + plateau.checkQuatreJetonsAlignes(jetonAPoser.getCouleur(), coordX, coordY));
-/*        partie.getJoueurActuel().setPeutPoser(false);
+        partie.getJoueurActuel().setPeutPoser(false);
         jetonsBlancsRestants.setText(""+partie.getJoueur1().getJetonsJoueurs().size());
-        jetonsNoirsRestants.setText(""+partie.getJoueur2().getJetonsJoueurs().size());*/
+        jetonsNoirsRestants.setText(""+partie.getJoueur2().getJetonsJoueurs().size());
 
         if (partie.getJoueur1().getJetonsJoueurs().size() == 0 && partie.getJoueur2().getJetonsJoueurs().size() == 0){
+            partie.calculerScoresJoueurs();
             Intent finPartie = new Intent(EcranJeu.this, FinDePartie.class);
             DataHolder.getHolder().setScoreFinalJ1(partie.getJoueur1().getScore());
             DataHolder.getHolder().setScoreFinalJ2(partie.getJoueur2().getScore());
             startActivity(finPartie);
         }
     }
-
 
     public void afficherCasePosables(){
         Case[][] casesPlateau = plateau.getDispositionCases();

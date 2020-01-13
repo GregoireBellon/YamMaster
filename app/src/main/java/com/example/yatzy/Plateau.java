@@ -2,9 +2,9 @@ package com.example.yatzy;
 
 
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.ViewGroup;
-import android.view.ViewManager;
-import android.widget.ImageView;
+
 import com.example.yatzy.model.Couleur;
 import java.util.ArrayList;
 import java.util.List;
@@ -82,38 +82,83 @@ public class Plateau {
         }
     }
 
-    /**
-     * Counts pieces of the given type, starting at (y, x),
-     * in the direction denoted by (dy, dx).
-     * Stops at field boundaries or when a different field type is encountered.
-     */
-    public int compterPoints(Couleur couleur, int x, int y, int dx, int dy) {
+    public int compterAlignements(Couleur couleur, int x, int y, int dx, int dy, int tailleAlignement) {
         int nbJetonsAlignes = 0;
+        int nbAlignements = 0;
         x += dx;  // Skip the piece at (y, x) to avoid counting it twice
         y += dy;  // when looking in both directions on a line.
-        while (x >= 0 && x < 5 && y >= 0 && y < 5 && dispositionCases[x][y].getJetonPose().getCouleur() == couleur) {
+        while (x >= 0 && x < 5 && y >= 0 && y < 5 && dispositionCases[x][y].getJetonPose() != null && dispositionCases[x][y].getJetonPose().getCouleur() == couleur) {
             nbJetonsAlignes++;
+            if (nbJetonsAlignes == tailleAlignement) {
+                nbAlignements++;
+            }
             x += dx;  // Move in the direction denoted by (dy, dx)
             y += dy;
         }
-        return nbJetonsAlignes;
-    }
-    /**
-     * Main entry point after a new piece of type `type` was added at (y, x).
-     * Returns true if this connects 4 or more in any direction.
-     */
-    public boolean checkTroisJetonsAlignes(Couleur couleur, int x, int y) {
-        return compterPoints(couleur, x, y, -1, 0) + 1 + compterPoints(couleur, x, y, 1, 0) >= 3  // horizontal
-                || compterPoints(couleur, x, y, 0, -1) + 1 + compterPoints(couleur, x, y, 0, 1) >= 3  // vertical
-                || compterPoints(couleur, x, y, -1, -1) + 1 + compterPoints(couleur, x, y, 1, 1) >= 3 // diagonal
-                || compterPoints(couleur, x, y, -1, 1) + 1 + compterPoints(couleur, x, y, 1, -1) >= 3;
+        return nbAlignements;
     }
 
-    public boolean checkQuatreJetonsAlignes(Couleur couleur, int x, int y) {
-        return compterPoints(couleur, x, y, -1, 0) + 1 + compterPoints(couleur, x, y, 1, 0) >= 4  // horizontal
-                || compterPoints(couleur, x, y, 0, -1) + 1 + compterPoints(couleur, x, y, 0, 1) >= 4  // vertical
-                || compterPoints(couleur, x, y, -1, -1) + 1 + compterPoints(couleur, x, y, 1, 1) >= 4  // diagonal
-                || compterPoints(couleur, x, y, -1, 1) + 1 + compterPoints(couleur, x, y, 1, -1) >= 4;
+    public void checkTroisJetonsAlignesHorizontal(Couleur couleur, int x, int y) {
+        int nbAlignements = compterAlignements(couleur, x, y, -1, 0, 3) + compterAlignements(couleur, x, y, 1, 0, 3);  // horizontal
+        if(couleur == Couleur.BLANC) {
+            joueur1.setScore(joueur1.getScore() + nbAlignements);
+        }
+        if(couleur == Couleur.NOIR) {
+            joueur2.setScore(joueur2.getScore() + nbAlignements);
+        }
+    }
+
+    public void checkTroisJetonsAlignesVertical(Couleur couleur, int x, int y) {
+        int nbAlignements =  compterAlignements(couleur, x, y, 0, -1, 3) + compterAlignements(couleur, x, y, 0, 1, 3);  // vertical
+        if(couleur == Couleur.BLANC) {
+            joueur1.setScore(joueur1.getScore() + nbAlignements);
+        }
+        if(couleur == Couleur.NOIR) {
+            joueur2.setScore(joueur2.getScore() + nbAlignements);
+        }
+    }
+
+    public void checkTroisJetonsAlignesDiagonal(Couleur couleur, int x, int y) {
+        int nbAlignements =  compterAlignements(couleur, x, y, -1, -1, 3) + 1 + compterAlignements(couleur, x, y, 1, 1, 3) // diagonal
+        + compterAlignements(couleur, x, y, -1, 1, 3) + compterAlignements(couleur, x, y, 1, -1, 3);
+        if(couleur == Couleur.BLANC) {
+            joueur1.setScore(joueur1.getScore() + nbAlignements);
+        }
+        if(couleur == Couleur.NOIR) {
+            joueur2.setScore(joueur2.getScore() + nbAlignements);
+        }
+    }
+
+    public void checkQuatreJetonsAlignesHorizontal(Couleur couleur, int x, int y) {
+        int nbAlignements =  compterAlignements(couleur, x, y, -1, 0, 4) + compterAlignements(couleur, x, y, 1, 0, 4);  // horizontal
+        if(couleur == Couleur.BLANC) {
+            joueur1.setScore(joueur1.getScore() + nbAlignements * 2);
+        }
+        if(couleur == Couleur.NOIR) {
+            joueur2.setScore(joueur2.getScore() + nbAlignements * 2);
+        }
+    }
+
+    public void checkQuatreJetonsAlignesVertical(Couleur couleur, int x, int y) {
+        int nbAlignements = compterAlignements(couleur, x, y, 0, -1, 4) + compterAlignements(couleur, x, y, 0, 1, 4);  // vertical
+        if(couleur == Couleur.BLANC) {
+            joueur1.setScore(joueur1.getScore() + nbAlignements * 2);
+        }
+        if(couleur == Couleur.NOIR) {
+            joueur2.setScore(joueur2.getScore() + nbAlignements * 2);
+        }
+    }
+
+    public void checkQuatreJetonsAlignesDiagonal(Couleur couleur, int x, int y) {
+        int nbAlignements = compterAlignements(couleur, x, y, -1, -1, 4) + 1 + compterAlignements(couleur, x, y, 1, 1, 4)  // diagonals
+        + compterAlignements(couleur, x, y, -1, 1, 4) + compterAlignements(couleur, x, y, 1, -1, 4);
+        if(couleur == Couleur.BLANC) {
+            joueur1.setScore(joueur1.getScore() + nbAlignements * 2);
+            Log.e("score joueur 1", "score J1 = " + joueur1.getScore());
+        }
+        if(couleur == Couleur.NOIR) {
+            joueur2.setScore(joueur2.getScore() + nbAlignements * 2);
+        }
     }
 
     public void ajouterUneVueCase(Case caseAPlacer) {
