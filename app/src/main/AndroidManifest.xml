@@ -8,42 +8,43 @@
         android:label="Yatzy!"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".FinDePartie"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".EcranEdition"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".Options"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".PopOptions"
-            android:theme="@style/AppTheme.PopOptions"/>
-
-        <activity android:name=".PopChoixCombi"
-            android:theme="@style/AppTheme.PopOptions"/>
-
-        <activity android:name=".PopDes"
-            android:theme="@style/AppTheme.PopDes"/>
-
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Options"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PopOptions"
+            android:theme="@style/AppTheme.PopOptions" />
+        <activity
+            android:name=".PopChoixCombi"
+            android:theme="@style/AppTheme.PopOptions" />
+        <activity
+            android:name=".PopDes"
+            android:theme="@style/AppTheme.PopDes" />
         <activity
             android:name=".MenuJouer"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EcranAccueil"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".EcranJeu"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

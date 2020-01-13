@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondJeu"
+    tools:context=".FinDePartie">
+
+    <TextView
+        android:id="@+id/textePartieTerminee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="411dp"
+        android:layout_marginEnd="411dp"
+        android:fontFamily="@font/alef_bold"
+        android:text="@string/texteFinPartie"
+        android:textColor="@color/blanc"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/texteGagnant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="177dp"
+        android:text="@string/texteEgalite"
+        android:textColor="@color/blanc"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textePartieTerminee" />
+
+    <TextView
+        android:id="@+id/texteScoreJ1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="287dp"
+        android:fontFamily="@font/alef_bold"
+        android:text="@string/scoreJ1"
+        android:textColor="@color/blanc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textePartieTerminee" />
+
+    <TextView
+        android:id="@+id/texteScoreJ2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="189dp"
+        android:fontFamily="@font/alef_bold"
+        android:text="@string/scoreJ2"
+        android:textColor="@color/blanc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texteScoreJ1" />
+
+    <Button
+        android:id="@+id/boutonAccueil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="162dp"
+        android:background="@drawable/background_click_button"
+        android:fontFamily="@font/alef_bold"
+        android:padding="15px"
+        android:text="Revenir à l'accueil"
+        android:textColor="@color/blanc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texteScoreJ2" />
+
+    <TextView
+        android:id="@+id/scoreJ1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="148dp"
+        android:fontFamily="@font/alef_bold"
+        android:text="12"
+        android:textColor="@color/blanc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/texteScoreJ1"
+        app:layout_constraintTop_toBottomOf="@+id/textePartieTerminee" />
+
+    <TextView
+        android:id="@+id/scoreJ2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="147dp"
+        android:fontFamily="@font/alef_bold"
+        android:text="12"
+        android:textColor="@color/blanc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toEndOf="@+id/texteScoreJ2"
+        app:layout_constraintTop_toBottomOf="@+id/scoreJ1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

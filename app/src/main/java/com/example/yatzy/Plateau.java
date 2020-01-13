@@ -14,7 +14,7 @@ public class Plateau {
     private int dimensionCases;
     private int dimensionJetons;
     private EcranJeu jeu;
-    private Case[][] dispositionCases;
+    public Case[][] dispositionCases;
     private List<Jeton> jetonsPoses;
     private Joueur joueur1;
     private Joueur joueur2;
@@ -95,33 +95,32 @@ public class Plateau {
         }
         return nbJetonsAlignes;
     }
-
     /**
      * Main entry point after a new piece of type `type` was added at (y, x).
      * Returns true if this connects 4 or more in any direction.
      */
     public boolean checkTroisJetonsAlignes(Couleur couleur, int x, int y) {
-        return compterPoints(couleur, x, y, -1, 0) + 1 + compterPoints(couleur, x, y, 1, 0) == 3  // horizontal
-                || compterPoints(couleur, x, y, 0, -1) + 1 + compterPoints(couleur, x, y, 0, 1) == 3  // vertical
-                || compterPoints(couleur, x, y, -1, -1) + 1 + compterPoints(couleur, x, y, 1, 1) == 3 // diagonal
-                || compterPoints(couleur, x, y, -1, 1) + 1 + compterPoints(couleur, x, y, 1, -1) == 3;
+        return compterPoints(couleur, x, y, -1, 0) + 1 + compterPoints(couleur, x, y, 1, 0) >= 3  // horizontal
+                || compterPoints(couleur, x, y, 0, -1) + 1 + compterPoints(couleur, x, y, 0, 1) >= 3  // vertical
+                || compterPoints(couleur, x, y, -1, -1) + 1 + compterPoints(couleur, x, y, 1, 1) >= 3 // diagonal
+                || compterPoints(couleur, x, y, -1, 1) + 1 + compterPoints(couleur, x, y, 1, -1) >= 3;
     }
 
     public boolean checkQuatreJetonsAlignes(Couleur couleur, int x, int y) {
-        return compterPoints(couleur, x, y, -1, 0) + 1 + compterPoints(couleur, x, y, 1, 0) == 4  // horizontal
-                || compterPoints(couleur, x, y, 0, -1) + 1 + compterPoints(couleur, x, y, 0, 1) == 4  // vertical
-                || compterPoints(couleur, x, y, -1, -1) + 1 + compterPoints(couleur, x, y, 1, 1) == 4  // diagonal
-                || compterPoints(couleur, x, y, -1, 1) + 1 + compterPoints(couleur, x, y, 1, -1) == 4;
+        return compterPoints(couleur, x, y, -1, 0) + 1 + compterPoints(couleur, x, y, 1, 0) >= 4  // horizontal
+                || compterPoints(couleur, x, y, 0, -1) + 1 + compterPoints(couleur, x, y, 0, 1) >= 4  // vertical
+                || compterPoints(couleur, x, y, -1, -1) + 1 + compterPoints(couleur, x, y, 1, 1) >= 4  // diagonal
+                || compterPoints(couleur, x, y, -1, 1) + 1 + compterPoints(couleur, x, y, 1, -1) >= 4;
     }
 
-    public void ajouterUneVueCase(Case caseAPlacer){
+    public void ajouterUneVueCase(Case caseAPlacer) {
         jeu.getLayoutPlateau().removeView(caseAPlacer.getImageCase());
         ViewGroup.LayoutParams param = new ViewGroup.LayoutParams(getDimensionCases(),getDimensionCases());
         jeu.getLayoutPlateau().addView(caseAPlacer.getImageCase(),param);
         jeu.ajusterCases(caseAPlacer);
     }
 
-    public void resetPlateau(){
+    public void resetPlateau() {
         jeu.getLayoutPlateau().removeAllViews();
         for (int i = 0; i <= 4; i++) {
             for (int j = 0; j <= 4; j++) {
