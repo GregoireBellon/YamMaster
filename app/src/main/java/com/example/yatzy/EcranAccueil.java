@@ -21,7 +21,7 @@ import com.example.yatzy.model.SoundMusic;
 public class EcranAccueil extends AppCompatActivity {
 
     TextView nomJeu;
-    ImageButton boutonJouer, boutonOptions, boutonEdit;
+    ImageButton boutonJouer, boutonOptions, boutonEdit, boutonTuto;
 
     public MediaPlayer themeDeGerardDeRiviere;
 
@@ -41,6 +41,16 @@ public class EcranAccueil extends AppCompatActivity {
         // ------- Initialisation des éléments de l'application
         nomJeu = findViewById(R.id.nomJeu);
         boutonJouer = findViewById(R.id.boutonJouer);
+
+        boutonTuto = findViewById(R.id.boutonTuto);
+
+        boutonTuto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(EcranAccueil.this, Ecrantuto.class);
+                startActivity(myIntent);
+            }
+        });
 
         boutonJouer.setOnClickListener(new View.OnClickListener() {
             @Override

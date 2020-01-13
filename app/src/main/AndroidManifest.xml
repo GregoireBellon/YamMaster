@@ -8,9 +8,11 @@
         android:label="Yatzy!"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FinDePartie"
+        <activity android:name=".Ecrantuto"></activity>
+        <activity
+            android:name=".FinDePartie"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EcranEdition"
             android:screenOrientation="portrait"
